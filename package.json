@@ -1,0 +1,19 @@
+{
+  "name": "front-end-capstone",
+  "version": "1.0.0",
+  "description": "FEC - Team U-WISE",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/U-WISE/Front-End-Capstone.git"
+  },
+  "author": "Shirin, Jason, and Randall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/U-WISE/Front-End-Capstone/issues"
+  },
+  "homepage": "https://github.com/U-WISE/Front-End-Capstone#readme"
+}
