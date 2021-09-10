@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 module.exports = {
   env: {
     browser: true,
@@ -19,5 +20,15 @@ module.exports = {
     'react',
   ],
   rules: {
+    "no-multiple-empty-lines": [2, { "max": 2 }],
+    "quote-props": "off",
+    "comma-dangle": "off",
+    "eol-last": "off",
+    "no-unused-vars": "off",
+    "import/extensions": "off",
+    "react/prefer-stateless-functions": "off",
+    "react/prefer-stateless-function": "off",
+    "no-useless-constructor": "off",
+    "no-console": "off"
   },
 };
