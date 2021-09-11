@@ -1,4 +1,5 @@
 import React from 'react';
+import QandA from './Q&A.jsx';
 
 export default class App extends React.Component {
   constructor() {
@@ -7,7 +8,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>helloooooo</div>
+      <QandA />
     );
   }
 }
