@@ -1,5 +1,6 @@
 import React from 'react';
 import QandA from './Q&A.jsx';
+import Product from './Product.jsx';
 
 export default class App extends React.Component {
   constructor() {
@@ -8,7 +9,10 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <QandA />
+      <div>
+        <QandA />
+        <Product />
+      </div>
     );
   }
 }

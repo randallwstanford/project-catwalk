@@ -1,0 +1,26 @@
+h1 {
+  margin: 20px;
+  color: #00a07b;
+}
+
+h3 {
+  margin: 20px;
+  color: #d6e6e2;
+}
+
+.flex-container {
+  display: flex;
+}
+
+#image-gallery {
+  border: 1px solid black;
+  width: 59%;
+}
+
+#product-information {
+  border: 1px solid black;
+  width: 39%;
+  margin: auto;
+}
+
+

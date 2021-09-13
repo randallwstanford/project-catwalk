@@ -5,7 +5,7 @@ export default function QandA() {
 
   return (
     <div>
-      heloo
+      {/* heloo */}
     </div>
   );
 }
