@@ -3,3 +3,6 @@ node_modules
 
 #ignore config
 config
+
+#ignore bundle
+client/dist/bundle.js
