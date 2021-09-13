@@ -1,9 +1,11 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable max-len */
+/* eslint-disable array-callback-return */
 
 import React, { useState } from 'react';
 import axios from 'axios';
 import AddAnswerModal from './AddAnswerModal.jsx';
+
+var copy = [];
 
 const QandA = () => {
   const [count, setCount] = useState(0);
@@ -27,14 +29,34 @@ const QandA = () => {
   ]);
 
 
-  const handleChange = (event) => {
+  questions.forEach((question) => { copy.push(question); });
+
+  // copy.reduce((a, b) => {
+  //   if (a.indexOf(b) < 0) {
+  //     a.push(b);
+  //   }
+  //   return a;
+  // }, []);
+
+  var questionsCopy = copy.reduce((x, y) => x.includes(y) ? x : [...x, y], []);
+
+  const search = (event) => {
     var term = event.target.value.toLowerCase();
     event.preventDefault();
-    questions.filter(item => {
-      if (item.a.indexOf(term) !== -1) {
-        console.log(item.a.toLowerCase());
-      }
-    });
+
+
+    if (term === '') {
+      setQuestion(questionsCopy);
+      console.log(questionsCopy);
+    }
+
+    if (term !== '') {
+      copy.forEach((question) => {
+        if (question.a.toLowerCase().startsWith(term)) {
+          setQuestion([question]);
+        }
+      });
+    }
   };
 
   const addAnswer = (event) => {
@@ -78,7 +100,7 @@ const QandA = () => {
       <div className="input-and-button">
         <form>
           <input
-            onChange={handleChange}
+            onChange={search}
             className="question-input"
             type="text"
             placeholder="Have a question? Search for answers."
@@ -86,7 +108,7 @@ const QandA = () => {
           <button
             className="search-button"
             type="submit"
-            onClick={handleChange}
+            onClick={search}
           >
           </button>
         </form>
