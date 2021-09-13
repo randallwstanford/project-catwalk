@@ -1,15 +1,15 @@
 import React from 'react';
 
 const Review = () => (
-  <div>
-    <div>StarRating</div>
-    <div>Verified Purchaser</div>
-    <div>userName</div>
-    <div>Date</div>
-    <div>Title</div>
-    <div>Body</div>
-    <div>Helpful</div>
-    <div>Report</div>
+  <div id="ReviewContainer">
+    <div id="starRating">StarRating</div>
+    <div id="verifiedPurchaser">Verified Purchaser</div>
+    <div id="reviewUserName">userName</div>
+    <div id="reviewDate">Date</div>
+    <div id="reviewTitle">Title</div>
+    <div id="reviewBody">Body</div>
+    <div id="reviewHelpful">Helpful</div>
+    <div id="reviewReport">Report</div>
   </div>
 );
 export default Review;
