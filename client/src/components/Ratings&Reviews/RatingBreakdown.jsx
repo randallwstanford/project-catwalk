@@ -1,8 +1,6 @@
 import React from 'react';
 
 const RatingBreakdown = () => (
-  <div>
-    <div>RatingBreakdown</div>
-  </div>
+  <div id="RatingsBreakdown">RatingBreakdown</div>
 );
 export default RatingBreakdown;

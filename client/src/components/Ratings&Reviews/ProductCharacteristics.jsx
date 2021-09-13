@@ -1,8 +1,6 @@
 import React from 'react';
 
 const ProductCharacteristics = () => (
-  <div>
-    <div>ProductCharacteristics</div>
-  </div>
+  <div id="productCharacteristics">ProductCharacteristics</div>
 );
 export default ProductCharacteristics;
