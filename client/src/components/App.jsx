@@ -13,6 +13,7 @@ export default class App extends React.Component {
     return (
       <div>
         <QandA />
+        <AddAnswerModal />
         <RatingsReviews />
       </div>
     );
