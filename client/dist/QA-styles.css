@@ -5,7 +5,7 @@
   width: 1000px;
   border: 5px solid gray;
   padding: 15px;
-  height: 600px;
+  height: 525px;
   z-index: 0;
 }
 
@@ -70,7 +70,7 @@
   position: relative;
   overflow: scroll;
   overflow-x: hidden;
-  height: 350px;
+  height: 300px;
 }
 
 .load-more-answers {
@@ -110,4 +110,8 @@
 .yes-button:hover,
 .add-answer:hover {
   cursor: pointer;
+}
+
+.add-answer {
+  margin-left: 5px;
 }
