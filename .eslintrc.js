@@ -34,7 +34,13 @@ module.exports = {
     "camelcase": "off",
     "no-trailing-spaces": "off",
     "react/jsx-one-expression-per-line": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "no-var": "off",
+    "react/no-array-index-key": "off",
+    "arrow-body-style": "off",
+    "react/self-closing-comp": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "no-plusplus": "off"
   },
 };
 

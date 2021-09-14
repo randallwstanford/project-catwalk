@@ -1,7 +1,7 @@
 const path = require('path');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
-const DIST_DIR = path.join(__dirname, '/client/dist');
+const DIST_DIR = path.join(__dirname, '/client/dist/bundle');
 
 module.exports = {
   entry: `${SRC_DIR}/index.js`,
@@ -10,7 +10,6 @@ module.exports = {
     path: DIST_DIR,
   },
   module: {
-
     rules: [
       {
         test: /\.js(x?)$/,
@@ -25,3 +24,6 @@ module.exports = {
     ]
   }
 };
+
+
+
