@@ -1,53 +1,44 @@
 import React, { useState } from 'react';
 
-var copy = [];
-
-const AllQandAs = () => {
+const AllQandA = () => {
+  // All questions
   const [questions, setQuestion] = useState([
     {
       q: 'Do these usually run small?',
-      a: 'Lorem.'
+      a: 'Lorem.',
+      username: 'rando',
+      date: 'feb 8, 9981'
     },
     {
       q: 'Do doododood odod ododoodo oood?',
-      a: 'odort.'
+      a: 'odort.',
+      username: 'JSON',
+      date: 'june 27, 2727',
+      isSeller: ' - Seller'
     },
     {
       q: 'Do AAHHHHH',
-      a: 'sding elit.'
+      a: 'sding elit.',
+      username: 'shirin',
+      date: 'may 356, 1003'
     },
     {
       q: 'Do GOCCO UGH UGH  GIOGO OOGOOGOOGOGO gOOOOOOOOd?',
-      a: 'YAH YAH YHA YHA YA H Y AH HY A.'
+      a: 'YAH YAH YHA YHA YA H Y AH HY A.',
+      username: 'shjsndo',
+      date: 'may 26, 1337'
     }
   ]);
 
-  questions.forEach((question) => { copy.push(question); });
-
-  // const search = (event) => {
-  //   var questionsCopy = copy.reduce((x, y) => (x.includes(y) ? x : [...x, y]), []);
-  //   var term = event.target.value.toLowerCase();
-  //   event.preventDefault();
-
-  //   if (term === '') {
-  //     setQuestion(questionsCopy);
-  //   }
-  //   if (term !== '') {
-  //     copy.forEach((question) => {
-  //       if (question.a.toLowerCase().startsWith(term)) {
-  //         setQuestion([question]);
-  //       }
-  //     });
-  //   }
-  // };
-
-  const addAnswer = (event) => {
-    console.log(document.getElementsByClassName('modal')[0].style = 'none');
-    console.log('adding answer click');
+  // done
+  const openModal = (event) => {
+    console.log(document.getElementById('modal').style);
+    document.getElementById('modal').style.cssText = 'visibility: visible';
   };
 
   return (
-    questions.map((question, index) => {
+    // Limits 2 questions (until laod more answers clicked)
+    questions.slice(0, 2).map((question, index) => {
       return (
         <div key={index} className="qa-container">
           <div className="question">
@@ -58,29 +49,30 @@ const AllQandAs = () => {
                 onClick={() => ++localStorage[`numHelp${index}`]}
               > Yes
               </button>
-              (
-              {localStorage.setItem(`numHelp${localStorage.length}`, 0)}
-              {localStorage.getItem(`numHelp${index}`)}
-              )
+              ( 0 )
+
+              { // Local storage counter
+              /* {localStorage.setItem(`numHelp0${localStorage.length}`, 0)}
+              {localStorage.getItem(`numHelp0${index}`)} */}
               <button
                 className="add-answer"
-                onClick={addAnswer}
+                onClick={openModal}
               >Add Answer
               </button>
             </div>
           </div>
           <div className="answer"><b>A: </b>{question.a}</div>
-          <div>By username, date
+          <div>By [{question.username}],<b>{question.isSeller}</b> {question.date}
             <div> Helpful?
               <button
                 className="yes-button"
                 onClick={() => ++localStorage[`num${index}`]}
               > Yes
               </button>
-              (
-              {localStorage.setItem(`num${localStorage.length}`, 0)}
-              {localStorage.getItem(`num${index}`)}
-              )
+              ( 0 )
+              { // Local storage counter
+              /* {localStorage.setItem(`num0${localStorage.length}`, 0)}
+              {localStorage.getItem(`num0${index}`)} */}
               | Report
             </div>
           </div>
@@ -90,4 +82,4 @@ const AllQandAs = () => {
   );
 };
 
-export default AllQandAs;
+export default AllQandA;
