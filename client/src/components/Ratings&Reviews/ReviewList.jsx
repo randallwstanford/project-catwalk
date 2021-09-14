@@ -402,11 +402,11 @@ const ReviewList = () => {
 
   return (
     <div id="reviewList">
-      {anyReviews()}
+      {anyReviews}
       <div id="reviews">
         {reviews.slice(0, loadedReviews).map((review) => <Review key={review.review_id} />)}
       </div>
-      {moreReviews()}
+      {moreReviews}
       <button>Add a review +</button>
     </div>
   );
