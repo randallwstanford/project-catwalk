@@ -1,6 +1,7 @@
 import React from 'react';
 import QandA from './QandA.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
+import RatingsReviews from './Ratings&Reviews/RatingsReviews';
 
 export default class App extends React.Component {
   constructor() {
@@ -9,7 +10,11 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <QandA />
+      <div>
+        <QandA />
+        <AddAnswerModal />
+        <RatingsReviews />
+      </div>
     );
   }
 }
