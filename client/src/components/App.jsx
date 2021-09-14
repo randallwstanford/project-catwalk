@@ -12,10 +12,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        <Product />
         <QandA />
         <AddAnswerModal />
         <RatingsReviews />
-        <Product />
       </div>
     );
   }
