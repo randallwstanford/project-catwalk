@@ -35,17 +35,28 @@ const AddAnswerModal = () => {
       'answerer_name': answerer_name,
       'photos': [...event.target.files.files]
     };
-    console.log(email);
-    console.log(emailValidation.test(email));
     console.log(objToSend); // FORMATTING DONE
+    // TODO: Post to qa/questions
+  };
+
+  const handlePhotos = () => {
+    Array.from(document.getElementById('file-input').files).map((file, index) => {
+      return (
+        <div id={index}>
+          <img src={file.name} alt="" />
+        </div>
+      );
+    });
   };
 
   return (
     <div className="modal" id="modal">
-      <button className="x" onClick={toggleModal} onChange={toggleModal} on="">x</button>
+      <button className="x" onClick={toggleModal} onChange={toggleModal}>x</button>
       <h2>Ask your question</h2>
       <h3>About the [Product Name Here]</h3>
       <form className="main" onSubmit={handleSubmit} onChange={handleChange}>
+
+        {/* ------ Username ------ */}
         Username **
         <input
           min="1"
@@ -55,6 +66,8 @@ const AddAnswerModal = () => {
           placeholder="ex: randostando"
         />
         <div>- For privacy reasons, do not use your full name or email address -</div>
+
+        {/* ------ Email ------ */}
         Email **
         <input
           min="1"
@@ -65,8 +78,17 @@ const AddAnswerModal = () => {
           placeholder="Why did you like the product or not?"
         />
         <div>- For authentication reasons, you will not be emailed -</div>
+
+        {/* ------ Text Area ------ */}
         <textarea type="text" name="answerText" className="add-answer-input" placeholder="enter question here"></textarea>
-        <input type="file" id="file-input" name="files" multiple />
+        <input
+          multiple
+          type="file"
+          name="files"
+          id="file-input"
+          onChange={handlePhotos()}
+        />
+        {/* Render Thumbnails here */}
         <button type="submit" className="modal-submit" id="modal-submit">Submit</button>
       </form>
     </div>
