@@ -7,25 +7,23 @@ const config = require('../config/config.js');
 const app = express();
 const port = 3000;
 
+console.log(config.API_KEY);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../', 'client', 'dist')));
 
-app.get('/*', (req, res) => {
-  console.log(req.method, req.url);
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-den${req.url}`, {
-    headers: {
-      'Authorization': config.TOKEN
-    }
+app.use('/*', (req, res) => {
+  console.log('req.method:', req.method, 'req.url: ', req.url);
+  axios({
+    headers: { 'Authorization': config.API_KEY },
+    method: req.method.toLowerCase(),
+    data: req.body,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-den${req.originalUrl}`
   })
-    .then(response => {
-      console.log(response);
-      res.send(response.data);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).end();
-    });
+    .then(response => { res.send(response.data); })
+    .catch(err => { console.log(err); res.status(500).end(); });
 });
+
+
 
 app.listen(port, () => {
   console.log(`Running on port: ${port}`);

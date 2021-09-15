@@ -1,27 +1,20 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import getQuestions from '../../utils/utils.js';
-import { API_KEY, url } from '../../../../config/config.js';
-import data from './data.json';
+import utils from '../../utils/utils.js';
 import Answers from './Answers.jsx';
+import data from './data.json';
 
-const AllQandA = () => {
-  // All questions
-  const [questions, setQuestion] = useState(data);
+const AllQandA = (props) => {
+  const [questions, setQuestion] = useState([]);
 
   useEffect(() => {
-    // console.log(getQuestions());
+    console.log(utils.getQuestions(props));
   }, []);
 
-  const openModal = (event) => {
-    document.getElementById('modal').style.cssText = 'visibility: visible';
-  };
 
-  const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('en-us', { year: 'numeric', day: 'numeric', month: 'short' });
-  };
-
+  const openModal = (event) => { document.getElementById('modal').style.cssText = 'visibility: visible'; };
+  const formatDate = (date) => new Date(date).toLocaleDateString('en-us', { year: 'numeric', day: 'numeric', month: 'short' });
   const checkForHelpfulness = (answer) => {
     if (answer === undefined) { return 0; }
     return answer.helpfulness;
@@ -42,7 +35,6 @@ const AllQandA = () => {
               <div className="answer"><b>A:</b>
                 {/* ------------- Answers Text ------------- */}
                 <span>
-
                   <Answers props={question.answers[Object.keys(question.answers)[0]]} />
                   <Answers props={question.answers[Object.keys(question.answers)[1]]} />
                 </span>
