@@ -5,7 +5,7 @@ node_modules
 config
 
 #ignore bundle
-client/dist/bundle.js
+bundle.js
 
 #ignore bundle txt
 client/dist/bundle.js.LICENSE.txt

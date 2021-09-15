@@ -1,6 +1,7 @@
 import React from 'react';
 import QandA from './Q-and-A/QandA.jsx';
 import RatingsReviews from './Ratings&Reviews/RatingsReviews.jsx';
+import Product from './Product.jsx';
 
 export default class App extends React.Component {
   constructor() {
@@ -10,6 +11,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        <Product />
         <QandA />
         <RatingsReviews />
       </div>
