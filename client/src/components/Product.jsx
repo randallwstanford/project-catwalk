@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import StyleSelector from './StyleSelector.jsx';
 
-export default function Product(props) {
+export default function Product({ productId }) {
   const [product, setProduct] = useState({});
+  const [style, setStyle] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/products/${props.productId}`)
+    axios.get(`http://localhost:3000/products/${productId}`)
       .then(response => setProduct(response.data));
   }, []);
 
@@ -31,20 +33,7 @@ export default function Product(props) {
           <div>
             <h1>{product.name}</h1>
           </div>
-          <div className="style-selector">
-            <input
-              type="radio"
-            />
-            <input
-              type="radio"
-            />
-            <input
-              type="radio"
-            />
-            <input
-              type="radio"
-            />
-          </div>
+          <StyleSelector productId={productId} />
           <div className="price">$</div>
           <div className="size-quantity">
             <input
@@ -72,5 +61,5 @@ export default function Product(props) {
 }
 
 Product.propTypes = {
-  productId: PropTypes.shape.isRequired
+  productId: PropTypes.number.isRequired
 };
