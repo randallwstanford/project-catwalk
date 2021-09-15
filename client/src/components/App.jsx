@@ -12,7 +12,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Product />
+        <Product productId="44388" />
         <QandA />
         <AddAnswerModal />
         <RatingsReviews />
