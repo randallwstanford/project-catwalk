@@ -34,25 +34,11 @@ const QandA = () => {
           />
         </form>
       </div>
-      <div className="q-wrapper">
-        <AllQandA />
-      </div>
-      <button
-        className="load-more-answers"
-        onClick={loadMoreAnswers}
-      > Load More Answers
-      </button>
+      <div className="q-wrapper"><AllQandA /></div>
+      <button className="load-more-answers" onClick={loadMoreAnswers}> Load More Answers</button>
       <div className="more-question-wrapper">
-        <button
-          className="more-answered-questions"
-          onClick={showMoreQuestions}
-        > More Answered Questions
-        </button>
-        <button
-          className="add-question"
-          onClick={addQuestion}
-        > Add a Question
-        </button>
+        <button className="more-answered-questions" onClick={showMoreQuestions}> More Answered Questions</button>
+        <button className="add-question" onClick={addQuestion}> Add a Question</button>
       </div>
     </div>
   );

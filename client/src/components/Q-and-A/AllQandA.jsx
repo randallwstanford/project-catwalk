@@ -1,82 +1,82 @@
-import React, { useState } from 'react';
+/* eslint-disable max-len */
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import getQuestions from '../../utils/utils.js';
+import { API_KEY, url } from '../../../../config/config.js';
+import data from './data.json';
+import Answers from './Answers.jsx';
 
 const AllQandA = () => {
   // All questions
-  const [questions, setQuestion] = useState([
-    {
-      q: 'Do these usually run small?',
-      a: 'Lorem.',
-      username: 'rando',
-      date: 'feb 8, 9981'
-    },
-    {
-      q: 'Do doododood odod ododoodo oood?',
-      a: 'odort.',
-      username: 'JSON',
-      date: 'june 27, 2727',
-      isSeller: ' - Seller'
-    },
-    {
-      q: 'Do AAHHHHH',
-      a: 'sding elit.',
-      username: 'shirin',
-      date: 'may 356, 1003'
-    },
-    {
-      q: 'Do GOCCO UGH UGH  GIOGO OOGOOGOOGOGO gOOOOOOOOd?',
-      a: 'YAH YAH YHA YHA YA H Y AH HY A.',
-      username: 'shjsndo',
-      date: 'may 26, 1337'
-    }
-  ]);
+  const [questions, setQuestion] = useState(data);
 
-  // done
+  useEffect(() => {
+    // console.log(getQuestions());
+  }, []);
+  //   axios.get(
+  //     'https://app-hrsei-api.herokuapp.com/api/fec2/hr-den/products', { headers: { Authorization: API_KEY } }
+  //   )
+  //     .then((product) => {
+  //       var dataToSet = [];
+  //       for (let i = 0; i < product.data.length; i++) {
+  //         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-den/qa/questions/?product_id=${product.data[i].id}`, { headers: { Authorization: API_KEY } })
+  //           .then((response) => {
+  //             dataToSet.push(response.data.results);
+  //             console.log('data:', data[i].results);
+  //             console.log('response.data: ', response.data.results);
+  //           })
+  //           .catch((err) => console.log(err));
+  //       }
+  //       console.log(dataToSet);
+  //       setQuestion(dataToSet);
+  //     })
+  //     .catch((err) => {
+  //       console.log('err in useeffect: ', err);
+  //     });
+  // }, []);
+
+
+
   const openModal = (event) => {
-    console.log(document.getElementById('modal').style);
     document.getElementById('modal').style.cssText = 'visibility: visible';
   };
 
-  return (
-    // Limits 2 questions (until laod more answers clicked)
-    questions.slice(0, 2).map((question, index) => {
-      return (
-        <div key={index} className="qa-container">
-          <div className="question">
-            <b>Q:</b> {question.q}
-            <div className="helpful">Helpful?
-              <button
-                className="yes-button"
-                onClick={() => ++localStorage[`numHelp${index}`]}
-              > Yes
-              </button>
-              ( 0 )
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString('en-us', { year: 'numeric', day: 'numeric', month: 'short' });
+  };
 
-              { // Local storage counter
-              /* {localStorage.setItem(`numHelp0${localStorage.length}`, 0)}
-              {localStorage.getItem(`numHelp0${index}`)} */}
-              <button
-                className="add-answer"
-                onClick={openModal}
-              >Add Answer
-              </button>
+  const checkForHelpfulness = (answer) => {
+    if (answer === undefined) { return 0; }
+    return answer.helpfulness;
+  };
+
+  return (
+    questions.map((questionsResults) => {
+      return (
+        questionsResults.results.map((question, index) => {
+          return (
+            <div className="qa-container" key={index}>
+              <div className="question"><b>Q:</b> {question.question_body}
+                <div className="helpful">Helpful?
+                  <button className="yes-button"> Yes </button> ( {question.question_helpfulness} )
+                  <button className="add-answer" onClick={openModal}>Add Answer</button>
+                </div>
+              </div>
+              <div className="answer"><b>A:</b>
+                {/* ------------- Answers Text ------------- */}
+                <Answers props={question.answers[Object.keys(question.answers)[0]]} />
+                <Answers props={question.answers[Object.keys(question.answers)[1]]} />
+              </div>
+              {/* ------------- Date -------------*/}
+              <div> {formatDate(question.question_date)}</div>
+              <div> Helpful?
+                <button className="yes-button" onClick={() => console.log('incremenet dis')}> Yes </button>
+                ( {checkForHelpfulness(question.answers[Object.keys(question.answers)[0]])} )
+                | Report
+              </div>
             </div>
-          </div>
-          <div className="answer"><b>A: </b>{question.a}</div>
-          <div>By [{question.username}],<b>{question.isSeller}</b> {question.date}
-            <div> Helpful?
-              <button
-                className="yes-button"
-                onClick={() => ++localStorage[`num${index}`]}
-              > Yes
-              </button>
-              ( 0 )
-              { // Local storage counter
-              /* {localStorage.setItem(`num0${localStorage.length}`, 0)}
-              {localStorage.getItem(`num0${index}`)} */}
-              | Report
-            </div>
-          </div>
-        </div>
+          );
+        })
       );
     })
   );
