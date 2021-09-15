@@ -18,10 +18,11 @@ const Answers = (props) => {
   };
 
   return (
-    <div>
-      <div>{checkForAnswer(props)}</div>
-      By: {checkForSeller(props)}
-    </div>
+    <span> &nbsp;
+      <span> {checkForAnswer(props)}</span>
+      <span> By: {checkForSeller(props)}</span>
+      <br /> &nbsp; &nbsp; &nbsp;
+    </span>
   );
 };
 

@@ -13,29 +13,6 @@ const AllQandA = () => {
   useEffect(() => {
     // console.log(getQuestions());
   }, []);
-  //   axios.get(
-  //     'https://app-hrsei-api.herokuapp.com/api/fec2/hr-den/products', { headers: { Authorization: API_KEY } }
-  //   )
-  //     .then((product) => {
-  //       var dataToSet = [];
-  //       for (let i = 0; i < product.data.length; i++) {
-  //         axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-den/qa/questions/?product_id=${product.data[i].id}`, { headers: { Authorization: API_KEY } })
-  //           .then((response) => {
-  //             dataToSet.push(response.data.results);
-  //             console.log('data:', data[i].results);
-  //             console.log('response.data: ', response.data.results);
-  //           })
-  //           .catch((err) => console.log(err));
-  //       }
-  //       console.log(dataToSet);
-  //       setQuestion(dataToSet);
-  //     })
-  //     .catch((err) => {
-  //       console.log('err in useeffect: ', err);
-  //     });
-  // }, []);
-
-
 
   const openModal = (event) => {
     document.getElementById('modal').style.cssText = 'visibility: visible';
@@ -64,8 +41,11 @@ const AllQandA = () => {
               </div>
               <div className="answer"><b>A:</b>
                 {/* ------------- Answers Text ------------- */}
-                <Answers props={question.answers[Object.keys(question.answers)[0]]} />
-                <Answers props={question.answers[Object.keys(question.answers)[1]]} />
+                <span>
+
+                  <Answers props={question.answers[Object.keys(question.answers)[0]]} />
+                  <Answers props={question.answers[Object.keys(question.answers)[1]]} />
+                </span>
               </div>
               {/* ------------- Date -------------*/}
               <div> {formatDate(question.question_date)}</div>

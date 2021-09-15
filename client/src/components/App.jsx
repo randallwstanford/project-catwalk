@@ -11,9 +11,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Product productId="44388" />
+        {/* <Product productId="44388" /> */}
         <QandA />
-        <RatingsReviews />
+        {/* <RatingsReviews /> */}
       </div>
     );
   }
