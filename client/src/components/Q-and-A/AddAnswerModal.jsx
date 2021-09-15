@@ -40,13 +40,13 @@ const AddAnswerModal = () => {
   };
 
   const handlePhotos = () => {
-    Array.from(document.getElementById('file-input').files).map((file, index) => {
-      return (
-        <div id={index}>
-          <img src={file.name} alt="" />
-        </div>
-      );
-    });
+    // Array.from(document.getElementById('file-input').files).map((file, index) => {
+    //   return (
+    //     <div id={index}>
+    //       <img src={file.name} alt="" />
+    //     </div>
+    //   );
+    // });
   };
 
   return (
