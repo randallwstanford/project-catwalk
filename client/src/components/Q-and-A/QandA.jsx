@@ -5,13 +5,11 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import AddAnswerModal from './AddAnswerModal.jsx';
+import AddQuestionModal from './AddQuestionModal.jsx';
 import AllQandA from './AllQandA.jsx';
 
 const QandA = () => {
-  const addQuestion = (event) => {
-    console.log('adding question click');
-  };
+  const openModal = (event) => { document.getElementById('modal').style.cssText = 'visibility: visible'; };
 
   const showMoreQuestions = (event) => {
     console.log('show more questions click infitie scroll i thikn');
@@ -23,7 +21,7 @@ const QandA = () => {
 
   return (
     <div className="container">
-      <AddAnswerModal />
+      <AddQuestionModal />
       <div className="qanda">Questions and Answers</div>
       <div className="input-and-button">
         <form>
@@ -38,7 +36,7 @@ const QandA = () => {
       <button className="load-more-answers" onClick={loadMoreAnswers}> Load More Answers</button>
       <div className="more-question-wrapper">
         <button className="more-answered-questions" onClick={showMoreQuestions}> More Answered Questions</button>
-        <button className="add-question" onClick={addQuestion}> Add a Question</button>
+        <button className="add-question" onClick={openModal}> Add a Question</button>
       </div>
     </div>
   );

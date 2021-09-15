@@ -3,7 +3,7 @@ import React from 'react';
 
 const emailValidation = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-const AddAnswerModal = () => {
+const AddQuestionModal = () => {
   const toggleModal = (event) => {
     document.getElementById('modal').style.visibility = 'hidden';
   };
@@ -95,4 +95,4 @@ const AddAnswerModal = () => {
   );
 };
 
-export default AddAnswerModal;
+export default AddQuestionModal;
