@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import * as utils from './utils/AllQandA.utils.js';
-import appContext from '../../contexts/index.js';
+import { appContext } from '../../contexts/index.js';
 import Answers from './Answers.jsx';
 
 const AllQandA = () => {
