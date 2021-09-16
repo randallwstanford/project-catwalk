@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import * as utils from './utils/AllQandA.utils.js';
 import appContext from '../../contexts/index.js';
 import Answers from './Answers.jsx';
-import * as utils from './utils/AllQandA.utils.js';
 
 const AllQandA = () => {
   const { product } = useContext(appContext);
@@ -29,6 +29,7 @@ const AllQandA = () => {
           <div className="answer"><b>A:</b>
             {/* ------------- Answers Text ------------- */}
             <span>
+              {/* First 2 answers per question */}
               <Answers props={question.answers[Object.keys(question.answers)[0]]} />
               <Answers props={question.answers[Object.keys(question.answers)[1]]} />
             </span>
