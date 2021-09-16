@@ -8,7 +8,3 @@ export const showMoreQuestions = (event) => {
   document.getElementsByClassName('container')[0].style.height = '925px';
   console.log(document.getElementsByClassName('load-more-answers')[0]);
 };
-
-export const loadMoreAnswers = (event) => {
-  console.log('load more answers click');
-};

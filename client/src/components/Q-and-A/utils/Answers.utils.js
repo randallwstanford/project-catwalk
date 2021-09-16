@@ -13,3 +13,7 @@ export const checkForHelpfulness = (answer) => {
   if (answer === undefined) { return 0; }
   return answer.helpfulness;
 };
+
+export const loadMoreAnswers = (event) => {
+  console.log('load more answers click');
+};
