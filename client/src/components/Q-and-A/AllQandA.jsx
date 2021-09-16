@@ -1,9 +1,7 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import getQuestions from '../../utils/utils.js';
 import { API_KEY, url } from '../../../../config/config.js';
-import data from './data.json';
 import Answers from './Answers.jsx';
 
 const AllQandA = () => {
