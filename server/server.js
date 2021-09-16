@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../', 'client', 'dist')));
 
 app.use('/*', (req, res) => {
-  console.log(req.method, req.url);
   axios({
     method: req.method.toLowerCase(),
     data: req.body,
@@ -20,19 +19,11 @@ app.use('/*', (req, res) => {
     headers: {
       'Authorization': config.TOKEN
     }
-<<<<<<< HEAD
-  }).then(response => { res.send(response.data); })
-    .catch(err => { console.log(err); res.status(500).end(); });
-=======
-  })
-    .then(response => {
-      res.send(response.data);
-    })
+  }).then(response => res.send(response.data))
     .catch(err => {
       console.log(err);
-      res.status(500).send(err.response.data);
+      res.status(500).end();
     });
->>>>>>> f28854b (Change price based on the style selected.)
 });
 
 
