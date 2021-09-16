@@ -20,8 +20,19 @@ app.use('/*', (req, res) => {
     headers: {
       'Authorization': config.TOKEN
     }
+<<<<<<< HEAD
   }).then(response => { res.send(response.data); })
     .catch(err => { console.log(err); res.status(500).end(); });
+=======
+  })
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err.response.data);
+    });
+>>>>>>> f28854b (Change price based on the style selected.)
 });
 
 
