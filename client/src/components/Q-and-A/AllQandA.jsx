@@ -9,6 +9,7 @@ const AllQandA = () => {
   const { product } = useContext(appContext);
   const [questions, setQuestion] = useState([]);
 
+  const openAnswerModal = (event) => { document.getElementById('answer-modal').style.cssText = 'visibility: visible'; };
   useEffect(() => {
     axios.get(`/qa/questions/?product_id=${product.id}`)
       .then((res) => { setQuestion(res.data.results); })
@@ -22,6 +23,7 @@ const AllQandA = () => {
     return answer.helpfulness;
   };
 
+
   return (
     questions.map((question, index) => {
       return (
@@ -30,7 +32,7 @@ const AllQandA = () => {
             <div className="helpful">Helpful?&nbsp;
               <button className="yes-button">Yes</button>
               ( {question.question_helpfulness} )
-              <button className="add-answer" onClick={() => { console.log('add answer clicked'); }}>Add Answer</button>
+              <button className="add-answer" onClick={openAnswerModal}>Add Answer</button>
             </div>
           </div>
           <div className="answer"><b>A:</b>

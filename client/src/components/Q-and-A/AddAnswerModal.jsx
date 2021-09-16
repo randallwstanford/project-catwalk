@@ -1,14 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
 import React from 'react';
-import * as utils from './AddQuestionModal.utils.js';
+import * as utils from './AddAnswerModal.utils.js';
 
-const AddQuestionModal = () => {
+const AddAnswerModal = () => {
   return (
-    <div className="question-modal" id="question-modal">
+    <div className="answer-modal" id="answer-modal">
       <button className="x" onClick={utils.toggleModal} onChange={utils.toggleModal}>x</button>
-      <h2>Ask your question</h2>
-      <h3>About the [Product Name Here]</h3>
+      <h2>Submit your Answer</h2>
+      <h3>[Product Name]: [Product Body]</h3>
       <form className="main" onSubmit={utils.handleSubmit} onChange={utils.handleChange}>
 
         {/* ------ Username ------ */}
@@ -30,19 +30,12 @@ const AddQuestionModal = () => {
           name="email"
           className="email"
           id="email"
-          placeholder="Why did you like the product or not?"
+          placeholder="jack@email.com"
         />
         <div>- For authentication reasons, you will not be emailed -</div>
 
         {/* ------ Text Area ------ */}
-        <textarea
-          type="text"
-          maxLength="1000"
-          name="answerText"
-          className="add-answer-input"
-          placeholder="enter question here"
-        >
-        </textarea>
+        <textarea type="text" maxLength="1000" name="answerText" className="add-answer-input" placeholder="enter question here"></textarea>
         <input
           multiple
           type="file"
@@ -57,4 +50,4 @@ const AddQuestionModal = () => {
   );
 };
 
-export default AddQuestionModal;
+export default AddAnswerModal;
