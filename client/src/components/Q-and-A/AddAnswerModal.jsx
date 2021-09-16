@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
 import React from 'react';
-import * as utils from './AddAnswerModal.utils.js';
+import * as utils from './utils/AddAnswerModal.utils.js';
 
 const AddAnswerModal = () => {
   return (

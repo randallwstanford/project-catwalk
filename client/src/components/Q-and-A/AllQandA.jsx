@@ -1,28 +1,19 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import utils from '../../utils/utils.js';
-import Answers from './Answers.jsx';
 import appContext from '../../contexts/index.js';
+import Answers from './Answers.jsx';
+import * as utils from './utils/AllQandA.utils.js';
 
 const AllQandA = () => {
   const { product } = useContext(appContext);
   const [questions, setQuestion] = useState([]);
 
-  const openAnswerModal = (event) => { document.getElementById('answer-modal').style.cssText = 'visibility: visible'; };
   useEffect(() => {
     axios.get(`/qa/questions/?product_id=${product.id}`)
       .then((res) => { setQuestion(res.data.results); })
       .catch((err) => console.log(err));
   }, []);
-
-
-  const formatDate = (date) => new Date(date).toLocaleDateString('en-us', { year: 'numeric', day: 'numeric', month: 'short' });
-  const checkForHelpfulness = (answer) => {
-    if (answer === undefined) { return 0; }
-    return answer.helpfulness;
-  };
-
 
   return (
     questions.map((question, index) => {
@@ -32,7 +23,7 @@ const AllQandA = () => {
             <div className="helpful">Helpful?&nbsp;
               <button className="yes-button">Yes</button>
               ( {question.question_helpfulness} )
-              <button className="add-answer" onClick={openAnswerModal}>Add Answer</button>
+              <button className="add-answer" onClick={utils.openAnswerModal}>Add Answer</button>
             </div>
           </div>
           <div className="answer"><b>A:</b>
@@ -43,10 +34,10 @@ const AllQandA = () => {
             </span>
           </div>
           {/* ------------- Date -------------*/}
-          <div> {formatDate(question.question_date)}</div>
+          <div> {utils.formatDate(question.question_date)}</div>
           <div> Helpful?
             <button className="yes-button" onClick={() => console.log('incremenet dis')}> Yes </button>
-            ( {checkForHelpfulness(question.answers[Object.keys(question.answers)[0]])} )
+            ( {utils.checkForHelpfulness(question.answers[Object.keys(question.answers)[0]])} )
             | Report
           </div>
         </div>

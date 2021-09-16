@@ -1,26 +1,11 @@
 import React from 'react';
+import * as utils from './utils/Answers.utils.js';
 
 const Answers = (props) => {
-  const checkForAnswer = (answer) => {
-    if (answer.props === undefined) { return 'Not answered yet'; }
-    return answer.props.body;
-  };
-
-  const checkForSeller = (answer) => {
-    if (answer.props === undefined) { return 'ddd'; }
-    if (answer.props !== 'Seller') { return answer.props.answerer_name; }
-    return (<b>Seller</b>);
-  };
-
-  const checkForHelpfulness = (answer) => {
-    if (answer === undefined) { return 0; }
-    return answer.helpfulness;
-  };
-
   return (
     <span> &nbsp;
-      <span> {checkForAnswer(props)}</span>
-      <span> By: {checkForSeller(props)}</span>
+      <span> {utils.checkForAnswer(props)}</span>
+      <span> By: {utils.checkForSeller(props)}</span>
       <br /> &nbsp; &nbsp; &nbsp;
     </span>
   );
