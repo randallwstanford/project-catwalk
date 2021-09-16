@@ -40,7 +40,8 @@ module.exports = {
     "arrow-body-style": "off",
     "react/self-closing-comp": "off",
     "jsx-a11y/control-has-associated-label": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "object-property-newline": "off"
   },
 };
 
