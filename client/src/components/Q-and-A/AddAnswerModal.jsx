@@ -18,7 +18,7 @@ const AddAnswerModal = () => {
         <input min="1" max="60" name="email" className="email" placeholder="Why did you like the product or not?" />
         <div>For authentication reasons, you will not be emailed</div>
         <textarea type="text" name="answerText" className="add-answer-input" placeholder="enter question here"></textarea>
-
+        <input type="file" />
         <input type="button" className="modal-submit" value="Submit" />
       </form>
     </div>

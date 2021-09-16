@@ -1,7 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import QandA from './QandA.jsx';
-import AddAnswerModal from './AddAnswerModal.jsx';
+import QandA from './Q-and-A/QandA.jsx';
 import RatingsReviews from './RatingsAndReviews/RatingsReviews.jsx';
 import Product from './Product.jsx';
 import appContext from '../contexts/index.js';
@@ -27,7 +27,6 @@ export default function App() {
       <div>
         <Product />
         <QandA />
-        <AddAnswerModal />
         <RatingsReviews />
       </div>
     </appContext.Provider>
