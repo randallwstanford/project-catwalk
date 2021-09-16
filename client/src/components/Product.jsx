@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import StyleSelector from './StyleSelector.jsx';
-import appContext from '../contexts/index.js';
+import { appContext } from '../contexts/index.js';
 
 export default function Product() {
   var app = useContext(appContext);
