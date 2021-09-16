@@ -1,28 +1,34 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable prefer-template */
 /* eslint-disable max-len */
 /* eslint-disable array-callback-return */
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import AddQuestionModal from './AddQuestionModal.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 import AllQandA from './AllQandA.jsx';
+import { appContext } from '../../contexts/index.js';
+import * as utils from './utils/QandA.utils.js';
 
 const QandA = () => {
-  const addQuestion = (event) => {
-    console.log('adding question click');
-  };
+  const { product } = useContext(appContext);
 
-  const showMoreQuestions = (event) => {
-    console.log('show more questions click infitie scroll i thikn');
-  };
-
-  const loadMoreAnswers = (event) => {
-    console.log('load more answers');
+  // Hides 'More Answered Questions' Button if less than 2 questions
+  const checkForAnsweredQuestions = () => {
+    axios.get(`/qa/questions/?product_id=${product.id}`)
+      .then((res) => {
+        res.data.results.length <= 2
+          ? document.getElementsByClassName('more-answered-questions')[0].style.visibility = 'hidden'
+          : console.log('there are more than 2 questions');
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
-    <div className="container">
+    <div className="container" id="container">
+      <AddQuestionModal />
       <AddAnswerModal />
       <div className="qanda">Questions and Answers</div>
       <div className="input-and-button">
@@ -35,10 +41,11 @@ const QandA = () => {
         </form>
       </div>
       <div className="q-wrapper"><AllQandA /></div>
-      <button className="load-more-answers" onClick={loadMoreAnswers}> Load More Answers</button>
+      <button className="load-more-answers" onClick={utils.loadMoreAnswers}>Load More Answers</button>
       <div className="more-question-wrapper">
-        <button className="more-answered-questions" onClick={showMoreQuestions}> More Answered Questions</button>
-        <button className="add-question" onClick={addQuestion}> Add a Question</button>
+        { checkForAnsweredQuestions() }
+        <button className="more-answered-questions" onClick={utils.showMoreQuestions}> More Answered Questions</button>
+        <button className="add-question" onClick={utils.openQuestionModal}>Add a Question</button>
       </div>
     </div>
   );

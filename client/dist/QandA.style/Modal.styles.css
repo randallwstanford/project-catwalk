@@ -1,11 +1,26 @@
-.modal {
+.question-modal {
   border: 5px solid gray;
   border-radius: 10px;
   width: 700px;
   height: 600px;
   position: absolute;
   box-shadow: 0 0 10px black;
-  left: 400px;
+  left: 360px;
+  background-color: white;
+  z-index: 2;
+  padding: 10px;
+  text-align: center;
+  visibility: hidden;
+}
+
+.answer-modal {
+  border: 5px solid gray;
+  border-radius: 10px;
+  width: 700px;
+  height: 600px;
+  position: absolute;
+  box-shadow: 0 0 10px black;
+  left: 360px;
   background-color: white;
   z-index: 2;
   padding: 10px;
@@ -20,6 +35,7 @@
 .x {
   float: right;
 }
+
 .x:hover {
   cursor: pointer;
 }
@@ -27,11 +43,10 @@
 .username, .email {
   padding: 10px;
   margin: 20px;
-  width: 30%;
+  width: 40%;
   margin-top: 30px;
   text-align: center;
 }
-
 
 .add-answer-input {
   margin-top: 20px;
@@ -46,6 +61,12 @@
 }
 
 .modal-submit {
-  width: 50px;
-  height: 50px;
+  padding: 10px;
+}
+
+#file-input {
+  border: 1px solid black;
+  padding: 5px;
+  width: 200px;
+  margin-right: 10px;
 }
