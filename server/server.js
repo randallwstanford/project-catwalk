@@ -7,6 +7,7 @@ const config = require('../config/config.js');
 const app = express();
 const port = 3000;
 
+console.log(config.API_KEY);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../', 'client', 'dist')));
 
@@ -17,17 +18,13 @@ app.use('/*', (req, res) => {
     data: req.body,
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-den${req.originalUrl}`,
     headers: {
-      'Authorization': config.TOKEN
+      'Authorization': config.API_KEY
     }
-  })
-    .then(response => {
-      res.send(response.data);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).end();
-    });
+  }).then(response => { res.send(response.data); })
+    .catch(err => { console.log(err); res.status(500).end(); });
 });
+
+
 
 app.listen(port, () => {
   console.log(`Running on port: ${port}`);
