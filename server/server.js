@@ -12,7 +12,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../', 'client', 'dist')));
 
 app.use('/*', (req, res) => {
-  console.log(req.method, req.url);
   axios({
     method: req.method.toLowerCase(),
     data: req.body,
@@ -20,8 +19,11 @@ app.use('/*', (req, res) => {
     headers: {
       'Authorization': config.TOKEN
     }
-  }).then(response => { res.send(response.data); })
-    .catch(err => { console.log(err); res.status(500).end(); });
+  }).then(response => res.send(response.data))
+    .catch(err => {
+      console.log(err);
+      res.status(500).end();
+    });
 });
 
 
