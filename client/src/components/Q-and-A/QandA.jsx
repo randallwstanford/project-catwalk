@@ -8,7 +8,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import AddQuestionModal from './AddQuestionModal.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
-import appContext from '../../contexts/index.js';
+import { appContext } from '../../contexts/index.js';
 import AllQandA from './AllQandA.jsx';
 import * as utils from './utils/QandA.utils.js';
 
@@ -41,7 +41,6 @@ const QandA = () => {
         </form>
       </div>
       <div className="q-wrapper"><AllQandA /></div>
-      <button className="load-more-answers" onClick={utils.loadMoreAnswers}>Load More Answers</button>
       <div className="more-question-wrapper">
         { checkForAnsweredQuestions() }
         <button className="more-answered-questions" onClick={utils.showMoreQuestions}> More Answered Questions</button>

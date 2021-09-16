@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-expressions */
+import axios from 'axios';
+
 export const openQuestionModal = (event) => { document.getElementById('question-modal').style.cssText = 'visibility: visible'; };
 
 export const showMoreQuestions = (event) => {

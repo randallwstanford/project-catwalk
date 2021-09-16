@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import StyleSelector from './StyleSelector.jsx';
+import { appContext } from '../../contexts/index.js';
 
-export default function Product({ productId }) {
-  const [product, setProduct] = useState({});
-  const [style, setStyle] = useState({});
-
-  useEffect(() => {
-    axios.get(`http://localhost:3000/products/${productId}`)
-      .then(response => setProduct(response.data));
-  }, []);
+export default function Product() {
+  var app = useContext(appContext);
+  var [currentStyle, setCurrentStyle] = useState({});
 
   return (
     <div>
@@ -18,23 +14,25 @@ export default function Product({ productId }) {
         <div id="image-gallery">images</div>
         <div id="product-information">
           <div className="review-flex-container">
-            <span id="star-checked">★</span>
-            <span id="star-checked">★</span>
-            <span id="star-checked">★</span>
-            <span id="star">★</span>
-            <span id="star">★</span>
+            <span>
+              <span id="star-checked">★</span>
+              <span id="star-checked">★</span>
+              <span id="star-checked">★</span>
+              <span id="star">★</span>
+              <span id="star">★</span>
+            </span>
             <span>
               <h6>Read all reviews</h6>
             </span>
           </div>
           <div>
-            <h4>CATEGORY</h4>
+            <h4>{app.product.category}</h4>
           </div>
           <div>
-            <h1>{product.name}</h1>
+            <h1>{app.product.name}</h1>
           </div>
-          <StyleSelector productId={productId} />
-          <div className="price">$</div>
+          <StyleSelector setCurrentStyle={setCurrentStyle} />
+          <div className="price">${currentStyle.original_price}</div>
           <div className="size-quantity">
             <input
               name="size"
@@ -54,12 +52,8 @@ export default function Product({ productId }) {
         </div>
       </div>
       <div id="product-overview">
-        {product.description}
+        {app.product.description}
       </div>
     </div>
   );
 }
-
-Product.propTypes = {
-  productId: PropTypes.number.isRequired
-};
