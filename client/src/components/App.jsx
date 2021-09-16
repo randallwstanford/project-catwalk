@@ -1,20 +1,34 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import QandA from './Q-and-A/QandA.jsx';
-import RatingsReviews from './Ratings&Reviews/RatingsReviews.jsx';
+import RatingsReviews from './RatingsAndReviews/RatingsReviews.jsx';
 import Product from './Product.jsx';
+import appContext from '../contexts/index.js';
 
-export default class App extends React.Component {
-  constructor() {
-    super();
-  }
+export default function App() {
+  const [product, setProduct] = useState(null);
 
-  render() {
+  useEffect(() => {
+    axios.get('http://localhost:3000/products/44388')
+      .then(response => setProduct(response.data));
+  }, []);
+
+  if (product === null) {
     return (
       <div>
-        {/* <Product productId="44388" /> */}
-        <QandA />
-        {/* <RatingsReviews /> */}
+        loading...
       </div>
     );
   }
+
+  return (
+    <appContext.Provider value={{ product }}>
+      <div>
+        <Product />
+        <QandA />
+        <RatingsReviews />
+      </div>
+    </appContext.Provider>
+  );
 }
