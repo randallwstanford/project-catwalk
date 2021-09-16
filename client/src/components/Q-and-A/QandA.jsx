@@ -41,7 +41,6 @@ const QandA = () => {
         </form>
       </div>
       <div className="q-wrapper"><AllQandA /></div>
-      <button className="load-more-answers" onClick={utils.loadMoreAnswers}>Load More Answers</button>
       <div className="more-question-wrapper">
         { checkForAnsweredQuestions() }
         <button className="more-answered-questions" onClick={utils.showMoreQuestions}> More Answered Questions</button>
