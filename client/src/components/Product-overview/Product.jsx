@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import StyleSelector from './StyleSelector.jsx';
 import StylePrice from './StylePrice.jsx';
+import SizeSelector from './SizeSelector.jsx';
 import { appContext } from '../../contexts/index.js';
 
 export default function Product() {
   var app = useContext(appContext);
   var [currentStyle, setCurrentStyle] = useState({});
+  console.log(currentStyle);
 
   return (
     <div>
@@ -34,18 +36,7 @@ export default function Product() {
           </div>
           <StyleSelector setCurrentStyle={setCurrentStyle} />
           <StylePrice currentStyle={currentStyle} />
-          <div className="size-quantity">
-            <input
-              name="size"
-              type="number"
-              placeholder="Select Size"
-            />
-            <input
-              name="quantity"
-              type="number"
-              placeholder="1"
-            />
-          </div>
+          <SizeSelector sizes={currentStyle.skus} />
           <div className="buttons">
             <button>Add to bag</button>
             <button>★</button>
