@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QandA from './Q-and-A/QandA.jsx';
-import RatingsReviews from './Ratings&Reviews/RatingsReviews.jsx';
+import RatingsReviews from './RatingsAndReviews/RatingsReviews.jsx';
 import Product from './Product.jsx';
 import appContext from '../contexts/index.js';
 
@@ -24,9 +25,9 @@ export default function App() {
   return (
     <appContext.Provider value={{ product }}>
       <div>
-        {/* <Product /> */}
+        <Product />
         <QandA />
-        {/* <RatingsReviews /> */}
+        <RatingsReviews />
       </div>
     </appContext.Provider>
   );
