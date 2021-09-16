@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import StyleSelector from './StyleSelector.jsx';
 
-export default function Product() {
-  const [title, setTitle] = useState('');
+export default function Product({ productId }) {
+  const [product, setProduct] = useState({});
+  const [style, setStyle] = useState({});
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/products/${productId}`)
+      .then(response => setProduct(response.data));
+  }, []);
 
   return (
     <div>
@@ -22,22 +31,9 @@ export default function Product() {
             <h4>CATEGORY</h4>
           </div>
           <div>
-            <h1>Product Name</h1>
+            <h1>{product.name}</h1>
           </div>
-          <div className="style-selector">
-            <input
-              type="radio"
-            />
-            <input
-              type="radio"
-            />
-            <input
-              type="radio"
-            />
-            <input
-              type="radio"
-            />
-          </div>
+          <StyleSelector productId={productId} />
           <div className="price">$</div>
           <div className="size-quantity">
             <input
@@ -58,8 +54,12 @@ export default function Product() {
         </div>
       </div>
       <div id="product-overview">
-        Product description goes here
+        {product.description}
       </div>
     </div>
   );
 }
+
+Product.propTypes = {
+  productId: PropTypes.number.isRequired
+};

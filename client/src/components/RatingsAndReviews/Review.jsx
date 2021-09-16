@@ -13,8 +13,3 @@ const Review = () => (
   </div>
 );
 export default Review;
-
-// // star rating // verified purchaser // username // date of review
-// // review title with word break truncation to prevent wrapping onto the next line if neccessary
-// // review body
-// // helpful?  // report
