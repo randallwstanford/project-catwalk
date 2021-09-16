@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import StyleSelector from './StyleSelector.jsx';
-import { appContext } from '../contexts/index.js';
+import { appContext } from '../../contexts/index.js';
 
 export default function Product() {
   var app = useContext(appContext);
@@ -26,7 +26,7 @@ export default function Product() {
             </span>
           </div>
           <div>
-            <h4>CATEGORY</h4>
+            <h4>{app.product.category}</h4>
           </div>
           <div>
             <h1>{app.product.name}</h1>
