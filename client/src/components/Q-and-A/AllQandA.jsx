@@ -11,7 +11,10 @@ const AllQandA = () => {
 
   useEffect(() => {
     axios.get(`/qa/questions/?product_id=${product.id}`)
-      .then((res) => { setQuestion(res.data.results); })
+      .then((res) => {
+        // sort greatest to least in helpfulness
+        setQuestion((res.data.results).sort((a, b) => b.question_helpfulness - a.question_helpfulness));
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -21,8 +24,7 @@ const AllQandA = () => {
         <div className="qa-container" key={index}>
           <div className="question"><b>Q:</b> {question.question_body}
             <div className="helpful">Helpful?&nbsp;
-              <button className="yes-button">Yes</button>
-              ( {question.question_helpfulness} )
+              <button className="yes-button">Yes</button>( {question.question_helpfulness} )
               <button className="add-answer" onClick={utils.openAnswerModal}>Add Answer</button>
             </div>
           </div>
