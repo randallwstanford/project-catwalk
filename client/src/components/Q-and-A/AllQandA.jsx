@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import * as utils from './utils/AllQandA.utils.js';
-import appContext from '../../contexts/index.js';
+import { appContext } from '../../contexts/index.js';
 import Answers from './Answers.jsx';
 
 const AllQandA = () => {
@@ -31,14 +31,15 @@ const AllQandA = () => {
           <div className="answer"><b>A:</b>
             {/* ------------- Answers Text ------------- */}
             <span>
-              {/* First 2 answers per question */}
-              <Answers props={question.answers[Object.keys(question.answers)[0]]} />
-              <Answers props={question.answers[Object.keys(question.answers)[1]]} />
+              <Answers answers={question.answers} />
+              {/* <Answers answer={question.answers[Object.keys(question.answers)[0]]} />
+              <Answers answer={question.answers[Object.keys(question.answers)[1]]} /> */}
+              {/* <button className="load-more-answers" onClick={utils.loadMoreAnswers}>Load More Answers</button> */}
             </span>
           </div>
           {/* ------------- Date -------------*/}
-          <div> {utils.formatDate(question.question_date)}</div>
-          <div> Helpful?
+          <div>&nbsp;<b>Date:</b> {utils.formatDate(question.question_date)}</div>
+          <div>&nbsp;Helpful?
             <button className="yes-button" onClick={() => console.log('incremenet dis')}> Yes </button>
             ( {utils.checkForHelpfulness(question.answers[Object.keys(question.answers)[0]])} )
             | Report
