@@ -10,3 +10,11 @@ export const showMoreQuestions = (event) => {
   document.getElementsByClassName('container')[0].style.height = '925px';
   console.log(document.getElementsByClassName('load-more-answers')[0]);
 };
+
+
+// const moreReviews = () => {
+//   if (context.reviews.length > 2 && loadedReviews < context.reviews.length) {
+//     return <button onClick={() => setLoadedReviews(loadedReviews + 2)}>More Reviews</button>;
+//   }
+//   return null;
+// };
