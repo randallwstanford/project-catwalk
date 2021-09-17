@@ -22,7 +22,8 @@ export default function SizeSelector({ sizes }) {
         {Object.keys(sizes).map(barcode => {
           var sku = sizes[barcode];
           return (
-            <option key={barcode} value={barcode}>{sku.size}</option>
+            (sku.quantity !== 0)
+              && <option key={barcode} value={barcode}>{sku.size}</option>
           );
         })}
       </select>
