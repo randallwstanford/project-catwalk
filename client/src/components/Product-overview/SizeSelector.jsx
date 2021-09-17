@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -25,10 +26,10 @@ export default function SizeSelector({ sizes }) {
           );
         })}
       </select>
-      <select>
+      <select defaultValue="DEFAULT">
         {
           (currentSku === null || sizes[currentSku].quantity === 0)
-            ? <option value="" disabled selected>-</option>
+            ? <option value="DEFAULT" disabled>-</option>
             : createQuantities(sizes[currentSku].quantity)
         }
       </select>
