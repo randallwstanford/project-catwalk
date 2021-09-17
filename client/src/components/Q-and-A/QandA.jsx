@@ -33,16 +33,11 @@ const QandA = () => {
       <div className="qanda">Questions and Answers</div>
       <div className="input-and-button">
         <form>
-          <input
-            className="question-input"
-            type="text"
-            placeholder="Have a question? Search for answers."
-          />
+          <input className="question-input" type="text" placeholder="Have a question? Search for answers." />
         </form>
       </div>
       <div className="q-wrapper"><AllQandA /></div>
-      <div className="more-question-wrapper">
-        { checkForAnsweredQuestions() }
+      <div className="more-question-wrapper">{ checkForAnsweredQuestions() }
         <button className="more-answered-questions" onClick={utils.showMoreQuestions}> More Answered Questions</button>
         <button className="add-question" onClick={utils.openQuestionModal}>Add a Question</button>
       </div>
