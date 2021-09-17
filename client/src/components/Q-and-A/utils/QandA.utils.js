@@ -14,9 +14,7 @@ export const showMoreQuestions = () => {
 };
 
 
-// const moreReviews = () => {
-//   if (context.reviews.length > 2 && loadedReviews < context.reviews.length) {
-//     return <button onClick={() => setLoadedReviews(loadedReviews + 2)}>More Reviews</button>;
-//   }
-//   return null;
-// };
+export const loadMoreAnswers = (event) => {
+  console.log('load more answers click');
+};
+

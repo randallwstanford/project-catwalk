@@ -5,6 +5,7 @@ import * as utils from './utils/AllQandA.utils.js';
 import { appContext } from '../../contexts/index.js';
 import Answers from './Answers.jsx';
 
+<<<<<<< HEAD
 const AllQandA = () => {
   const { product } = useContext(appContext);
   const [questions, setQuestion] = useState([]);
@@ -20,8 +21,11 @@ const AllQandA = () => {
       .catch((err) => console.log(err));
   }, []);
 
+=======
+const AllQandA = (props) => {
+>>>>>>> a1589d2ab8a735b44c3f8754c79b68599dbe2007
   return (
-    questions.map((question, index) => {
+    props.questions.map((question, index) => {
       return (
         <div key={index}>
           <div className={`qa-container${index} qa-container`}>
@@ -37,6 +41,7 @@ const AllQandA = () => {
             <div className={`answer${index} answer`}><b>A:</b>
               {/* ------------- Answers Text ------------- */}
               <Answers answers={question.answers} />
+<<<<<<< HEAD
             </div>
             {/* ------------- Date -------------*/}
             <div>&nbsp;<b>Date:</b> {utils.formatDate(question.question_date)}</div>
@@ -44,6 +49,16 @@ const AllQandA = () => {
               <button className="yes-button" onClick={() => console.log('incremenet dis')}> Yes </button>
               ( {utils.checkForHelpfulness(question.answers[Object.keys(question.answers)[0]])} ) | Report
             </div>
+=======
+            </span>
+          </div>
+          {/* ------------- Date -------------*/}
+          <div>&nbsp;<b>Date:</b> {utils.formatDate(question.question_date)}</div>
+          <div>&nbsp;Helpful?
+            <button className="yes-button" onClick={() => console.log('incremenet dis')}> Yes </button>
+            ( {utils.checkForHelpfulness(question.answers[Object.keys(question.answers)[0]])} )
+            | Report
+>>>>>>> a1589d2ab8a735b44c3f8754c79b68599dbe2007
           </div>
         </div>
       );

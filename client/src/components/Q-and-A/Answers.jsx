@@ -7,10 +7,7 @@ const Answers = ({ answers }) => {
   const [currentIndex, setIndex] = useState();
   const answersArr = [];
 
-  if (Object.keys(answers).length === 0) {
-    // console.log(document.getElementsByClassName('load-more-answers'));
-    return (<span> Not Answered Yet</span>);
-  }
+  if (Object.keys(answers).length === 0) { return (<span> Not Answered Yet</span>); }
 
   for (let i = 0; i < Object.keys(answers).length; i++) {
     answersArr.push(answers[Object.keys(answers)[i]]);
