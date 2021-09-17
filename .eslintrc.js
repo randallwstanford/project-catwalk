@@ -20,7 +20,6 @@ module.exports = {
     'react',
   ],
   rules: {
-    "no-multiple-empty-lines": [2, { "max": 2 }],
     "quote-props": "off",
     "comma-dangle": "off",
     "eol-last": "off",
@@ -29,6 +28,20 @@ module.exports = {
     "react/prefer-stateless-functions": "off",
     "react/prefer-stateless-function": "off",
     "no-useless-constructor": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "no-multiple-empty-lines": "off",
+    "arrow-parens": "off",
+    "camelcase": "off",
+    "no-trailing-spaces": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/button-has-type": "off",
+    "no-var": "off",
+    "react/no-array-index-key": "off",
+    "arrow-body-style": "off",
+    "react/self-closing-comp": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "no-plusplus": "off",
+    "object-property-newline": "off"
   },
 };
+

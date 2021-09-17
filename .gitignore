@@ -1,1 +1,11 @@
+#ignore modules
 node_modules
+
+#ignore config
+config
+
+#ignore bundle
+bundle.js
+
+#ignore bundle txt
+client/dist/bundle.js.LICENSE.txt
