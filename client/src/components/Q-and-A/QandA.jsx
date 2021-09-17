@@ -33,11 +33,7 @@ const QandA = () => {
       <div className="qanda">Questions and Answers</div>
       <div className="input-and-button">
         <form>
-          <input
-            className="question-input"
-            type="text"
-            placeholder="Have a question? Search for answers."
-          />
+          <input className="question-input" type="text" placeholder="Have a question? Search for answers." />
         </form>
       </div>
       <div className="q-wrapper"><AllQandA /></div>
