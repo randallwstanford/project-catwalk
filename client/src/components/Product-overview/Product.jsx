@@ -35,7 +35,7 @@ export default function Product() {
           </div>
           <StyleSelector setCurrentStyle={setCurrentStyle} />
           <div className="price">${currentStyle.original_price}</div>
-          <SizeSelector sizes={currentStyle.skus} />
+          <SizeSelector key={currentStyle.style_id} sizes={currentStyle.skus} />
           <div className="buttons">
             <button>Add to bag</button>
             <button>★</button>
