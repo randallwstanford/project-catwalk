@@ -1,15 +1,34 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
-import React from 'react';
+import React, { useContext } from 'react';
 import * as utils from './utils/AddAnswerModal.utils.js';
+import { appContext } from '../../contexts/index.js';
 
 const AddAnswerModal = () => {
+  const { product } = useContext(appContext);
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const objToSend = {
+      'email': event.target.email.value, // Email
+      'answer_body': event.target.username.value, // Username
+      'answerer_name': event.target.answerText.value, // Answer Body
+      'photos': [...event.target.files.files] // Files
+    };
+
+    console.log(objToSend); // FORMATTING DONE
+    // TODO: Post to qa/questions
+  };
+
+
   return (
     <div className="answer-modal" id="answer-modal">
-      <button className="x" onClick={utils.toggleModal} onChange={utils.toggleModal}>x</button>
+      <button className="x" onClick={utils.toggleModal}>x</button>
       <h2>Submit your Answer</h2>
       <h3>[Product Name]: [Product Body]</h3>
-      <form className="main" onSubmit={utils.handleSubmit} onChange={utils.handleChange}>
+      <form className="main" onSubmit={handleSubmit} onChange={utils.handleChange}>
 
         {/* ------ Username ------ */}
         Username **
