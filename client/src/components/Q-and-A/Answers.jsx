@@ -19,14 +19,14 @@ const Answers = ({ answers }) => {
   const loadMoreAnswers = (event) => {
     var uniqueId = answers[Object.keys(answers)[0]].id;
 
+    console.log(answers);
+
     setIndex(uniqueId);
     showTwoMoreAnswers(currentAnswersShows + answersArr.length);
 
     if (answersArr.length <= 3) {
       event.target.style.visibility = 'hidden';
       event.target.parentNode.parentNode.style.height = 120;
-      // console.log(event.target.parentNode.parentNode.style.height - 65);
-      // document.getElementByClassName('answer');
     }
   };
 

@@ -8,8 +8,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import AddQuestionModal from './AddQuestionModal.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
-import { appContext } from '../../contexts/index.js';
 import AllQandA from './AllQandA.jsx';
+import { appContext } from '../../contexts/index.js';
 import * as utils from './utils/QandA.utils.js';
 
 const QandA = () => {
@@ -28,6 +28,7 @@ const QandA = () => {
   };
 
   useEffect(() => {
+    // Type at least 3 letters before search fires off
     if (searchTerm <= 3) { getData(); }
     const results = questions.filter((question) => {
       return question.question_body.toLowerCase().includes(searchTerm.toLowerCase());
@@ -66,7 +67,7 @@ const QandA = () => {
       </div>
       <div className="q-wrapper"><AllQandA questions={questions} /></div>
       <div className="more-question-wrapper">{ checkForAnsweredQuestions() }
-        <button className="more-answered-questions" onClick={utils.showMoreQuestions}> More Answered Questions</button>
+        <button className="more-answered-questions" onClick={utils.showMoreQuestions}>More Answered Questions</button>
         <button className="add-question" onClick={utils.openQuestionModal}>Add a Question</button>
       </div>
     </div>
