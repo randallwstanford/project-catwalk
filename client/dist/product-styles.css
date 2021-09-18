@@ -45,6 +45,21 @@ h6 {
   border-radius: 50%;
 }
 
+.style-selector [type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+img.rounded {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+}
+
 .price {
   margin: 5px;
 }

@@ -26,7 +26,8 @@ export default function StyleSelector({ setCurrentStyle, currentStyle }) {
             checked={style.style_id === currentStyle.style_id}
           />
           <label htmlFor={`style_${style.style_id}`}>
-            {style.name}
+            { }
+            <img src={style.photos[0].thumbnail_url} alt={style.name} className="rounded" />
           </label>
         </div>
       ))}
