@@ -3,11 +3,11 @@ export const checkForAnswer = (answer) => {
   return answer.body;
 };
 
-// export const checkForSeller = (answer) => {
-//   if (answer === undefined) { return 'ddd'; }
-//   if (answer !== 'Seller') { return answer.answerer_name; }
-//   return 'Seller';
-// };
+export const checkForSeller = (answer) => {
+  if (answer === undefined) { return 'ddd'; }
+  if (answer !== 'Seller') { return answer.answerer_name; }
+  return 'Seller';
+};
 
 export const checkForHelpfulness = (answer) => {
   if (answer === undefined) { return 0; }
@@ -25,8 +25,8 @@ export const loadMoreAnswers = (event) => {
   console.log(answerCss);
   // console.log(document.getElementsByClassName(parentClass)[0].style);
   // console.log(document.getElementsByClassName(parentClassAnswer)[0].style);
-  containerCss = 'height: 250px';
-  answerCss = 'height: 150px';
+  containerCss = 'height: 450px';
+  answerCss = 'height: 250px';
 
 
 
