@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-export default function StyleSelector({ setCurrentStyle }) {
+export default function StyleSelector({ setCurrentStyle, currentStyle }) {
   const [styles, setStyles] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3000/products/44388/styles')
-      .then(response => setStyles(response.data.results));
+      .then(response => {
+        var receivedStyles = response.data.results;
+        setStyles(receivedStyles);
+        setCurrentStyle(receivedStyles[0]);
+      });
   }, []);
 
   return (
@@ -19,6 +23,7 @@ export default function StyleSelector({ setCurrentStyle }) {
             id={`style_${style.style_id}`}
             name="style_id"
             value={style.style_id}
+            checked={style.style_id === currentStyle.style_id}
           />
           <label htmlFor={`style_${style.style_id}`}>
             {style.name}
@@ -30,6 +35,7 @@ export default function StyleSelector({ setCurrentStyle }) {
 }
 
 StyleSelector.propTypes = {
-  setCurrentStyle: PropTypes.func.isRequired
+  setCurrentStyle: PropTypes.func.isRequired,
+  currentStyle: PropTypes.shape.isRequired
 };
 

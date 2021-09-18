@@ -34,7 +34,7 @@ export default function Product() {
           <div>
             <h1>{app.product.name}</h1>
           </div>
-          <StyleSelector setCurrentStyle={setCurrentStyle} />
+          <StyleSelector setCurrentStyle={setCurrentStyle} currentStyle={currentStyle} />
           <StylePrice currentStyle={currentStyle} />
           <SizeSelector key={currentStyle.style_id} sizes={currentStyle.skus} />
           <div className="buttons">
