@@ -17,6 +17,8 @@ export default function StyleSelector({ setCurrentStyle }) {
           <input
             type="radio"
             id={`style_${style.style_id}`}
+            name="style_id"
+            value={style.style_id}
           />
           <label htmlFor={`style_${style.style_id}`}>
             {style.name}
