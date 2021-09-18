@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 export default function StylePrice({ currentStyle }) {
-  console.log(currentStyle);
-
   function discount() {
     return (
       <span>
         <span id="discounted-price">{currentStyle.sale_price}</span>
-        <del>{currentStyle.original_price}</del>
+        <span id="original-price">{currentStyle.original_price}</span>
       </span>
     );
   }
@@ -26,4 +23,3 @@ export default function StylePrice({ currentStyle }) {
 StylePrice.propTypes = {
   currentStyle: PropTypes.shape.isRequired
 };
-
