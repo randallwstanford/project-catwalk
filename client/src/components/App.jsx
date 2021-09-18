@@ -10,7 +10,7 @@ export default function App() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/products/44388')
+    axios.get('http://localhost:3000/products/44389')
       .then(response => setProduct(response.data));
   }, []);
 
@@ -25,9 +25,9 @@ export default function App() {
   return (
     <appContext.Provider value={{ product }}>
       <div>
-        <Product />
+        {/* <Product /> */}
         <QandA />
-        <RatingsReviews />
+        {/* <RatingsReviews /> */}
       </div>
     </appContext.Provider>
   );
