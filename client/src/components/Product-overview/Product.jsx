@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import StyleSelector from './StyleSelector.jsx';
+import StylePrice from './StylePrice.jsx';
 import { appContext } from '../../contexts/index.js';
 
 export default function Product() {
@@ -32,7 +33,7 @@ export default function Product() {
             <h1>{app.product.name}</h1>
           </div>
           <StyleSelector setCurrentStyle={setCurrentStyle} />
-          <div className="price">${currentStyle.original_price}</div>
+          <StylePrice currentStyle={currentStyle} />
           <div className="size-quantity">
             <input
               name="size"
