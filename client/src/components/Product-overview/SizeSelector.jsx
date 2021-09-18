@@ -12,24 +12,23 @@ function createQuantities(currentQuantity) {
   return quantities;
 }
 
-function checkOutOfStock(objectOfObjs) {
-  var outOfStuck = true;
-  Object.keys(objectOfObjs).map(key => {
-    if (objectOfObjs[key].quantity !== 0) {
-      outOfStuck = false;
-    }
-    return outOfStuck;
-  });
-}
-
 export default function SizeSelector({ sizes }) {
   const [currentSku, setCurrentSku] = useState(null);
+
+  var outOfStock = true;
+  Object.keys(sizes).forEach(barcode => {
+    if (sizes[barcode].quantity !== 0) {
+      outOfStock = false;
+    }
+  });
+
+  if (outOfStock) {
+    return <div className="size-quantity">OUT OF STOCK</div>;
+  }
 
   return (
     <div className="size-quantity">
       <select value={currentSku} onChange={(event) => setCurrentSku(event.target.value)}>
-        {/* (checkOutOfStock(sizes) === true)
-        ? <option value="" disabled selected>OUT OF STOCK</option> */}
         <option value="" disabled selected>Select Size</option>
         {Object.keys(sizes).map(barcode => {
           var sku = sizes[barcode];
