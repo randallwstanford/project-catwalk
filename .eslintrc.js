@@ -41,7 +41,8 @@ module.exports = {
     "react/self-closing-comp": "off",
     "jsx-a11y/control-has-associated-label": "off",
     "no-plusplus": "off",
-    "object-property-newline": "off"
+    "object-property-newline": "off",
+    "react/forbid-prop-types": "off"
   },
 };
 

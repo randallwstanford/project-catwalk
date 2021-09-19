@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { reviewsContext } from '../../contexts/index.js';
+import * as utils from './utils/RatingsAndReviews.utils.js';
 
 const RatingBreakdown = () => {
   const { reviews, setFiltered, filtered } = useContext(reviewsContext);
+  const reviewData = utils.getReviewData(reviews);
+  const filters = utils.makeFiltersLabel(filtered);
 
   const clearFilters = () => {
     setFiltered({
@@ -11,23 +14,6 @@ const RatingBreakdown = () => {
   };
 
   const showFilters = () => {
-    let filters = '';
-    if (filtered.five) {
-      filters += 'Five Stars ';
-    }
-    if (filtered.four) {
-      filters += 'Four Stars ';
-    }
-    if (filtered.three) {
-      filters += 'Three Stars ';
-    }
-    if (filtered.two) {
-      filters += 'Two Stars ';
-    }
-    if (filtered.one) {
-      filters += 'One Star ';
-    }
-    filters.slice(-1);
     if (filtered.five
       || filtered.four
       || filtered.three
@@ -39,52 +25,6 @@ const RatingBreakdown = () => {
     }
     return null;
   };
-
-  const totalReviews = reviews.length;
-  let oneStarReviews = 0;
-  let twoStarReviews = 0;
-  let threeStarReviews = 0;
-  let fourStarReviews = 0;
-  let fiveStarReviews = 0;
-  let recommended = 0;
-
-  for (let i = 0; i < reviews.length; i++) {
-    if (reviews[i].rating === 1) {
-      oneStarReviews++;
-    } else if (reviews[i].rating === 2) {
-      twoStarReviews++;
-    } else if (reviews[i].rating === 3) {
-      threeStarReviews++;
-    } else if (reviews[i].rating === 4) {
-      fourStarReviews++;
-    } else if (reviews[i].rating === 5) {
-      fiveStarReviews++;
-    }
-    if (reviews[i].recommend === true) {
-      recommended++;
-    }
-  }
-  recommended = ((recommended / totalReviews) * 100).toFixed(1);
-  if (recommended === 'NaN') {
-    recommended = 0;
-  }
-
-  const onePercentage = Math.round((oneStarReviews / totalReviews) * 100);
-  const twoPercentage = Math.round((twoStarReviews / totalReviews) * 100);
-  const threePercentage = Math.round((threeStarReviews / totalReviews) * 100);
-  const fourPercentage = Math.round((fourStarReviews / totalReviews) * 100);
-  const fivePercentage = Math.round((fiveStarReviews / totalReviews) * 100);
-
-  let ratingNumber = (
-    (oneStarReviews * 1
-    + twoStarReviews * 2
-    + threeStarReviews * 3
-    + fourStarReviews * 4
-    + fiveStarReviews * 5) / totalReviews
-  ).toFixed(1);
-  if (ratingNumber === 'NaN') {
-    ratingNumber = 0;
-  }
 
   if (reviews.length === 0) {
     return (
@@ -98,7 +38,7 @@ const RatingBreakdown = () => {
   return (
     <div id="RatingsBreakdown">
       <div id="RBStars">Rating Stars</div>
-      <div id="RBRating">{ratingNumber}</div>
+      <div id="RBRating">{reviewData.ratingNumber}</div>
       <h5 id="RatingBreakdown">Rating Breakdown</h5>
       {showFilters()}
 
@@ -112,8 +52,8 @@ const RatingBreakdown = () => {
         }}
       >5 stars
       </button>
-      <div className="borderBar" id="fiveStarBar"><div className="BarFill" style={{ width: `${fivePercentage}%` }}></div></div>
-      <div id="fiveStarCount">{fiveStarReviews}</div>
+      <div className="borderBar" id="fiveStarBar"><div className="BarFill" style={{ width: `${reviewData.fivePercentage}%` }}></div></div>
+      <div id="fiveStarCount">{reviewData.fiveStarReviews}</div>
 
       <button
         className="linkButtons"
@@ -125,8 +65,8 @@ const RatingBreakdown = () => {
         }}
       >4 stars
       </button>
-      <div className="borderBar" id="fourStarBar"><div className="BarFill" style={{ width: `${fourPercentage}%` }}></div></div>
-      <div id="fourStarCount">{fourStarReviews}</div>
+      <div className="borderBar" id="fourStarBar"><div className="BarFill" style={{ width: `${reviewData.fourPercentage}%` }}></div></div>
+      <div id="fourStarCount">{reviewData.fourStarReviews}</div>
 
       <button
         className="linkButtons"
@@ -138,8 +78,8 @@ const RatingBreakdown = () => {
         }}
       >3 stars
       </button>
-      <div className="borderBar" id="threeStarBar"><div className="BarFill" style={{ width: `${threePercentage}%` }}></div></div>
-      <div id="threeStarCount">{threeStarReviews}</div>
+      <div className="borderBar" id="threeStarBar"><div className="BarFill" style={{ width: `${reviewData.threePercentage}%` }}></div></div>
+      <div id="threeStarCount">{reviewData.threeStarReviews}</div>
 
       <button
         className="linkButtons"
@@ -151,8 +91,8 @@ const RatingBreakdown = () => {
         }}
       >2 stars
       </button>
-      <div className="borderBar" id="twoStarBar"><div className="BarFill" style={{ width: `${twoPercentage}%` }}></div></div>
-      <div id="twoStarCount">{twoStarReviews}</div>
+      <div className="borderBar" id="twoStarBar"><div className="BarFill" style={{ width: `${reviewData.twoPercentage}%` }}></div></div>
+      <div id="twoStarCount">{reviewData.twoStarReviews}</div>
 
       <button
         className="linkButtons"
@@ -164,10 +104,10 @@ const RatingBreakdown = () => {
         }}
       >1 star
       </button>
-      <div className="borderBar" id="oneStarBar"><div className="BarFill" style={{ width: `${onePercentage}%` }}></div></div>
-      <div id="oneStarCount">{oneStarReviews}</div>
+      <div className="borderBar" id="oneStarBar"><div className="BarFill" style={{ width: `${reviewData.onePercentage}%` }}></div></div>
+      <div id="oneStarCount">{reviewData.oneStarReviews}</div>
 
-      <div id="PercentReccomend">{`${recommended}% of reviews reccomended this product`}</div>
+      <div id="PercentReccomend">{`${reviewData.recommended}% of reviews reccomended this product`}</div>
     </div>
   );
 };
