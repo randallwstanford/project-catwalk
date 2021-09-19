@@ -66,7 +66,7 @@ export const getReviewData = (reviews) => {
   return reviewData;
 };
 
-export const showFilters = (filtered) => {
+export const makeFiltersLabel = (filtered) => {
   let filters = '';
   if (filtered.five) {
     filters += 'Five Stars ';
@@ -101,4 +101,3 @@ export const getDate = (inDate) => {
   const year = inDate.slice(0, 4);
   return `${month} ${day}, ${year}`;
 };
-

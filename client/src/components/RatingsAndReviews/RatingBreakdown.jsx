@@ -5,7 +5,7 @@ import * as utils from './utils/RatingsAndReviews.utils.js';
 const RatingBreakdown = () => {
   const { reviews, setFiltered, filtered } = useContext(reviewsContext);
   const reviewData = utils.getReviewData(reviews);
-  const filters = utils.showFilters(filtered);
+  const filters = utils.makeFiltersLabel(filtered);
 
   const clearFilters = () => {
     setFiltered({
