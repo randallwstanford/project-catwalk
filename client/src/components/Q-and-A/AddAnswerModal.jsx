@@ -7,14 +7,14 @@ import { appContext } from '../../contexts/index.js';
 const AddAnswerModal = () => {
   const { product } = useContext(appContext);
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const objToSend = {
+      'product_id': product.id,
       'email': event.target.email.value, // Email
-      'answer_body': event.target.username.value, // Username
-      'answerer_name': event.target.answerText.value, // Answer Body
+      'body': event.target.username.value, // Username
+      'name': event.target.answerText.value, // Answer Body
       'photos': [...event.target.files.files] // Files
     };
 
@@ -27,7 +27,8 @@ const AddAnswerModal = () => {
     <div className="answer-modal" id="answer-modal">
       <button className="x" onClick={utils.toggleModal}>x</button>
       <h2>Submit your Answer</h2>
-      <h3>[Product Name]: [Product Body]</h3>
+      <h3>[{product.name}]:</h3>
+      <h3>{product.description}</h3>
       <form className="main" onSubmit={handleSubmit} onChange={utils.handleChange}>
 
         {/* ------ Username ------ */}
@@ -62,8 +63,9 @@ const AddAnswerModal = () => {
           id="file-input"
           onChange={utils.handlePhotos()}
         />
-        {/* Render Thumbnails here */}
+        {/* ------ File Input ------ */}
         <button type="submit" className="modal-submit" id="modal-submit">Submit</button>
+        {/* Render Thumbnails here */}
       </form>
     </div>
   );

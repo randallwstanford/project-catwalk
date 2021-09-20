@@ -1,15 +1,37 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
-import React from 'react';
+import React, { useContext } from 'react';
+import axios from 'axios';
 import * as utils from './utils/AddQuestionModal.utils.js';
+import { appContext } from '../../contexts/index.js';
 
 const AddQuestionModal = () => {
+  const { product } = useContext(appContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const answerer_name = event.target.username.value;
+    const answer_body = event.target.answerText.value;
+
+    const question = {
+      'product_id': product.id,
+      'body': answer_body,
+      'name': answerer_name,
+      'email': email
+    };
+    axios.post('/qa/questions/', question)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log);
+  };
+
+
   return (
     <div className="question-modal" id="question-modal">
       <button className="x" onClick={utils.toggleModal} onChange={utils.toggleModal}>x</button>
       <h2>Ask your question</h2>
-      <h3>About the [Product Name Here]</h3>
-      <form className="main" onSubmit={utils.handleSubmit} onChange={utils.handleChange}>
+      <h3>About the {product.name}</h3>
+      <form className="main" onSubmit={handleSubmit} onChange={utils.handleChange}>
 
         {/* ------ Username ------ */}
         Username **

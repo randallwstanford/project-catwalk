@@ -9,13 +9,6 @@ import Answers from './Answers.jsx';
 const AllQandA = (props) => {
   var { product } = useContext(appContext);
 
-  const handleHelpful = (event) => {
-    var questionId = event.target.getAttribute('class').split(' ')[1];
-    axios.put(`/qa/questions/${questionId}/helpful`)
-      .then((res) => console.log(res.status))
-      .catch((err) => console.log(err));
-  };
-
   return (
     props.questions.map((question, index) => {
       return (
@@ -23,9 +16,9 @@ const AllQandA = (props) => {
           <div className="qa-container">
             <div className="question"><b>Q:</b>{question.question_body}
               <div className="helpful">&nbsp;Helpful?&nbsp;
-                <button className={`yes-button ${question.question_id}`} onClick={handleHelpful}>Yes</button>&nbsp;
+                <a className={`${question.question_id}`} href=" " onClick={utils.handleHelpful}>Yes</a>&nbsp;
                 ( {question.question_helpfulness} )
-                <button className="add-answer" onClick={utils.openAnswerModal}>Add Answer</button>
+                <button className={`add-answer ${question.question_id}`} onClick={utils.openAnswerModal}>Add Answer</button>
               </div>
             </div>
             <div className={`${question.question_id} answer`}><b>A:</b>

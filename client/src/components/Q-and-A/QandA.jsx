@@ -27,27 +27,14 @@ const QandA = () => {
       .catch((err) => console.log(err));
   };
 
+  useEffect(() => { getData(); }, []);
+
   useEffect(() => {
     // Type at least 3 letters before search fires off
     if (searchTerm <= 3) { getData(); }
-    const results = questions.filter((question) => {
-      return question.question_body.toLowerCase().includes(searchTerm.toLowerCase());
-    });
+    const results = questions.filter((question) => { return question.question_body.toLowerCase().includes(searchTerm.toLowerCase()); });
     setQuestions(results);
   }, [searchTerm]);
-
-  useEffect(() => { getData(); }, []);
-
-  const checkForAnsweredQuestions = () => {
-    axios.get(`/qa/questions/?product_id=${product.id}`)
-      .then((res) => {
-        if (res.data.results.length <= 2) {
-          document.getElementsByClassName('more-answered-questions')[0].style.visibility = 'hidden';
-        }
-      })
-      .catch((err) => console.log(err));
-  };
-
 
   return (
     <div className="container" id="container">
@@ -66,7 +53,7 @@ const QandA = () => {
         </form>
       </div>
       <div className="q-wrapper"><AllQandA questions={questions} /></div>
-      <div className="more-question-wrapper">{ checkForAnsweredQuestions() }
+      <div className="more-question-wrapper">{() => { utils.checkForAnsweredQuestions(product); } }
         <button className="more-answered-questions" onClick={utils.showMoreQuestions}>More Answered Questions</button>
         <button className="add-question" onClick={utils.openQuestionModal}>Add a Question</button>
       </div>

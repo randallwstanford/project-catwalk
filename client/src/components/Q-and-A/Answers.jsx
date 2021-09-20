@@ -16,12 +16,18 @@ const Answers = ({ answers, questionId }) => {
   }
 
   const loadMoreAnswers = (event) => {
-    var uniqueId = answers[Object.keys(answers)[0]].id;
-    setIndex(uniqueId);
+    var question_Id = document.getElementsByClassName(questionId)[0].getAttribute('class').split(' ')[0];
+    var loadButon = document.getElementsByClassName(`${question_Id} answer`)[0];
+    var copmutedStyle = parseInt(window.getComputedStyle(loadButon).height.split('px')[0], 10);
+
+    setIndex(question_Id);
     showTwoMoreAnswers(currentAnswersShows + answersArr.length);
-    if (answersArr.length <= 3) {
+
+    console.log(copmutedStyle);
+    if (answersArr.length < 3) {
       event.target.style.visibility = 'hidden';
-      event.target.parentNode.parentNode.style.height = 120;
+      if (answersArr.length === 2) { loadButon.style.height = (copmutedStyle + 20); }
+      if (answersArr.length < 2) { loadButon.style.height = (copmutedStyle - 60); }
     }
   };
 
@@ -57,11 +63,12 @@ const Answers = ({ answers, questionId }) => {
             </span>
             <div>&nbsp;Helpful?&nbsp;
               {/* Getting response 200 for put request but not incrementing answer  */}
-              <button
-                className={`${answer.id} yes-button`}
+              <a
+                className={`${answer.id}`}
                 onClick={handleHelpfulAnswer}
+                href=" "
               >Yes
-              </button>&nbsp;
+              </a>&nbsp;
               ( {utils.checkForHelpfulness(answer)} ) |&nbsp;&nbsp;
               <a
                 className={`${questionId}`}
@@ -73,7 +80,12 @@ const Answers = ({ answers, questionId }) => {
           </div>
         );
       })}
-      <button className={`load-more-answers load-more-answers${currentIndex}`} onClick={loadMoreAnswers}>Load More Answers</button>
+      <button
+        className={`load-more-answers ${currentIndex}`}
+        onClick={loadMoreAnswers}
+      >
+        Load More Answers
+      </button>
     </div>
   );
 };

@@ -20,22 +20,6 @@ export const handleChange = (event) => {
     : modalButton.disabled = true; email.style.border = '2px solid red';
 };
 
-export const handleSubmit = (event) => {
-  event.preventDefault();
-  const email = event.target.email.value;
-  const answerer_name = event.target.username.value;
-  const answer_body = event.target.answerText.value;
-
-  const objToSend = {
-    'email': email,
-    'answer_body': answer_body,
-    'answerer_name': answerer_name,
-    'photos': [...event.target.files.files]
-  };
-  console.log(objToSend); // FORMATTING DONE
-  // TODO: Post to qa/questions
-};
-
 export const handlePhotos = () => {
   // Array.from(document.getElementById('file-input').files).map((file, index) => {
   //   return (
