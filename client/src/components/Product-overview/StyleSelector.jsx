@@ -27,6 +27,7 @@ export default function StyleSelector({ setCurrentStyle, currentStyle }) {
           />
           <label htmlFor={`style_${style.style_id}`}>
             { }
+            <img src="resources/Check_mark_9x9.svg" alt="checkmark" className="checkmark" />
             <img src={style.photos[0].thumbnail_url} alt={style.name} className="rounded" />
           </label>
         </div>
