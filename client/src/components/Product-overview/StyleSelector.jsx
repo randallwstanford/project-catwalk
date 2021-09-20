@@ -17,7 +17,7 @@ export default function StyleSelector({ setCurrentStyle, currentStyle }) {
   return (
     <div className="style-selector">
       {styles.map(style => (
-        <div key={style.style_id} onChange={() => setCurrentStyle(style)}>
+        <div className="style" key={style.style_id} onChange={() => setCurrentStyle(style)}>
           <input
             type="radio"
             id={`style_${style.style_id}`}
