@@ -1,25 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function StylePrice({ currentStyle }) {
+export default function StylePrice({ originalPrice, salePrice }) {
   function discount() {
     return (
       <span>
-        <span id="discounted-price">{currentStyle.sale_price}</span>
-        <span id="original-price">{currentStyle.original_price}</span>
+        <span id="discounted-price">{salePrice}</span>
+        <span id="original-price">{originalPrice}</span>
       </span>
     );
   }
 
   return (
     <div className="price">$
-      {(currentStyle.sale_price === null)
-        ? <span>{currentStyle.original_price}</span>
+      {(salePrice === null)
+        ? <span>{originalPrice}</span>
         : discount()}
     </div>
   );
 }
 
 StylePrice.propTypes = {
-  currentStyle: PropTypes.shape.isRequired
+  originalPrice: PropTypes.string,
+  salePrice: PropTypes.string
+};
+
+StylePrice.defaultProps = {
+  originalPrice: null,
+  salePrice: null
 };

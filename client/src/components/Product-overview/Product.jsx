@@ -34,12 +34,15 @@ export default function Product() {
           <div>
             <h1>{app.product.name}</h1>
           </div>
-          <StyleSelector setCurrentStyle={setCurrentStyle} currentStyle={currentStyle} />
-          <StylePrice currentStyle={currentStyle} />
+          <StylePrice
+            originalPrice={currentStyle.original_price}
+            salePrice={currentStyle.sale_price}
+          />
+          <div id="style-name"><span className="bold-text">STYLE &gt;</span> {currentStyle.name}</div>
+          <StyleSelector setCurrentStyle={setCurrentStyle} currentStyleId={currentStyle.style_id} />
           <SizeSelector key={currentStyle.style_id} sizes={currentStyle.skus} />
-          <div className="buttons">
-            <button>Add to bag</button>
-            <button>★</button>
+          <div className="add-to-bag-button">
+            <button>ADD TO BAG</button>
           </div>
         </div>
       </div>

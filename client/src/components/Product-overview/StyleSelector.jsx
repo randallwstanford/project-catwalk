@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-export default function StyleSelector({ setCurrentStyle, currentStyle }) {
+export default function StyleSelector({ setCurrentStyle, currentStyleId }) {
   const [styles, setStyles] = useState([]);
 
   useEffect(() => {
@@ -17,13 +17,14 @@ export default function StyleSelector({ setCurrentStyle, currentStyle }) {
   return (
     <div className="style-selector">
       {styles.map(style => (
-        <div className="style" key={style.style_id} onChange={() => setCurrentStyle(style)}>
+        <div className="style" key={style.style_id}>
           <input
             type="radio"
             id={`style_${style.style_id}`}
             name="style_id"
             value={style.style_id}
-            checked={style.style_id === currentStyle.style_id}
+            checked={style.style_id === currentStyleId}
+            onChange={() => setCurrentStyle(style)}
           />
           <label htmlFor={`style_${style.style_id}`}>
             { }
@@ -38,6 +39,10 @@ export default function StyleSelector({ setCurrentStyle, currentStyle }) {
 
 StyleSelector.propTypes = {
   setCurrentStyle: PropTypes.func.isRequired,
-  currentStyle: PropTypes.shape.isRequired
+  currentStyleId: PropTypes.number
+};
+
+StyleSelector.defaultProps = {
+  currentStyleId: null
 };
 

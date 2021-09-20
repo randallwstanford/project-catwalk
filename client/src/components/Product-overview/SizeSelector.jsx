@@ -1,19 +1,18 @@
-/* eslint react/prop-types: 0 */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
 function createQuantities(currentQuantity) {
   var i;
-  var quantities = [<option value="1" selected>1</option>];
+  var quantities = [<option key="1" value="1">1</option>];
   for (i = 2; i <= currentQuantity && i <= 15; i++) {
-    quantities.push(<option value={i}>{i}</option>);
+    quantities.push(<option key={i} value={i}>{i}</option>);
   }
   return quantities;
 }
 
 export default function SizeSelector({ sizes }) {
-  const [currentSku, setCurrentSku] = useState(null);
+  const [currentSku, setCurrentSku] = useState('DEFAULT');
 
   var outOfStock = true;
   Object.keys(sizes).forEach(barcode => {
@@ -29,7 +28,7 @@ export default function SizeSelector({ sizes }) {
   return (
     <div className="size-quantity">
       <select value={currentSku} onChange={(event) => setCurrentSku(event.target.value)}>
-        <option value="" disabled selected>Select Size</option>
+        <option value="DEFAULT" disabled>SELECT SIZE</option>
         {Object.keys(sizes).map(barcode => {
           var sku = sizes[barcode];
           return (
@@ -37,10 +36,10 @@ export default function SizeSelector({ sizes }) {
           );
         })}
       </select>
-      <select defaultValue="DEFAULT">
+      <select defaultValue="1">
         {
-          (currentSku === null || sizes[currentSku].quantity === 0)
-            ? <option value="DEFAULT" disabled>-</option>
+          (currentSku === 'DEFAULT' || sizes[currentSku].quantity === 0)
+            ? <option value="1" disabled>-</option>
             : createQuantities(sizes[currentSku].quantity)
         }
       </select>
