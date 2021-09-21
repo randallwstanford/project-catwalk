@@ -1,31 +1,29 @@
-h1 {
-  margin: 5px;
-  color: #00a07b;
-}
-
-h4 {
-  margin: 5px;
-  color: #d6e6e2;
-}
-
-h6 {
-  margin: 20px;
-  margin-top: 5%;
-}
-
 .flex-container {
   display: flex;
 }
 
 #image-gallery {
-  border: 1px solid black;
-  width: 59%;
+  width: 60%;
+  background-color: rgb(216, 212, 212);
 }
 
 #product-information {
-  border: 1px solid black;
-  width: 39%;
-  margin: auto;
+  width: 40%;
+}
+
+#product-information h1 {
+  margin: 5px;
+  color: #00a07b;
+}
+
+#product-information h4 {
+  margin: 5px;
+  color: #d6e6e2;
+}
+
+#product-information h6 {
+  margin: 20px;
+  margin-top: 5%;
 }
 
 .review-flex-container {
@@ -36,17 +34,8 @@ h6 {
   color:coral;
 }
 
-.style-selector {
-  width: 100%;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  margin: 5px;
-  border-radius: 50%;
-}
-
 .price {
-  margin: 5px;
+  margin: 10px;
 }
 
 #original-price {
@@ -57,27 +46,77 @@ h6 {
   color: red;
 }
 
+#style-name {
+  margin: 10px;
+  text-transform: uppercase;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.style-selector {
+  max-width: 380px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.style {
+  margin: 5px;
+  width: 70px;
+  position: relative;
+}
+
+.style [type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.style [type=radio]:checked + label img.checkmark {
+  display: block;
+}
+
+img.checkmark {
+  display: none;
+  width: 10px;
+  padding: 2px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: white;
+}
+
+img.rounded {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+}
+
 .size-quantity {
   margin: 5px;
   padding: 5px;
 }
 
-.add-save-buttons {
-  letter-spacing: 1px;
-  appearance: none;
-  border-radius: 10px;
-  display: block;
-  text-transform: uppercase;
+.size-quantity select {
+  padding: 10px;
+  margin-right: 10px;
+  background-color: white;
+}
+
+.add-to-bag-button button {
   margin: 10px;
-  font-size: 1.0625rem;
-  color: rgb(255, 255, 255);
+  padding: 10px;
+  border-width: 1px;
+  background-color: white;
 }
 
 #product-overview {
-  border: 1px solid black;
-  width: 99%;
-  height: 10%;
-  text-align: center;
+  margin: 0 10%;
+  padding: 20px;
 }
-
-

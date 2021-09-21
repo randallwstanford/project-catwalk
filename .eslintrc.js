@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'jest'
   ],
   rules: {
     "quote-props": "off",
@@ -42,7 +43,12 @@ module.exports = {
     "jsx-a11y/control-has-associated-label": "off",
     "no-plusplus": "off",
     "object-property-newline": "off",
-    "react/forbid-prop-types": "off"
+    "react/forbid-prop-types": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   },
 };
 
