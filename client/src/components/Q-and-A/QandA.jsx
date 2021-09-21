@@ -14,7 +14,6 @@ import * as utils from './utils/QandA.utils.js';
 
 const QandA = () => {
   const { product } = useContext(appContext);
-
   const [questions, setQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -23,7 +22,11 @@ const QandA = () => {
 
   const getData = () => {
     axios.get(`/qa/questions/?product_id=${product.id}`)
-      .then((res) => { setQuestions((res.data.results).sort((a, b) => b.question_helpfulness - a.question_helpfulness)); })
+      .then((res) => {
+        setQuestions((res.data.results).sort((a, b) => {
+          b.question_helpfulness - a.question_helpfulness;
+        }));
+      })
       .catch((err) => console.log(err));
   };
 
@@ -32,14 +35,27 @@ const QandA = () => {
   useEffect(() => {
     // Type at least 3 letters before search fires off
     if (searchTerm <= 3) { getData(); }
-    const results = questions.filter((question) => { return question.question_body.toLowerCase().includes(searchTerm.toLowerCase()); });
+    const results = questions.filter((question) => {
+      return question.question_body.toLowerCase().includes(searchTerm.toLowerCase());
+    });
     setQuestions(results);
   }, [searchTerm]);
 
+  const checkForAnsweredQuestions = () => {
+    axios.get(`/qa/questions/?product_id=${product.id}`)
+      .then((res) => {
+        if (res.data.results.length < 3) {
+          document.getElementsByClassName('more-answered-questions')[0].style.visibility = 'hidden';
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+
   return (
     <div className="container" id="container">
-      <AddQuestionModal />
-      <AddAnswerModal />
+      <AddQuestionModal product={product} />
+      <AddAnswerModal product={product} />
       <div className="qanda">Questions and Answers</div>
       <div className="input-and-button">
         <form>
@@ -53,7 +69,7 @@ const QandA = () => {
         </form>
       </div>
       <div className="q-wrapper"><AllQandA questions={questions} /></div>
-      <div className="more-question-wrapper">{() => { utils.checkForAnsweredQuestions(product); } }
+      <div className="more-question-wrapper">{checkForAnsweredQuestions()}
         <button className="more-answered-questions" onClick={utils.showMoreQuestions}>More Answered Questions</button>
         <button className="add-question" onClick={utils.openQuestionModal}>Add a Question</button>
       </div>

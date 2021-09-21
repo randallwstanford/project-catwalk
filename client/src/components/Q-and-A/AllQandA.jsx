@@ -1,21 +1,20 @@
+/* eslint-disable vars-on-top */
 /* eslint-disable max-len */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import * as utils from './utils/AllQandA.utils.js';
 import { appContext } from '../../contexts/index.js';
 import Answers from './Answers.jsx';
-// import Answers from './Answers.jsx';
 
-const AllQandA = (props) => {
-  var { product } = useContext(appContext);
-
+const AllQandA = ({ questions }) => {
   return (
-    props.questions.map((question, index) => {
+    questions.map((question, index) => {
       return (
         <div key={index}>
           <div className="qa-container">
-            <div className="question"><b>Q:</b>{question.question_body}
-              <div className="helpful">&nbsp;Helpful?&nbsp;
+            <div className="question" title="question"><b>Q:</b>{question.question_body}
+              <div className="helpful">
+                &nbsp;Helpful?&nbsp;
                 <a className={`${question.question_id}`} href=" " onClick={utils.handleHelpful}>Yes</a>&nbsp;
                 ( {question.question_helpfulness} )
                 <button className={`add-answer ${question.question_id}`} onClick={utils.openAnswerModal}>Add Answer</button>
