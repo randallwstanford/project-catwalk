@@ -5,16 +5,16 @@ export default function StylePrice({ originalPrice, salePrice }) {
   function discount() {
     return (
       <span>
-        <span id="discounted-price">{salePrice}</span>
-        <span id="original-price">{originalPrice}</span>
+        <span title="Sale Price" id="discounted-price">${salePrice}</span>
+        <span title="Original Price" id="original-price">${originalPrice}</span>
       </span>
     );
   }
 
   return (
-    <div className="price">$
+    <div className="price">
       {(salePrice === null)
-        ? <span>{originalPrice}</span>
+        ? <span title="Original Price">${originalPrice}</span>
         : discount()}
     </div>
   );
