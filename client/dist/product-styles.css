@@ -1,10 +1,20 @@
+#product-container {
+  width: 850px;
+  margin: 0 auto;
+}
+
 .flex-container {
   display: flex;
 }
 
 #image-gallery {
   width: 60%;
-  background-color: rgb(216, 212, 212);
+}
+
+img.photo {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
 }
 
 #product-information {
