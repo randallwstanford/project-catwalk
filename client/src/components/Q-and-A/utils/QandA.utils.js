@@ -6,15 +6,15 @@ export const openQuestionModal = () => {
 };
 
 export const showMoreQuestions = () => {
-  console.log('show more questions click infitie scroll i thikn');
-  document.getElementsByClassName('q-wrapper')[0].style.height = '1000px';
-  console.log(document.getElementById('container').style.cssText);
-  document.getElementsByClassName('container')[0].style.height = '1200px';
-  console.log(document.getElementsByClassName('load-more-answers')[0]);
+  document.getElementsByClassName('q-wrapper')[0].style.overflow = 'scroll';
 };
 
-
-export const loadMoreAnswers = (event) => {
-  console.log('load more answers click');
+export const checkForAnsweredQuestions = (product) => {
+  axios.get(`/qa/questions/?product_id=${product.id}`)
+    .then((res) => {
+      if (res.data.results.length <= 2) {
+        document.getElementsByClassName('more-answered-questions')[0].style.visibility = 'hidden';
+      }
+    })
+    .catch((err) => console.log(err));
 };
-

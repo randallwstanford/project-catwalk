@@ -4,35 +4,10 @@ import axios from 'axios';
 import * as utils from './utils/AllQandA.utils.js';
 import { appContext } from '../../contexts/index.js';
 import Answers from './Answers.jsx';
+// import Answers from './Answers.jsx';
 
 const AllQandA = (props) => {
   var { product } = useContext(appContext);
-
-  const handleReport = (event) => {
-    var questionId = event.target.getAttribute('class').split(' ')[0];
-    var reportElement = event.target;
-    reportElement.innerText = 'Reported ✓';
-
-    event.preventDefault();
-    // DO NOT COMMENT OUT YET WILL NOT SHOW REPORTED QUESTION
-    // axios.put(`/qa/questions/${questionId}/report`)
-    //   .then((res) => console.log(res.status))
-    //   .catch((err) => console.log(err));
-  };
-
-  const handleHelpful = (event) => {
-    var questionId = event.target.getAttribute('class').split(' ')[1];
-    axios.put(`/qa/questions/${questionId}/helpful`)
-      .then((res) => console.log(res.status))
-      .catch((err) => console.log(err));
-  };
-
-  const handleHelpfulAnswer = (event) => {
-    var answerId = event.target.getAttribute('class').split(' ')[0];
-    axios.put(`/qa/questions/${answerId}/helpful`)
-      .then((res) => console.log(res.status))
-      .catch((err) => console.log(err));
-  };
 
   return (
     props.questions.map((question, index) => {
@@ -41,27 +16,17 @@ const AllQandA = (props) => {
           <div className="qa-container">
             <div className="question"><b>Q:</b>{question.question_body}
               <div className="helpful">&nbsp;Helpful?&nbsp;
-                <button className={`yes-button ${question.question_id}`} onClick={handleHelpful}>Yes</button>&nbsp;
+                <a className={`${question.question_id}`} href=" " onClick={utils.handleHelpful}>Yes</a>&nbsp;
                 ( {question.question_helpfulness} )
-                <button className="add-answer" onClick={utils.openAnswerModal}>Add Answer</button>
+                <button className={`add-answer ${question.question_id}`} onClick={utils.openAnswerModal}>Add Answer</button>
               </div>
             </div>
             <div className={`${question.question_id} answer`}><b>A:</b>
               {/* ------------- Answers Text ------------- */}
-              <Answers answers={question.answers} />
+              <Answers answers={question.answers} questionId={question.question_id} />
             </div>
             {/* ------------- Date -------------*/}
             <div>&nbsp;<b>Date:</b>&nbsp;{utils.formatDate(question.question_date)}</div>
-            <div>&nbsp;Helpful?&nbsp;
-              <button className={`${question.question_id} yes-button`} onClick={handleHelpfulAnswer}> Yes </button>&nbsp;
-              ( {utils.checkForHelpfulness(question.answers[Object.keys(question.answers)[0]])} ) |&nbsp;&nbsp;
-              <a
-                className={`${question.question_id}`}
-                href=" "
-                onClick={handleReport}
-              >Report
-              </a>
-            </div>
           </div>
         </div>
       );
