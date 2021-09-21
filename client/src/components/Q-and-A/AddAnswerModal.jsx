@@ -61,7 +61,7 @@ const AddAnswerModal = () => {
           type="file"
           name="files"
           id="file-input"
-          onChange={utils.handlePhotos()}
+          onChange={utils.handlePhotos}
         />
         {/* ------ File Input ------ */}
         <button type="submit" className="modal-submit" id="modal-submit">Submit</button>

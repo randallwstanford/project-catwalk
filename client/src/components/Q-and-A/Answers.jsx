@@ -23,7 +23,6 @@ const Answers = ({ answers, questionId }) => {
     setIndex(question_Id);
     showTwoMoreAnswers(currentAnswersShows + answersArr.length);
 
-    console.log(copmutedStyle);
     if (answersArr.length < 3) {
       event.target.style.visibility = 'hidden';
       if (answersArr.length === 2) { loadButon.style.height = (copmutedStyle + 20); }

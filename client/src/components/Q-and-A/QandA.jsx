@@ -14,7 +14,6 @@ import * as utils from './utils/QandA.utils.js';
 
 const QandA = () => {
   const { product } = useContext(appContext);
-
   const [questions, setQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -23,7 +22,11 @@ const QandA = () => {
 
   const getData = () => {
     axios.get(`/qa/questions/?product_id=${product.id}`)
-      .then((res) => { setQuestions((res.data.results).sort((a, b) => b.question_helpfulness - a.question_helpfulness)); })
+      .then((res) => {
+        setQuestions((res.data.results).sort((a, b) => {
+          b.question_helpfulness - a.question_helpfulness;
+        }));
+      })
       .catch((err) => console.log(err));
   };
 
@@ -32,7 +35,9 @@ const QandA = () => {
   useEffect(() => {
     // Type at least 3 letters before search fires off
     if (searchTerm <= 3) { getData(); }
-    const results = questions.filter((question) => { return question.question_body.toLowerCase().includes(searchTerm.toLowerCase()); });
+    const results = questions.filter((question) => {
+      return question.question_body.toLowerCase().includes(searchTerm.toLowerCase());
+    });
     setQuestions(results);
   }, [searchTerm]);
 
