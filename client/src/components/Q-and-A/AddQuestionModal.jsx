@@ -5,8 +5,7 @@ import axios from 'axios';
 import * as utils from './utils/AddQuestionModal.utils.js';
 import { appContext } from '../../contexts/index.js';
 
-const AddQuestionModal = () => {
-  const { product } = useContext(appContext);
+const AddQuestionModal = (product) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,7 +29,7 @@ const AddQuestionModal = () => {
     <div className="question-modal" id="question-modal">
       <button className="x" onClick={utils.toggleModal} onChange={utils.toggleModal}>x</button>
       <h2>Ask your question</h2>
-      <h3>About the {product.name}</h3>
+      <h3 data-testid="product_name">About the {product.name}</h3>
       <form className="main" onSubmit={handleSubmit} onChange={utils.handleChange}>
 
         {/* ------ Username ------ */}
@@ -51,6 +50,7 @@ const AddQuestionModal = () => {
           max="60"
           name="email"
           className="email"
+          data-testid="email"
           id="email"
           placeholder="Why did you like the product or not?"
         />
@@ -73,7 +73,14 @@ const AddQuestionModal = () => {
           onChange={utils.handlePhotos()}
         />
         {/* Render Thumbnails here */}
-        <button type="submit" className="modal-submit" id="modal-submit">Submit</button>
+        <button
+          type="submit"
+          data-testid="submit"
+          className="modal-submit"
+          id="modal-submit"
+        >
+        Submit
+        </button>
       </form>
     </div>
   );

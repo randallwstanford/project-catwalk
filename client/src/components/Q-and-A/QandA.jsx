@@ -44,7 +44,6 @@ const QandA = () => {
   const checkForAnsweredQuestions = () => {
     axios.get(`/qa/questions/?product_id=${product.id}`)
       .then((res) => {
-        console.log(document.getElementsByClassName('more-answered-questions')[0]);
         if (res.data.results.length < 3) {
           document.getElementsByClassName('more-answered-questions')[0].style.visibility = 'hidden';
         }
@@ -55,8 +54,8 @@ const QandA = () => {
 
   return (
     <div className="container" id="container">
-      <AddQuestionModal />
-      <AddAnswerModal />
+      <AddQuestionModal product={product} />
+      <AddAnswerModal product={product} />
       <div className="qanda">Questions and Answers</div>
       <div className="input-and-button">
         <form>

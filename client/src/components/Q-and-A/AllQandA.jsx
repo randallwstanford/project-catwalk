@@ -5,7 +5,6 @@ import axios from 'axios';
 import * as utils from './utils/AllQandA.utils.js';
 import { appContext } from '../../contexts/index.js';
 import Answers from './Answers.jsx';
-// import Answers from './Answers.jsx';
 
 const AllQandA = ({ questions }) => {
   return (
@@ -14,7 +13,8 @@ const AllQandA = ({ questions }) => {
         <div key={index}>
           <div className="qa-container">
             <div className="question" title="question"><b>Q:</b>{question.question_body}
-              <div className="helpful">&nbsp;Helpful?&nbsp;
+              <div className="helpful">
+                &nbsp;Helpful?&nbsp;
                 <a className={`${question.question_id}`} href=" " onClick={utils.handleHelpful}>Yes</a>&nbsp;
                 ( {question.question_helpfulness} )
                 <button className={`add-answer ${question.question_id}`} onClick={utils.openAnswerModal}>Add Answer</button>
