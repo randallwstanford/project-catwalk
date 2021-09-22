@@ -103,24 +103,17 @@ export const getDate = (inDate) => {
 };
 
 // modal utils
-export const displayStarDescription = () => {
-  const starDescription = document.getElementById('starDescription');
-  const oneStar = document.getElementById('oneStar');
-  const twoStars = document.getElementById('twoStars');
-  const threeStars = document.getElementById('threeStars');
-  const fourStars = document.getElementById('fourStars');
-  const fiveStars = document.getElementById('fiveStars');
-
-  if (oneStar.checked) {
-    starDescription.innerText = ' Poor';
-  } else if (twoStars.checked) {
-    starDescription.innerText = ' Fair';
-  } else if (threeStars.checked) {
-    starDescription.innerText = ' Average';
-  } else if (fourStars.checked) {
-    starDescription.innerText = ' Good';
-  } else if (fiveStars.checked) {
-    starDescription.innerText = ' Great';
+export const displayStarDescription = (rating) => {
+  if (rating === 1) {
+    return ' Poor';
+  } else if (rating === 2) {
+    return ' Fair';
+  } else if (rating === 3) {
+    return ' Average';
+  } else if (rating === 4) {
+    return ' Good';
+  } else if (rating === 5) {
+    return ' Great';
   }
 };
 

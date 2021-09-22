@@ -1,8 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { reviewsContext } from '../../contexts/index.js';
-import {
-  closeModal, handleSubmit, handleChange, handlePhotos, displayStarDescription, displayRatingDefinition
-} from './utils/RatingsAndReviews.utils.js';
+import { closeModal, handleSubmit, handleChange, handlePhotos, displayStarDescription, displayRatingDefinition } from './utils/RatingsAndReviews.utils.js';
 import CharacteristicRadioButtons from './CharacteristicRadioButtons.jsx';
 
 const AddReviewModal = () => {
@@ -13,6 +11,8 @@ const AddReviewModal = () => {
   const [fitRating, setFitRating] = useState(0);
   const [qualityRating, setQualityRating] = useState(0);
   const [comfortRating, setComfortRating] = useState(0);
+  const [overallRating, setOverallRating] = useState(0);
+  const [recommend, setRecommend] = useState(null);
 
   if (reviews.length === 0) {
     return <div>loading...</div>;
@@ -22,28 +22,23 @@ const AddReviewModal = () => {
       <button id="closeModal" className="closeModal" onClick={closeModal}>X</button>
       <h2 id="addReviewTitle">Write your review</h2>
       <h3 id="addReviewSubtitle">About the Product</h3>
-      <span id="requiredFieldsNotice" className="notice">fields marked with * are required</span>
+      <span className="notice">fields marked with * are required</span>
       <form className="addReview" onSubmit={handleSubmit} onChange={handleChange}>
         <div id="overallRating">
-          <label htmlFor="overallRating">* Overall rating:
-            <input type="radio" id="oneStar" name="overallRating" value="1"></input>
-            <input type="radio" id="twoStars" name="overallRating" value="2"></input>
-            <input type="radio" id="threeStars" name="overallRating" value="3"></input>
-            <input type="radio" id="fourStars" name="overallRating" value="4"></input>
-            <input type="radio" id="fiveStars" name="overallRating" value="5"></input>
-            <span id="starDescription"></span>
-          </label>
+          <label htmlFor="overallRating">* Overall rating:</label>
+          <input onChange={() => { setOverallRating(1) }} type="radio" value="1" checked={overallRating === 1}></input>
+          <input onChange={() => { setOverallRating(2) }} type="radio" value="2" checked={overallRating === 2}></input>
+          <input onChange={() => { setOverallRating(3) }} type="radio" value="3" checked={overallRating === 3}></input>
+          <input onChange={() => { setOverallRating(4) }} type="radio" value="4" checked={overallRating === 4}></input>
+          <input onChange={() => { setOverallRating(5) }} type="radio" value="5" checked={overallRating === 5}></input>
+          <span>{displayStarDescription(overallRating)}</span>
         </div>
-
         <div id="recommend">
-          <label htmlFor="recommend"> * Do you recommend this product?
-            <label htmlFor="yes"> Yes
-              <input type="radio" id="yes" name="recommend" value="yes"></input>
-            </label>
-            <label htmlFor="no"> No
-              <input type="radio" id="no" name="recommend" value="no"></input>
-            </label>
-          </label>
+          <label> * Do you recommend this product?</label>
+          <label> Yes</label>
+          <input onChange={() => { setRecommend('yes') }}type="radio" value="yes" checked={recommend === 'yes'}></input>
+          <label> No</label>
+          <input onChange={() => { setRecommend('no') }}type="radio" value="no" checked={recommend === 'no'}></input>
         </div>
         <div id="characteristics">
           <CharacteristicRadioButtons rating={sizeRating} setRating={setSizeRating} labelName="Size" />
