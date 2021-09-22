@@ -23,6 +23,6 @@ const Review = (props) => {
 };
 
 Review.propTypes = {
-  review: PropTypes.object.isRequired,
+  review: PropTypes.object.isRequired
 };
 export default Review;

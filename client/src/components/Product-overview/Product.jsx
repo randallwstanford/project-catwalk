@@ -4,6 +4,7 @@ import axios from 'axios';
 import StyleSelector from './StyleSelector.jsx';
 import StylePrice from './StylePrice.jsx';
 import SizeSelector from './SizeSelector.jsx';
+import Photos from './Photos.jsx';
 import { appContext } from '../../contexts/index.js';
 
 export default function Product() {
@@ -12,9 +13,9 @@ export default function Product() {
   console.log(currentStyle);
 
   return (
-    <div>
+    <div id="product-container">
       <div className="flex-container">
-        <div id="image-gallery">images</div>
+        <Photos photos={currentStyle.photos} />
         <div id="product-information">
           <div className="review-flex-container">
             <span>
