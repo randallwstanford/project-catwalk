@@ -101,3 +101,96 @@ export const getDate = (inDate) => {
   const year = inDate.slice(0, 4);
   return `${month} ${day}, ${year}`;
 };
+
+// modal utils
+export const displayStarDescription = () => {
+  const starDescription = document.getElementById('starDescription');
+  const oneStar = document.getElementById('oneStar');
+  const twoStars = document.getElementById('twoStars');
+  const threeStars = document.getElementById('threeStars');
+  const fourStars = document.getElementById('fourStars');
+  const fiveStars = document.getElementById('fiveStars');
+
+  if (oneStar.checked) {
+    starDescription.innerText = ' Poor';
+  } else if (twoStars.checked) {
+    starDescription.innerText = ' Fair';
+  } else if (threeStars.checked) {
+    starDescription.innerText = ' Average';
+  } else if (fourStars.checked) {
+    starDescription.innerText = ' Good';
+  } else if (fiveStars.checked) {
+    starDescription.innerText = ' Great';
+  }
+};
+
+export const displayRatingDefinition = (characteristic, rating) => {
+ const characteristics = {
+   Size:{
+    0: 'none selected',
+    1: 'A size too small',
+    2: 'A half size too small',
+    3: 'Perfect',
+    4: 'A half size too large',
+    5: 'a size too large'
+  },
+   Width: {
+    0: 'none selected',
+    1: 'Too narrow',
+    2: 'slightly too narrow',
+    3: 'Perfect',
+    4: 'slighty too wide',
+    5: 'Too wide'
+  },
+   Length: {
+    0: 'none selected',
+    1: 'Runs short',
+    2: 'Runs slightly short',
+    3: 'Perfect',
+    4: 'Runs slightly long',
+    5: 'Runs long'
+  },
+   Fit: {
+    0: 'none selected',
+    1: 'fits tight',
+    2: 'fits slightly tight',
+    3: 'Perfect',
+    4: 'fits slightly loose',
+    5: 'fits loose'
+  },
+   Quality: {
+    0: 'none selected',
+    1: 'Poor',
+    2: 'Below average',
+    3: 'Average',
+    4: 'Above average',
+    5: 'Perfect'
+  },
+   Comfort: {
+    0: 'none selected',
+    1: 'Uncomfortable',
+    2: 'Slightly uncomfortable',
+    3: 'Okay',
+    4: 'Comfortable',
+    5: 'Perfect'
+  }
+ }
+ return characteristics[characteristic][rating];
+}
+
+export const closeModal = () => {
+  console.log('this will close the modal eventually');
+};
+
+export const handleSubmit = (event) => {
+  event.preventDefault();
+  console.log('this will submit');
+};
+
+export const handleChange = () => {
+  // console.log('we are trigging this');
+};
+
+export const handlePhotos = () => {
+  console.log('this will handle photo uploads');
+};
