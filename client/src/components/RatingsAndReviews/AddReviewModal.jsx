@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { reviewsContext } from '../../contexts/index.js';
-import { closeModal, handleSubmit, handleChange, handlePhotos, displayStarDescription, displayRatingDefinition } from './utils/RatingsAndReviews.utils.js';
+import { toggleModal, handleSubmit, handleChange, handlePhotos, displayStarDescription, displayRatingDefinition } from './utils/RatingsAndReviews.utils.js';
 import CharacteristicRadioButtons from './CharacteristicRadioButtons.jsx';
 
 const AddReviewModal = () => {
-  const { reviews } = useContext(reviewsContext);
+  const { reviews, modalVisibility, setModalVisibility } = useContext(reviewsContext);
   const [sizeRating, setSizeRating] = useState(0);
   const [widthRating, setWidthRating] = useState(0);
   const [lengthRating, setLengthRating] = useState(0);
@@ -18,8 +18,8 @@ const AddReviewModal = () => {
     return <div>loading...</div>;
   }
   return (
-    <div className="reviewModal" id="addReviewModal">
-      <button id="closeModal" className="closeModal" onClick={closeModal}>X</button>
+    <div className="reviewModal" id="addReviewModal" style={{ 'visibility': modalVisibility }}>
+      <button id="closeModal" className="closeModal" onClick={() => { toggleModal(modalVisibility, setModalVisibility); }}>X</button>
       <h2 id="addReviewTitle">Write your review</h2>
       <h3 id="addReviewSubtitle">About the Product</h3>
       <span className="notice">fields marked with * are required</span>

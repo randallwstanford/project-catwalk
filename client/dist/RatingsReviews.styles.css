@@ -7,6 +7,18 @@
 Review styles
 */
 
+#addReviewModal {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
+
+  border: solid 1px;
+  background-color: white;
+  z-index: 2;
+  /* visibility: hidden; */
+}
+
 #reviewList {
   grid-column-start: 2;
   grid-column-end: 3;
