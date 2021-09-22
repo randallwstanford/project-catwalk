@@ -1,5 +1,5 @@
 #product-container {
-  width: 850px;
+  width: 900px;
   margin: 0 auto;
 }
 
@@ -9,12 +9,28 @@
 
 #image-gallery {
   width: 60%;
+  position: relative;
+}
+
+#thumbnails {
+  position: absolute;
+  width: 72px;
+  top: 10px;
+  left: 10px;
 }
 
 img.photo {
   width: 500px;
-  height: 500px;
+  height: 600px;
   object-fit: cover;
+}
+
+img.thumbnail {
+ width: 70px;
+ height: 70px;
+ margin-bottom: 10px;
+ object-fit: cover;
+ border: 1px solid white;
 }
 
 #product-information {
