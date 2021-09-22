@@ -19,18 +19,6 @@ exports[`to match snapshot 1`] = `
   >
     Rating Breakdown
   </h5>
-  <span
-    id="appliedFilters"
-  >
-    Applied Filters: 
-    Five Stars Four Stars Three Stars Two Stars One Star 
-    <button
-      className="linkButtons"
-      onClick={[Function]}
-    >
-      Clear Filters
-    </button>
-  </span>
   <button
     className="linkButtons"
     id="fiveStar"
