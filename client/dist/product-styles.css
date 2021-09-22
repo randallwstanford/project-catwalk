@@ -1,10 +1,36 @@
+#product-container {
+  width: 900px;
+  margin: 0 auto;
+}
+
 .flex-container {
   display: flex;
 }
 
 #image-gallery {
   width: 60%;
-  background-color: rgb(216, 212, 212);
+  position: relative;
+}
+
+#thumbnails {
+  position: absolute;
+  width: 72px;
+  top: 10px;
+  left: 10px;
+}
+
+img.photo {
+  width: 500px;
+  height: 600px;
+  object-fit: cover;
+}
+
+img.thumbnail {
+ width: 70px;
+ height: 70px;
+ margin-bottom: 10px;
+ object-fit: cover;
+ border: 1px solid white;
 }
 
 #product-information {
@@ -12,13 +38,13 @@
 }
 
 #product-information h1 {
-  margin: 5px;
+  margin-left: 5px;
   color: #00a07b;
 }
 
 #product-information h4 {
   margin: 5px;
-  color: #d6e6e2;
+  color: #b6cfc9;
 }
 
 #product-information h6 {
@@ -27,6 +53,7 @@
 }
 
 .review-flex-container {
+  margin-top: 20px;
   display: flex;
 }
 
@@ -57,6 +84,8 @@
 
 .style-selector {
   max-width: 380px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -105,6 +134,7 @@ img.rounded {
 
 .size-quantity select {
   padding: 10px;
+  padding-right: 30px;
   margin-right: 10px;
   background-color: white;
 }
@@ -112,6 +142,7 @@ img.rounded {
 .add-to-bag-button button {
   margin: 10px;
   padding: 10px;
+  padding-right: 55px;
   border-width: 1px;
   background-color: white;
 }
