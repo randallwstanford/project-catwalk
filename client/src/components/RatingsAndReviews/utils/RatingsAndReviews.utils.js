@@ -1,4 +1,10 @@
 // Ratings Breakdown utils
+export const clearFilters = (setFiltered) => {
+  setFiltered({
+    'one': false, 'two': false, 'three': false, 'four': false, 'five': false
+  });
+};
+
 export const getReviewData = (reviews) => {
   const reviewData = {
     totalReviews: reviews.length,
