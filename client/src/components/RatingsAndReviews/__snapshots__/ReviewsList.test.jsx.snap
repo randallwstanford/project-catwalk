@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`to match snapshot 1`] = `
+<div
+  id="reviewList"
+>
+  <div>
+     
+    2
+     reviews, Sorted By Sort
+  </div>
+  <div
+    id="reviews"
+  >
+    <div
+      id="ReviewContainer"
+    >
+      <div
+        id="starRating"
+      >
+        StarRating
+      </div>
+      <div
+        id="verifiedPurchaser"
+      >
+        Verified Purchaser
+      </div>
+      <span
+        id="reviewUserName"
+      >
+        funtime
+      </span>
+      <span
+        id="reviewDate"
+      >
+        January 01, 2019
+      </span>
+      <span
+        id="reviewSummary"
+      >
+        This product was great!
+      </span>
+      <p
+        id="reviewBody"
+      >
+        I really did or did not like this product based on whether it was sustainably sourced. Then I found out that its made from nothing at all.
+      </p>
+      <span
+        id="reviewHelpful"
+      >
+        Helpful?
+        <button
+          className="helpfulnessLinks"
+          id="reviewYes"
+        >
+          Yes(
+          8
+          )
+        </button>
+        <button
+          className="helpfulnessLinks"
+          id="reviewNo"
+        >
+          No(
+          8
+          )
+        </button>
+      </span>
+      <button
+        id="reviewReport"
+      >
+        Report
+      </button>
+    </div>
+    <div
+      id="ReviewContainer"
+    >
+      <div
+        id="starRating"
+      >
+        StarRating
+      </div>
+      <div
+        id="verifiedPurchaser"
+      >
+        Verified Purchaser
+      </div>
+      <span
+        id="reviewUserName"
+      >
+        mymainstreammother
+      </span>
+      <span
+        id="reviewDate"
+      >
+        January 11, 2019
+      </span>
+      <span
+        id="reviewSummary"
+      >
+        This product was ok!
+      </span>
+      <p
+        id="reviewBody"
+      >
+        I really did not like this product solely because I am tiny and do not fit into it.
+      </p>
+      <span
+        id="reviewHelpful"
+      >
+        Helpful?
+        <button
+          className="helpfulnessLinks"
+          id="reviewYes"
+        >
+          Yes(
+          2
+          )
+        </button>
+        <button
+          className="helpfulnessLinks"
+          id="reviewNo"
+        >
+          No(
+          2
+          )
+        </button>
+      </span>
+      <button
+        id="reviewReport"
+      >
+        Report
+      </button>
+    </div>
+  </div>
+  <button>
+    Add a review +
+  </button>
+</div>
+`;
