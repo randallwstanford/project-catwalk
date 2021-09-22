@@ -13,7 +13,9 @@ export default function Photos({ photos }) {
     <div id="image-gallery">
       <div id="thumbnails">
         {photos.map(photo => (
-          <img src={photo.thumbnail_url} alt="" className="thumbnail" />
+          <div key={photo.photo_id}>
+            <img src={photo.thumbnail_url} alt="" className="thumbnail" />
+          </div>
         ))}
       </div>
       <img src={photos[0].url} alt="" className="photo" />
