@@ -12,3 +12,5 @@ client/dist/bundle.js.LICENSE.txt
 
 #ignore mac folder custom attributes
 .DS_Store
+
+coverage
