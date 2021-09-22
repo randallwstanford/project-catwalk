@@ -4,8 +4,7 @@ import React, { useContext } from 'react';
 import * as utils from './utils/AddAnswerModal.utils.js';
 import { appContext } from '../../contexts/index.js';
 
-const AddAnswerModal = () => {
-  const { product } = useContext(appContext);
+const AddAnswerModal = (product) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,12 +21,11 @@ const AddAnswerModal = () => {
     // TODO: Post to qa/questions
   };
 
-
   return (
     <div className="answer-modal" id="answer-modal">
       <button className="x" onClick={utils.toggleModal}>x</button>
       <h2>Submit your Answer</h2>
-      <h3>[{product.name}]:</h3>
+      <h3 data-testid="product_name">[{product.name}]:</h3>
       <h3>{product.description}</h3>
       <form className="main" onSubmit={handleSubmit} onChange={utils.handleChange}>
 
@@ -49,6 +47,7 @@ const AddAnswerModal = () => {
           max="60"
           name="email"
           className="email"
+          data-testid="email"
           id="email"
           placeholder="jack@email.com"
         />
@@ -61,10 +60,16 @@ const AddAnswerModal = () => {
           type="file"
           name="files"
           id="file-input"
-          onChange={utils.handlePhotos()}
+          onChange={utils.handlePhotos}
         />
         {/* ------ File Input ------ */}
-        <button type="submit" className="modal-submit" id="modal-submit">Submit</button>
+        <button
+          type="submit"
+          data-testid="submit"
+          className="modal-submit"
+          id="modal-submit"
+        >
+        Submit</button>
         {/* Render Thumbnails here */}
       </form>
     </div>
