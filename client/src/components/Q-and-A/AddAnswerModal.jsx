@@ -17,7 +17,7 @@ const AddAnswerModal = (product) => {
       'photos': [...event.target.files.files] // Files
     };
 
-    console.log(objToSend); // FORMATTING DONE
+    // console.log(objToSend); // FORMATTING DONE
     // TODO: Post to qa/questions
   };
 

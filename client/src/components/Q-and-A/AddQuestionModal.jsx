@@ -21,7 +21,7 @@ const AddQuestionModal = (product) => {
     };
     axios.post('/qa/questions/', question)
       .then((res) => console.log(res.data))
-      .catch((err) => console.log);
+      .catch((err) => console.log(err));
   };
 
 

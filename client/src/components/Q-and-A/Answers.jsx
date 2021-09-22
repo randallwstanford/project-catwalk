@@ -32,11 +32,11 @@ const Answers = ({ answers, questionId }) => {
 
 
   const handleReport = (event) => {
-    var question_id = event.target.getAttribute('class').split(' ')[0];
+    var answer_id = event.target.getAttribute('class').split(' ')[0];
+    console.log(answer_id)
     var reportElement = event.target;
     reportElement.innerText = 'Reported ✓';
     event.preventDefault();
-    // DO NOT COMMENT OUT YET WILL NOT SHOW REPORTED QUESTION
     // axios.put(`/qa/questions/${question_id}/report`)
     //   .then((res) => console.log(res.status))
     //   .catch((err) => console.log(err));
@@ -69,8 +69,9 @@ const Answers = ({ answers, questionId }) => {
               >Yes
               </a>&nbsp;
               ( {utils.checkForHelpfulness(answer)} ) |&nbsp;&nbsp;
+              {console.log(answer)}
               <a
-                className={`${questionId}`}
+                className={`${answer.id}`}
                 href=" "
                 onClick={handleReport}
               >Report

@@ -9,11 +9,6 @@ export const checkForHelpfulness = (answer) => {
   return answer.helpfulness;
 };
 
-export const handleReport = (event) => {
-  event.preventDefault();
-  console.log('hadnlign report');
-};
-
 export const handleHelpful = (event) => {
   var questionId = event.target.getAttribute('class').split(' ')[0];
   event.preventDefault();
