@@ -7,12 +7,6 @@ const RatingBreakdown = () => {
   const reviewData = utils.getReviewData(reviews);
   const filters = utils.makeFiltersLabel(filtered);
 
-  const clearFilters = () => {
-    setFiltered({
-      'one': false, 'two': false, 'three': false, 'four': false, 'five': false
-    });
-  };
-
   const showFilters = () => {
     if (filtered.five
       || filtered.four
@@ -20,7 +14,7 @@ const RatingBreakdown = () => {
       || filtered.two
       || filtered.one) {
       return (
-        <span id="appliedFilters">Applied Filters: {filters}<button className="linkButtons" onClick={clearFilters}>Clear Filters</button></span>
+        <span id="appliedFilters">Applied Filters: {filters}<button className="linkButtons" onClick={() => { utils.clearFilters(setFiltered); }}>Clear Filters</button></span>
       );
     }
     return null;
@@ -29,7 +23,7 @@ const RatingBreakdown = () => {
   if (reviews.length === 0) {
     return (
       <div>No reviews found for these filters
-        <button className="linkButtons" onClick={clearFilters}> Clear Filters
+        <button className="linkButtons" onClick={() => { utils.clearFilters(setFiltered); }}> Clear Filters
         </button>
       </div>
     );
