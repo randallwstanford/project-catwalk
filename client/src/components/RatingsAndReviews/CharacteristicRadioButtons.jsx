@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { displayRatingDefinition } from './utils/RatingsAndReviews.utils';
 
 const CharacteristicRadioButtons = ({ rating, setRating, labelName }) => {
@@ -13,5 +14,10 @@ const CharacteristicRadioButtons = ({ rating, setRating, labelName }) => {
       <input onChange={() => { setRating(5); }} type="radio" className="radioButtonSpread" value="5" checked={rating === 5}></input>
     </div>
   );
+};
+CharacteristicRadioButtons.propTypes = {
+  rating: PropTypes.number.isRequired,
+  setRating: PropTypes.func.isRequired,
+  labelName: PropTypes.string.isRequired
 };
 export default CharacteristicRadioButtons;

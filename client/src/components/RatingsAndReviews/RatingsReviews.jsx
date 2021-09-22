@@ -3,7 +3,7 @@ import axios from 'axios';
 import ReviewList from './ReviewList.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductCharacteristics from './ProductCharacteristics.jsx';
-import AddReviewModal from './AddReviewModal.jsx'
+import AddReviewModal from './AddReviewModal.jsx';
 import { reviewsContext, appContext } from '../../contexts/index.js';
 
 const RatingsReviews = () => {

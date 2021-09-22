@@ -106,70 +106,75 @@ export const getDate = (inDate) => {
 export const displayStarDescription = (rating) => {
   if (rating === 1) {
     return ' Poor';
-  } else if (rating === 2) {
+  }
+  if (rating === 2) {
     return ' Fair';
-  } else if (rating === 3) {
+  }
+  if (rating === 3) {
     return ' Average';
-  } else if (rating === 4) {
+  }
+  if (rating === 4) {
     return ' Good';
-  } else if (rating === 5) {
+  }
+  if (rating === 5) {
     return ' Great';
   }
+  return '';
 };
 
 export const displayRatingDefinition = (characteristic, rating) => {
- const characteristics = {
-   Size:{
-    0: 'none selected',
-    1: 'A size too small',
-    2: 'A half size too small',
-    3: 'Perfect',
-    4: 'A half size too large',
-    5: 'a size too large'
-  },
-   Width: {
-    0: 'none selected',
-    1: 'Too narrow',
-    2: 'slightly too narrow',
-    3: 'Perfect',
-    4: 'slighty too wide',
-    5: 'Too wide'
-  },
-   Length: {
-    0: 'none selected',
-    1: 'Runs short',
-    2: 'Runs slightly short',
-    3: 'Perfect',
-    4: 'Runs slightly long',
-    5: 'Runs long'
-  },
-   Fit: {
-    0: 'none selected',
-    1: 'fits tight',
-    2: 'fits slightly tight',
-    3: 'Perfect',
-    4: 'fits slightly loose',
-    5: 'fits loose'
-  },
-   Quality: {
-    0: 'none selected',
-    1: 'Poor',
-    2: 'Below average',
-    3: 'Average',
-    4: 'Above average',
-    5: 'Perfect'
-  },
-   Comfort: {
-    0: 'none selected',
-    1: 'Uncomfortable',
-    2: 'Slightly uncomfortable',
-    3: 'Okay',
-    4: 'Comfortable',
-    5: 'Perfect'
-  }
- }
- return characteristics[characteristic][rating];
-}
+  const characteristics = {
+    Size: {
+      0: 'none selected',
+      1: 'A size too small',
+      2: 'A half size too small',
+      3: 'Perfect',
+      4: 'A half size too large',
+      5: 'a size too large'
+    },
+    Width: {
+      0: 'none selected',
+      1: 'Too narrow',
+      2: 'slightly too narrow',
+      3: 'Perfect',
+      4: 'slighty too wide',
+      5: 'Too wide'
+    },
+    Length: {
+      0: 'none selected',
+      1: 'Runs short',
+      2: 'Runs slightly short',
+      3: 'Perfect',
+      4: 'Runs slightly long',
+      5: 'Runs long'
+    },
+    Fit: {
+      0: 'none selected',
+      1: 'fits tight',
+      2: 'fits slightly tight',
+      3: 'Perfect',
+      4: 'fits slightly loose',
+      5: 'fits loose'
+    },
+    Quality: {
+      0: 'none selected',
+      1: 'Poor',
+      2: 'Below average',
+      3: 'Average',
+      4: 'Above average',
+      5: 'Perfect'
+    },
+    Comfort: {
+      0: 'none selected',
+      1: 'Uncomfortable',
+      2: 'Slightly uncomfortable',
+      3: 'Okay',
+      4: 'Comfortable',
+      5: 'Perfect'
+    }
+  };
+  return characteristics[characteristic][rating];
+};
 
 export const closeModal = () => {
   console.log('this will close the modal eventually');

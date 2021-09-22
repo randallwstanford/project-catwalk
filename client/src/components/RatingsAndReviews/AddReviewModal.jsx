@@ -25,20 +25,20 @@ const AddReviewModal = () => {
       <span className="notice">fields marked with * are required</span>
       <form className="addReview" onSubmit={handleSubmit} onChange={handleChange}>
         <div id="overallRating">
-          <label htmlFor="overallRating">* Overall rating:</label>
-          <input onChange={() => { setOverallRating(1) }} type="radio" value="1" checked={overallRating === 1}></input>
-          <input onChange={() => { setOverallRating(2) }} type="radio" value="2" checked={overallRating === 2}></input>
-          <input onChange={() => { setOverallRating(3) }} type="radio" value="3" checked={overallRating === 3}></input>
-          <input onChange={() => { setOverallRating(4) }} type="radio" value="4" checked={overallRating === 4}></input>
-          <input onChange={() => { setOverallRating(5) }} type="radio" value="5" checked={overallRating === 5}></input>
+          <label>* Overall rating:</label>
+          <input onChange={() => { setOverallRating(1); }} type="radio" value="1" checked={overallRating === 1}></input>
+          <input onChange={() => { setOverallRating(2); }} type="radio" value="2" checked={overallRating === 2}></input>
+          <input onChange={() => { setOverallRating(3); }} type="radio" value="3" checked={overallRating === 3}></input>
+          <input onChange={() => { setOverallRating(4); }} type="radio" value="4" checked={overallRating === 4}></input>
+          <input onChange={() => { setOverallRating(5); }} type="radio" value="5" checked={overallRating === 5}></input>
           <span>{displayStarDescription(overallRating)}</span>
         </div>
         <div id="recommend">
           <label> * Do you recommend this product?</label>
           <label> Yes</label>
-          <input onChange={() => { setRecommend('yes') }}type="radio" value="yes" checked={recommend === 'yes'}></input>
+          <input onChange={() => { setRecommend('yes'); }} type="radio" value="yes" checked={recommend === 'yes'}></input>
           <label> No</label>
-          <input onChange={() => { setRecommend('no') }}type="radio" value="no" checked={recommend === 'no'}></input>
+          <input onChange={() => { setRecommend('no'); }} type="radio" value="no" checked={recommend === 'no'}></input>
         </div>
         <div id="characteristics">
           <CharacteristicRadioButtons rating={sizeRating} setRating={setSizeRating} labelName="Size" />
