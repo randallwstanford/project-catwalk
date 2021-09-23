@@ -16,7 +16,7 @@ const Answers = ({ answers, questionId }) => {
   }
 
   const loadMoreAnswers = (event) => {
-    var question_Id = document.getElementsByClassName(questionId)[0].getAttribute('class').split(' ')[0];
+    var question_Id = event.target.parentNode.parentNode.getAttribute('class').split(' ')[0];
     var loadButon = document.getElementsByClassName(`${question_Id} answer`)[0];
     var copmutedStyle = parseInt(window.getComputedStyle(loadButon).height.split('px')[0], 10);
 
@@ -30,21 +30,20 @@ const Answers = ({ answers, questionId }) => {
     }
   };
 
-
   const handleReport = (event) => {
+    const reportElement = event.target;
     var answer_id = event.target.getAttribute('class').split(' ')[0];
-    console.log(answer_id)
-    var reportElement = event.target;
     reportElement.innerText = 'Reported ✓';
     event.preventDefault();
-    // axios.put(`/qa/questions/${question_id}/report`)
-    //   .then((res) => console.log(res.status))
-    //   .catch((err) => console.log(err));
+    axios.put(`/qa/questions/${answer_id}/report`)
+      .then((res) => console.log(res.status))
+      .catch((err) => console.log(err));
   };
 
   const handleHelpfulAnswer = (event) => {
     // Getting response 200 for put request but not incrementing answer
     var answerId = event.target.getAttribute('class').split(' ')[0];
+    event.preventDefault();
     axios.put(`/qa/questions/${answerId}/helpful`)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
@@ -69,7 +68,6 @@ const Answers = ({ answers, questionId }) => {
               >Yes
               </a>&nbsp;
               ( {utils.checkForHelpfulness(answer)} ) |&nbsp;&nbsp;
-              {console.log(answer)}
               <a
                 className={`${answer.id}`}
                 href=" "
