@@ -2,10 +2,8 @@
 
 .container {
   margin: 0 auto;
-  width: 850px;
-  border: 5px solid gray;
+  width: 75%;
   padding: 15px;
-  height: 1100px;
   z-index: 0;
 }
 
@@ -37,6 +35,7 @@
   margin: 0 auto;
   height: 48.5px;
   width: 50px;
+
   box-sizing: border-box;
   background-image: url("./resources/search.svg");
   background-position: center; /* Center the image */
@@ -70,7 +69,7 @@
   position: relative;
   overflow: hidden;
   overflow-x: hidden;
-  height: 900px;
+  height: 800px;
 }
 
 .load-more-answers {
@@ -79,6 +78,7 @@
   padding: 10px;
   background: #f2f2f2;
   border: hidden;
+  box-shadow: rgb(212, 212, 212) 5px 5px 10px;
   margin-right: 50px;
   width: 25%;
   display: block;
@@ -88,6 +88,8 @@
 .yes-button, .add-answer {
   padding: 10px;
   color: #555555;
+  box-shadow: rgb(212, 212, 212) 5px 5px 15px;
+  margin-right: 20px;
   background: #f2f2f2;
   border: hidden;
 }
@@ -98,6 +100,7 @@
   background: #f2f2f2;
   border: hidden;
   margin-right: 50px;
+  box-shadow: rgb(153, 153, 153) 5px 5px 10px;
 }
 
 .more-question-wrapper {
