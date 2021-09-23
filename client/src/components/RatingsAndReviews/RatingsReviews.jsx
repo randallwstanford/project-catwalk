@@ -13,6 +13,7 @@ const RatingsReviews = () => {
   const [filtered, setFiltered] = useState({
     'one': false, 'two': false, 'three': false, 'four': false, 'five': false
   });
+  const [modalVisibility, setModalVisibility] = useState('hidden');
   const { product } = useContext(appContext);
 
   // useEffect(() => {
@@ -66,7 +67,9 @@ const RatingsReviews = () => {
       reviews,
       filtered,
       setFiltered,
-      reviewsMeta
+      reviewsMeta,
+      modalVisibility,
+      setModalVisibility
     }}
     >
       <div id="RRcontainer">
