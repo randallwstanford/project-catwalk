@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`to match snapshot 1`] = `
+<div
+  id="RatingsBreakdown"
+>
+  <div
+    id="RBStars"
+  >
+    Rating Stars
+  </div>
+  <div
+    id="RBRating"
+  >
+    4.5
+  </div>
+  <h5
+    id="RatingBreakdown"
+  >
+    Rating Breakdown
+  </h5>
+  <button
+    className="linkButtons"
+    id="fiveStar"
+    onClick={[Function]}
+  >
+    5 stars
+  </button>
+  <div
+    className="borderBar"
+    id="fiveStarBar"
+  >
+    <div
+      className="BarFill"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+  <div
+    id="fiveStarCount"
+  >
+    1
+  </div>
+  <button
+    className="linkButtons"
+    id="fourStar"
+    onClick={[Function]}
+  >
+    4 stars
+  </button>
+  <div
+    className="borderBar"
+    id="fourStarBar"
+  >
+    <div
+      className="BarFill"
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </div>
+  <div
+    id="fourStarCount"
+  >
+    1
+  </div>
+  <button
+    className="linkButtons"
+    id="threeStar"
+    onClick={[Function]}
+  >
+    3 stars
+  </button>
+  <div
+    className="borderBar"
+    id="threeStarBar"
+  >
+    <div
+      className="BarFill"
+      style={
+        Object {
+          "width": "0%",
+        }
+      }
+    />
+  </div>
+  <div
+    id="threeStarCount"
+  >
+    0
+  </div>
+  <button
+    className="linkButtons"
+    id="twoStar"
+    onClick={[Function]}
+  >
+    2 stars
+  </button>
+  <div
+    className="borderBar"
+    id="twoStarBar"
+  >
+    <div
+      className="BarFill"
+      style={
+        Object {
+          "width": "0%",
+        }
+      }
+    />
+  </div>
+  <div
+    id="twoStarCount"
+  >
+    0
+  </div>
+  <button
+    className="linkButtons"
+    id="oneStar"
+    onClick={[Function]}
+  >
+    1 star
+  </button>
+  <div
+    className="borderBar"
+    id="oneStarBar"
+  >
+    <div
+      className="BarFill"
+      style={
+        Object {
+          "width": "0%",
+        }
+      }
+    />
+  </div>
+  <div
+    id="oneStarCount"
+  >
+    0
+  </div>
+  <div
+    id="PercentReccomend"
+  >
+    50.0% of reviews reccomended this product
+  </div>
+</div>
+`;
