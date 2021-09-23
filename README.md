@@ -8,21 +8,21 @@ This project is a mock redesign of an e-commerce single page application.
 
 Some features we're implemented: 
 
-  - <b>Product Details</b>
+  - <b> Product Details 🪄 </b>
       - Interactive carousel.
       - Different styles to select and navigate.
       - Star rating feature. 
       - Add product to bag. 
       - Dynamic rendering of photos, prices, quantity, and size of selected style.
       
-  - <b>Questions and Answers</b>
+  - <b> Questions and Answers  🚀 </b>
       - Dynamically rendered questions and answers per selected product.
       - Adding a question or answer feauture.
       - Load more questions feauture.
       - Ability to report question or answer.
       - Ability to mark a question or answer as helpful.
       
-   - <b>Ratings and Reviews</b>
+   - <b>Ratings and Reviews  🎯  </b>
       - Dynamically rendered ratings and reviews per selected product.
       - Write a new review for the selected product feauture.
       - Check out the review breakdown of the product with an average star rating, product characteristics
