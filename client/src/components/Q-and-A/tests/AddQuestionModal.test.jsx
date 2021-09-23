@@ -6,7 +6,7 @@ import {
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import AddQuestionModal from './AddQuestionModal.jsx';
+import AddQuestionModal from '../AddQuestionModal.jsx';
 import data from './productData.json';
 
 test('has product name in div', () => {
