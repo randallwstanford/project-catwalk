@@ -187,11 +187,10 @@ export const toggleModal = (visibility, setVisibility) => {
 
 export const handleSubmit = (event) => {
   event.preventDefault();
-  console.log('this will submit');
 };
 
 export const handleChange = () => {
-  // console.log('we are trigging this');
+
 };
 
 export const handlePhotos = () => {

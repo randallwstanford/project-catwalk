@@ -15,3 +15,6 @@ coverage
 
 #ignore mac folder custom attributes
 .DS_Store
+
+#ignore snapshots folder
+__snapshots__
