@@ -25,8 +25,8 @@ export default function App() {
   return (
     <appContext.Provider value={{ product }}>
       <div>
-        {/* <Product /> */}
-        {/* <QandA /> */}
+        <Product />
+        <QandA />
         <RatingsReviews />
       </div>
     </appContext.Provider>
