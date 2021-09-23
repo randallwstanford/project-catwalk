@@ -14,15 +14,8 @@ const RatingsReviews = () => {
     'one': false, 'two': false, 'three': false, 'four': false, 'five': false
   });
   const [modalVisibility, setModalVisibility] = useState('hidden');
+  const [sort, setSort] = useState('relevant')
   const { product } = useContext(appContext);
-
-  // useEffect(() => {
-  //   setReviews(testData);
-  //   setAllReviews(testData);
-  //   setFiltered({
-  //     'one': false, 'two': false, 'three': false, 'four': false, 'five': false
-  //   });
-  // }, []);
 
   useEffect(() => {
     const filteredReviews = [];
@@ -44,7 +37,16 @@ const RatingsReviews = () => {
   }, [filtered]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/reviews?product_id=${product.id}`)
+    axios.get(`http://localhost:3000/reviews?product_id=${product.id}&sort=${sort}`)
+      .then((response) => {
+        setReviews(response.data.results);
+        setAllReviews(response.data.results);
+      })
+      .catch((error) => console.log(error));
+  }, [sort]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/reviews?product_id=${product.id}&sort=${sort}`)
       .then((response) => {
         setReviews(response.data.results);
         setAllReviews(response.data.results);
@@ -69,7 +71,9 @@ const RatingsReviews = () => {
       setFiltered,
       reviewsMeta,
       modalVisibility,
-      setModalVisibility
+      setModalVisibility,
+      sort,
+      setSort
     }}
     >
       <div id="RRcontainer">
