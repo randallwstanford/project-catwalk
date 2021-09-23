@@ -1,33 +1,40 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import * as utils from './utils/AddAnswerModal.utils.js';
 import { appContext } from '../../contexts/index.js';
 
-const AddAnswerModal = (product) => {
 
+const AddAnswerModal = ({ product, question }) => {
   const handleSubmit = (event) => {
+    console.log(event.target.parentNode.parentNode);
+    console.log(question);
+    // ALL I NEED IS QUESTION ID
     event.preventDefault();
-
-    const objToSend = {
-      'product_id': product.id,
+    const answer = {
+      'question_id': question.id,
       'email': event.target.email.value, // Email
       'body': event.target.username.value, // Username
       'name': event.target.answerText.value, // Answer Body
       'photos': [...event.target.files.files] // Files
     };
 
-    console.log(objToSend); // FORMATTING DONE
-    // TODO: Post to qa/questions
+    // axios.post('/qa/questions', answer)
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log(err));
   };
 
+
+
   return (
-    <div className="answer-modal" id="answer-modal">
+    <div className={`answer-modal ${question}`} id="answer-modal">
       <button className="x" onClick={utils.toggleModal}>x</button>
       <h2>Submit your Answer</h2>
       <h3 data-testid="product_name">[{product.name}]:</h3>
       <h3>{product.description}</h3>
-      <form className="main" onSubmit={handleSubmit} onChange={utils.handleChange}>
+      <form className={`main ${question}`} onSubmit={handleSubmit} onChange={utils.handleChange}>
 
         {/* ------ Username ------ */}
         Username **
@@ -68,12 +75,19 @@ const AddAnswerModal = (product) => {
           data-testid="submit"
           className="modal-submit"
           id="modal-submit"
+          // disabled="disabled"
         >
-        Submit</button>
+          Submit
+        </button>
         {/* Render Thumbnails here */}
       </form>
     </div>
   );
+};
+
+AddAnswerModal.propTypes = {
+  product: PropTypes.object.isRequired,
+  question: PropTypes.object.isRequired
 };
 
 export default AddAnswerModal;
