@@ -1,16 +1,16 @@
 import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
 import StyleSelector from './StyleSelector.jsx';
 import StylePrice from './StylePrice.jsx';
 import SizeSelector from './SizeSelector.jsx';
 import Photos from './Photos.jsx';
+import Description from './Description.jsx';
 import { appContext } from '../../contexts/index.js';
 
 export default function Product() {
   var app = useContext(appContext);
   var [currentStyle, setCurrentStyle] = useState({});
-  console.log(currentStyle);
+  // console.log(currentStyle);
+  console.log(app.product);
 
   return (
     <div id="product-container">
@@ -25,14 +25,10 @@ export default function Product() {
               <span id="star">★</span>
               <span id="star">★</span>
             </span>
-            <span>
-              <h6>Read all reviews</h6>
-            </span>
+            <span><h6>Read all reviews</h6></span>
           </div>
           <div>
             <h4>{app.product.category}</h4>
-          </div>
-          <div>
             <h1>{app.product.name}</h1>
           </div>
           <StylePrice
@@ -42,14 +38,10 @@ export default function Product() {
           <div id="style-name"><span className="bold-text">STYLE &gt;</span> {currentStyle.name}</div>
           <StyleSelector setCurrentStyle={setCurrentStyle} currentStyleId={currentStyle.style_id} />
           <SizeSelector key={currentStyle.style_id} sizes={currentStyle.skus} />
-          <div className="add-to-bag-button">
-            <button>ADD TO BAG</button>
-          </div>
+          <div className="add-to-bag-button"><button>ADD TO BAG</button></div>
         </div>
       </div>
-      <div id="product-overview">
-        {app.product.description}
-      </div>
+      <Description product={app.product} />
     </div>
   );
 }

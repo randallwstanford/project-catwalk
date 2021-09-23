@@ -156,7 +156,18 @@ img.rounded {
   background-color: white;
 }
 
-#product-overview {
-  margin: 0 10%;
-  padding: 20px;
+.product-description-container {
+  display: flex;
+}
+
+#product-description {
+  padding: 30px;
+}
+
+#product-features {
+  border-left: 2px solid black;
+  height: 10%;
+  width: 50%;
+  margin: 2%;
+  padding: 55px 15px;
 }
