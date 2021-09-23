@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // Ratings Breakdown utils
 export const clearFilters = (setFiltered) => {
   setFiltered({
@@ -106,6 +108,16 @@ export const getDate = (inDate) => {
   const month = months[inDate.slice(5, 7)];
   const year = inDate.slice(0, 4);
   return `${month} ${day}, ${year}`;
+};
+
+export const handleReport = (event, reviewId) => {
+  event.preventDefault();
+  console.log('reported');
+  axios.put(`http://localhost:3000/reviews/${reviewId}/report`)
+  .then((response) => {
+    // console.log(response)
+  })
+  .catch((error) => console.log(error))
 };
 
 // modal utils

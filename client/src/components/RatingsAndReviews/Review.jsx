@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getDate } from './utils/RatingsAndReviews.utils.js';
+import { getDate, handleReport } from './utils/RatingsAndReviews.utils.js';
 
 const Review = (props) => {
   const { review } = props;
@@ -16,7 +16,7 @@ const Review = (props) => {
       <span id="reviewHelpful">Helpful?
         <button className="linkButtons" id="reviewYes">Yes({review.helpfulness})</button>
       </span>
-      <button className="linkButtons" id="reviewReport">Report</button>
+      <button className="linkButtons" id="reviewReport" onClick={() => { handleReport(event, review.review_id); }}>Report</button>
     </div>
   );
 };
