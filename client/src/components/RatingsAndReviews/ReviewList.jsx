@@ -4,7 +4,7 @@ import { reviewsContext } from '../../contexts/index.js';
 import { toggleModal } from './utils/RatingsAndReviews.utils.js';
 
 const ReviewList = () => {
-  const { reviews } = useContext(reviewsContext);
+  const { reviews, modalVisibility, setModalVisibility } = useContext(reviewsContext);
   const [loadedReviews, setLoadedReviews] = useState(2);
 
   const moreReviews = () => {
@@ -34,7 +34,7 @@ const ReviewList = () => {
       </div>
       {moreReviews()}
       <button
-        onClick={() => { toggleModal(context.modalVisibility, context.setModalVisibility); }}
+        onClick={() => { toggleModal(modalVisibility, setModalVisibility); }}
       >Add a review +
       </button>
     </div>
