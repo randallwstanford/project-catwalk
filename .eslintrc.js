@@ -4,8 +4,10 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    jest: true,
   },
   extends: [
+    'plugin:jest-dom/recommended',
     'plugin:react/recommended',
     'airbnb',
   ],
@@ -18,6 +20,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'jest-dom'
   ],
   rules: {
     "quote-props": "off",
@@ -41,7 +44,8 @@ module.exports = {
     "react/self-closing-comp": "off",
     "jsx-a11y/control-has-associated-label": "off",
     "no-plusplus": "off",
-    "object-property-newline": "off"
+    "object-property-newline": "off",
+    "react/forbid-prop-types": "off"
   },
 };
 

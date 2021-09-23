@@ -1,15 +1,40 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
-import React from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import * as utils from './utils/AddAnswerModal.utils.js';
+import { appContext } from '../../contexts/index.js';
 
-const AddAnswerModal = () => {
+
+const AddAnswerModal = ({ product, question }) => {
+  const handleSubmit = (event) => {
+    console.log(event.target.parentNode.parentNode);
+    console.log(question);
+    // ALL I NEED IS QUESTION ID
+    event.preventDefault();
+    const answer = {
+      'question_id': question.id,
+      'email': event.target.email.value, // Email
+      'body': event.target.username.value, // Username
+      'name': event.target.answerText.value, // Answer Body
+      'photos': [...event.target.files.files] // Files
+    };
+
+    // axios.post('/qa/questions', answer)
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log(err));
+  };
+
+
+
   return (
-    <div className="answer-modal" id="answer-modal">
-      <button className="x" onClick={utils.toggleModal} onChange={utils.toggleModal}>x</button>
+    <div className={`answer-modal ${question}`} id="answer-modal">
+      <button className="x" onClick={utils.toggleModal}>x</button>
       <h2>Submit your Answer</h2>
-      <h3>[Product Name]: [Product Body]</h3>
-      <form className="main" onSubmit={utils.handleSubmit} onChange={utils.handleChange}>
+      <h3 data-testid="product_name">[{product.name}]:</h3>
+      <h3>{product.description}</h3>
+      <form className={`main ${question}`} onSubmit={handleSubmit} onChange={utils.handleChange}>
 
         {/* ------ Username ------ */}
         Username **
@@ -29,6 +54,7 @@ const AddAnswerModal = () => {
           max="60"
           name="email"
           className="email"
+          data-testid="email"
           id="email"
           placeholder="jack@email.com"
         />
@@ -41,13 +67,27 @@ const AddAnswerModal = () => {
           type="file"
           name="files"
           id="file-input"
-          onChange={utils.handlePhotos()}
+          onChange={utils.handlePhotos}
         />
+        {/* ------ File Input ------ */}
+        <button
+          type="submit"
+          data-testid="submit"
+          className="modal-submit"
+          id="modal-submit"
+          // disabled="disabled"
+        >
+          Submit
+        </button>
         {/* Render Thumbnails here */}
-        <button type="submit" className="modal-submit" id="modal-submit">Submit</button>
       </form>
     </div>
   );
+};
+
+AddAnswerModal.propTypes = {
+  product: PropTypes.object.isRequired,
+  question: PropTypes.object.isRequired
 };
 
 export default AddAnswerModal;

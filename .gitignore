@@ -7,5 +7,13 @@ config
 #ignore bundle
 bundle.js
 
-#ignore bundle txt
-client/dist/bundle.js.LICENSE.txt
+#ignore snapshots
+client/src/components/Q-and-A/__snapshots__
+
+#ignore coverage
+coverage
+
+#ignore mac folder custom attributes
+.DS_Store
+
+coverage

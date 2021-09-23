@@ -5,9 +5,9 @@
   height: 600px;
   position: absolute;
   box-shadow: 0 0 10px black;
-  left: 360px;
+  left: 50px;
   background-color: white;
-  z-index: 2;
+  z-index: 3;
   padding: 10px;
   text-align: center;
   visibility: hidden;
@@ -17,12 +17,12 @@
   border: 5px solid gray;
   border-radius: 10px;
   width: 700px;
-  height: 600px;
+  height: 700px;
   position: absolute;
   box-shadow: 0 0 10px black;
-  left: 360px;
+  left: 50px;
   background-color: white;
-  z-index: 2;
+  z-index: 3;
   padding: 10px;
   text-align: center;
   visibility: hidden;
@@ -59,6 +59,7 @@
   word-wrap: normal;
   margin-bottom: 10px;
 }
+
 
 .modal-submit {
   padding: 10px;

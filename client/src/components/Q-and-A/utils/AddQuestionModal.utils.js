@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-expressions */
+import axios from 'axios';
+
 export const emailValidation = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 export const toggleModal = (event) => {
@@ -9,6 +11,8 @@ export const handleChange = (event) => {
   const email = document.getElementById('email');
   const modalButton = document.getElementById('modal-submit');
   const inputFiles = document.getElementById('file-input');
+  const textArea = document.getElementsByClassName('add-answer-input');
+  const username = document.getElementsByClassName('username');
 
   // Validate that there are no more than 5 files uploaded
   inputFiles.files.length <= 5
@@ -18,22 +22,6 @@ export const handleChange = (event) => {
   emailValidation.test(email.value)
     ? modalButton.disabled = false
     : modalButton.disabled = true; email.style.border = '2px solid red';
-};
-
-export const handleSubmit = (event) => {
-  event.preventDefault();
-  const email = event.target.email.value;
-  const answerer_name = event.target.username.value;
-  const answer_body = event.target.answerText.value;
-
-  const objToSend = {
-    'email': email,
-    'answer_body': answer_body,
-    'answerer_name': answerer_name,
-    'photos': [...event.target.files.files]
-  };
-  console.log(objToSend); // FORMATTING DONE
-  // TODO: Post to qa/questions
 };
 
 export const handlePhotos = () => {

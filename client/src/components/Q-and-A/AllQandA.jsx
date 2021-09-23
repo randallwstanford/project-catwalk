@@ -1,48 +1,45 @@
+/* eslint-disable vars-on-top */
 /* eslint-disable max-len */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import * as utils from './utils/AllQandA.utils.js';
+import AddQuestionModal from './AddQuestionModal.jsx';
+import AddAnswerModal from './AddAnswerModal.jsx';
 import { appContext } from '../../contexts/index.js';
 import Answers from './Answers.jsx';
 
-const AllQandA = () => {
-  const { product } = useContext(appContext);
-  const [questions, setQuestion] = useState([]);
-
-  useEffect(() => {
-    axios.get(`/qa/questions/?product_id=${product.id}`)
-      .then((res) => {
-        // sort greatest to least in helpfulness
-        setQuestion((res.data.results).sort((a, b) => b.question_helpfulness - a.question_helpfulness));
-      })
+const AllQandA = ({ questions, product }) => {
+  const handleReport = (event) => {
+    const reportElement = event.target;
+    var question_id = event.target.parentNode.getAttribute('class').split(' ')[1];
+    reportElement.innerText = 'Reported ✓';
+    event.preventDefault();
+    axios.put(`/qa/questions/${question_id}/report`)
+      .then((res) => console.log(res.status))
       .catch((err) => console.log(err));
-  }, []);
+  };
 
   return (
     questions.map((question, index) => {
       return (
-        <div className="qa-container" key={index}>
-          <div className="question"><b>Q:</b> {question.question_body}
-            <div className="helpful">Helpful?&nbsp;
-              <button className="yes-button">Yes</button>( {question.question_helpfulness} )
-              <button className="add-answer" onClick={utils.openAnswerModal}>Add Answer</button>
+        <div key={index}>
+          <AddQuestionModal product={product} />
+          <div className={`qa-container ${question.question_id}`}>
+            {console.log(question)}
+            <AddAnswerModal product={product} question={question} />
+            <div className="question" title="question"><b>Q:</b>{question.question_body}
+              <div className="helpful"> &nbsp;Helpful?&nbsp;
+                <a href=" " onClick={utils.handleHelpful}>Yes</a>&nbsp;( {question.question_helpfulness} )&nbsp;
+                <a className="report" href=" " onClick={handleReport}>&nbsp;Report</a>&nbsp;&nbsp;
+                <button className={`add-answer ${question.question_id}`} onClick={() => utils.openAnswerModal(question.question_id)}>Add Answer</button>
+              </div>
             </div>
-          </div>
-          <div className="answer"><b>A:</b>
-            {/* ------------- Answers Text ------------- */}
-            <span>
-              <Answers answers={question.answers} />
-              {/* <Answers answer={question.answers[Object.keys(question.answers)[0]]} />
-              <Answers answer={question.answers[Object.keys(question.answers)[1]]} /> */}
-              {/* <button className="load-more-answers" onClick={utils.loadMoreAnswers}>Load More Answers</button> */}
-            </span>
-          </div>
-          {/* ------------- Date -------------*/}
-          <div>&nbsp;<b>Date:</b> {utils.formatDate(question.question_date)}</div>
-          <div>&nbsp;Helpful?
-            <button className="yes-button" onClick={() => console.log('incremenet dis')}> Yes </button>
-            ( {utils.checkForHelpfulness(question.answers[Object.keys(question.answers)[0]])} )
-            | Report
+            <div className={`${question.question_id} answer`}><b>A:</b>
+              {/* ------------- Answers Text ------------- */}
+              <Answers answers={question.answers} questionId={question.question_id} />
+            </div>
+            {/* ------------- Date -------------*/}
+            <div>&nbsp;<b>Date:</b>&nbsp;{utils.formatDate(question.question_date)}</div>
           </div>
         </div>
       );
