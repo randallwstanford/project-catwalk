@@ -22,7 +22,12 @@ export default function Photos({ photos }) {
     <div id="image-gallery">
       <div id="thumbnails">
         {photos.map(photo => (
-          <div key={photo.url} onClick={() => setMainImage(photo.url)} aria-hidden="true">
+          <div
+            key={photo.url}
+            onClick={() => setMainImage(photo.url)}
+            aria-hidden="true"
+            className={photo.url === mainImage && 'selected'}
+          >
             <img src={photo.thumbnail_url} alt="" className="thumbnail" />
           </div>
         ))}

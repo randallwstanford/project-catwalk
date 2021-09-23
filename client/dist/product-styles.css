@@ -19,6 +19,16 @@
   left: 10px;
 }
 
+#thumbnails div {
+  margin-bottom: 10px;
+}
+
+#thumbnails .selected {
+  border-bottom: 4px solid white;
+  padding-bottom: 2px;
+  margin-bottom: 4px;
+}
+
 img.photo {
   width: 500px;
   height: 600px;
@@ -28,7 +38,6 @@ img.photo {
 img.thumbnail {
  width: 70px;
  height: 70px;
- margin-bottom: 10px;
  object-fit: cover;
  border: 1px solid white;
 }
