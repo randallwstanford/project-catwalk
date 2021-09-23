@@ -182,17 +182,21 @@ export const displayRatingDefinition = (characteristic, rating) => {
   return characteristics[characteristic][rating];
 };
 
-export const closeModal = () => {
-  console.log('this will close the modal eventually');
+export const toggleModal = (visibility, setVisibility) => {
+  if (visibility === 'hidden') {
+    setVisibility('visible');
+  }
+  if (visibility === 'visible') {
+    setVisibility('hidden');
+  }
 };
 
 export const handleSubmit = (event) => {
   event.preventDefault();
-  console.log('this will submit');
 };
 
 export const handleChange = () => {
-  // console.log('we are trigging this');
+
 };
 
 export const handlePhotos = () => {

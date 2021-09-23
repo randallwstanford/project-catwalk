@@ -14,10 +14,9 @@ const Review = (props) => {
       <span id="reviewSummary">{review.summary}</span>
       <p id="reviewBody">{review.body}</p>
       <span id="reviewHelpful">Helpful?
-        <button className="helpfulnessLinks" id="reviewYes">Yes({review.helpfulness})</button>
-        <button className="helpfulnessLinks" id="reviewNo">No({review.helpfulness})</button>
+        <button className="linkButtons" id="reviewYes">Yes({review.helpfulness})</button>
       </span>
-      <button id="reviewReport">Report</button>
+      <button className="linkButtons" id="reviewReport">Report</button>
     </div>
   );
 };

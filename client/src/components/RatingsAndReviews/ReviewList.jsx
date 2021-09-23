@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import Review from './Review.jsx';
 import { reviewsContext } from '../../contexts/index.js';
+import { toggleModal } from './utils/RatingsAndReviews.utils.js';
 
 const ReviewList = () => {
-  const { reviews } = useContext(reviewsContext);
+  const { reviews, modalVisibility, setModalVisibility, sort, setSort } = useContext(reviewsContext);
   const [loadedReviews, setLoadedReviews] = useState(2);
 
   const moreReviews = () => {
@@ -15,7 +16,13 @@ const ReviewList = () => {
 
   const anyReviews = () => {
     if (reviews.length > 0) {
-      return <div> {reviews.length} reviews, Sorted By Sort</div>;
+      return <div>
+        {reviews.length} reviews, Sorted By <select onChange={() => {setSort(event.target.value)}}>
+          <option value="relevant">relevance</option>
+          <option value="helpful">helpfulness</option>
+          <option value="newest">newest</option>
+        </select>
+        </div>;
     }
     return null;
   };
@@ -32,7 +39,10 @@ const ReviewList = () => {
         ))}
       </div>
       {moreReviews()}
-      <button>Add a review +</button>
+      <button
+        onClick={() => { toggleModal(modalVisibility, setModalVisibility); }}
+      >Add a review +
+      </button>
     </div>
   );
 };
