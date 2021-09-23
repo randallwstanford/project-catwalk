@@ -4,7 +4,6 @@ import React, { useContext } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import * as utils from './utils/AddQuestionModal.utils.js';
-import { appContext } from '../../contexts/index.js';
 
 const AddQuestionModal = ({ product }) => {
   const handleSubmit = (event) => {

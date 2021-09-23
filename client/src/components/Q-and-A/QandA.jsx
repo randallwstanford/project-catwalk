@@ -5,12 +5,12 @@
 /* eslint-disable array-callback-return */
 
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
 import AddQuestionModal from './AddQuestionModal.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 import AllQandA from './AllQandA.jsx';
-import { appContext } from '../../contexts/index.js';
+import axios from 'axios';
 import * as utils from './utils/QandA.utils.js';
+import { appContext } from '../../contexts/index.js';
 
 const QandA = () => {
   const { product } = useContext(appContext);
@@ -30,17 +30,6 @@ const QandA = () => {
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => { getData(); }, []);
-
-  useEffect(() => {
-    // Type at least 3 letters before search fires off
-    if (searchTerm <= 3) { getData(); }
-    const results = questions.filter((question) => {
-      return question.question_body.toLowerCase().includes(searchTerm.toLowerCase());
-    });
-    setQuestions(results);
-  }, [searchTerm]);
-
   const checkForAnsweredQuestions = () => {
     axios.get(`/qa/questions/?product_id=${product.id}`)
       .then((res) => {
@@ -51,11 +40,18 @@ const QandA = () => {
       .catch((err) => console.log(err));
   };
 
+  useEffect(() => { getData(); }, []);
+
+  useEffect(() => {
+    if (searchTerm <= 3) { getData(); }
+    const results = questions.filter((question) => {
+      return question.question_body.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    setQuestions(results);
+  }, [searchTerm]);
 
   return (
     <div className="container" id="container">
-      <AddQuestionModal product={product} />
-      <AddAnswerModal product={product} />
       <div className="qanda">Questions and Answers</div>
       <div className="input-and-button">
         <form>

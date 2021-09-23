@@ -3,12 +3,13 @@ node_modules
 
 #ignore config
 config
+config/config.js
 
 #ignore bundle
 bundle.js
 
 #ignore snapshots
-client/src/components/Q-and-A/__snapshots__
+client/src/components/Q-and-A/tests/__snapshots__
 client/src/components/RatingsAndReviews/__snapshots__
 
 #ignore coverage

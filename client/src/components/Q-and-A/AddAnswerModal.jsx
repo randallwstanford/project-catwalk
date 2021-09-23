@@ -9,21 +9,19 @@ import { appContext } from '../../contexts/index.js';
 
 const AddAnswerModal = ({ product, question }) => {
   const handleSubmit = (event) => {
-    console.log(event.target.parentNode.parentNode);
-    console.log(question);
-    // ALL I NEED IS QUESTION ID
     event.preventDefault();
+    var questionID = parseInt(sessionStorage.getItem('questionId'));
+
     const answer = {
-      'question_id': question.id,
-      'email': event.target.email.value, // Email
       'body': event.target.username.value, // Username
       'name': event.target.answerText.value, // Answer Body
+      'email': event.target.email.value, // Email
       'photos': [...event.target.files.files] // Files
     };
 
-    // axios.post('/qa/questions', answer)
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
+    axios.post(`/qa/questions/${questionID}/answers`, answer)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
 
@@ -61,7 +59,14 @@ const AddAnswerModal = ({ product, question }) => {
         <div>- For authentication reasons, you will not be emailed -</div>
 
         {/* ------ Text Area ------ */}
-        <textarea type="text" maxLength="1000" name="answerText" className="add-answer-input" placeholder="enter question here"></textarea>
+        <textarea
+          type="text"
+          maxLength="1000"
+          name="answerText"
+          className="add-answer-input"
+          placeholder="enter question here">
+        </textarea>
+        {/* ------ File Input ------ */}
         <input
           multiple
           type="file"
@@ -69,7 +74,7 @@ const AddAnswerModal = ({ product, question }) => {
           id="file-input"
           onChange={utils.handlePhotos}
         />
-        {/* ------ File Input ------ */}
+         {/* ------ Submit Button ------ */}
         <button
           type="submit"
           data-testid="submit"

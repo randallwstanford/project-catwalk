@@ -3,9 +3,7 @@ import axios from 'axios';
 
 export const emailValidation = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-export const toggleModal = (event) => {
-  document.getElementById('question-modal').style.visibility = 'hidden';
-};
+export const toggleModal = (event) => { document.getElementById('question-modal').style.visibility = 'hidden'; };
 
 export const handleChange = (event) => {
   const email = document.getElementById('email');
