@@ -2,17 +2,16 @@
 /* eslint-disable no-unused-expressions */
 import React, { useContext } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import * as utils from './utils/AddQuestionModal.utils.js';
 import { appContext } from '../../contexts/index.js';
 
-const AddQuestionModal = (product) => {
-
+const AddQuestionModal = ({ product }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const answerer_name = event.target.username.value;
     const answer_body = event.target.answerText.value;
-
     const question = {
       'product_id': product.id,
       'body': answer_body,
@@ -21,7 +20,7 @@ const AddQuestionModal = (product) => {
     };
     axios.post('/qa/questions/', question)
       .then((res) => console.log(res.data))
-      .catch((err) => console.log);
+      .catch((err) => console.log(err));
   };
 
 
@@ -78,12 +77,17 @@ const AddQuestionModal = (product) => {
           data-testid="submit"
           className="modal-submit"
           id="modal-submit"
+          // disabled="disabled"
         >
-        Submit
+          Submit
         </button>
       </form>
     </div>
   );
+};
+
+AddQuestionModal.propTypes = {
+  product: PropTypes.object.isRequired
 };
 
 export default AddQuestionModal;

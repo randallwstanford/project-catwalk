@@ -9,11 +9,10 @@ bundle.js
 
 #ignore snapshots
 client/src/components/Q-and-A/__snapshots__
+client/src/components/RatingsAndReviews/__snapshots__
 
 #ignore coverage
 coverage
 
 #ignore mac folder custom attributes
 .DS_Store
-
-coverage

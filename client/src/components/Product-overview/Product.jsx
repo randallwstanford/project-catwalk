@@ -9,8 +9,6 @@ import { appContext } from '../../contexts/index.js';
 export default function Product() {
   var app = useContext(appContext);
   var [currentStyle, setCurrentStyle] = useState({});
-  // console.log(currentStyle);
-  console.log(app.product);
 
   return (
     <div id="product-container">

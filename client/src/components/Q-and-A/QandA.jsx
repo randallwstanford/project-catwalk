@@ -68,7 +68,7 @@ const QandA = () => {
           />
         </form>
       </div>
-      <div className="q-wrapper"><AllQandA questions={questions} /></div>
+      <div className="q-wrapper"><AllQandA questions={questions} product={product} /></div>
       <div className="more-question-wrapper">{checkForAnsweredQuestions()}
         <button className="more-answered-questions" onClick={utils.showMoreQuestions}>More Answered Questions</button>
         <button className="add-question" onClick={utils.openQuestionModal}>Add a Question</button>

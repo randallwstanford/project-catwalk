@@ -11,6 +11,8 @@ export const handleChange = (event) => {
   const email = document.getElementById('email');
   const modalButton = document.getElementById('modal-submit');
   const inputFiles = document.getElementById('file-input');
+  const textArea = document.getElementsByClassName('add-answer-input');
+  const username = document.getElementsByClassName('username');
 
   // Validate that there are no more than 5 files uploaded
   inputFiles.files.length <= 5

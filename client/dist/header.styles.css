@@ -1,0 +1,21 @@
+.container-header {
+  height: 200px;
+  width: 90%;
+  background-color: rgb(204, 204, 204);
+  margin: 25px auto 50px;
+  font-family: Consolas,monaco,monospace;
+}
+
+.header {
+  text-align: center;
+  position: relative;
+  top: 15%;
+  color: #EEC0C6;
+  background-color: #949494;
+  transition: background-color 2s ease-out 100ms;
+  font-size: 100px;
+}
+
+.header:hover {
+  background-color: #555;
+}
