@@ -120,6 +120,16 @@ export const handleReport = (event, reviewId) => {
   .catch((error) => console.log(error))
 };
 
+export const handleYes = (event, review, reviewHelpfulness, setReviewHelpfulness) => {
+  event.preventDefault();
+  const reviewId = review.review_id
+  axios.put(`http://localhost:3000/reviews/${reviewId}/helpful`)
+  .then((response) => {
+    setReviewHelpfulness(reviewHelpfulness + 1);
+  })
+  .catch((error) => console.log(error))
+}
+
 // modal utils
 export const displayStarDescription = (rating) => {
   if (rating === 1) {
