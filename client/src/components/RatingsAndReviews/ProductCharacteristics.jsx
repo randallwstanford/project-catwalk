@@ -95,7 +95,7 @@ const ProductCharacteristics = () => {
   };
 
   if (reviewsMeta.length === 0) {
-    return <div>loading...</div>;
+    return <div>loading reviews...</div>;
   }
   return (
     <div id="productCharacteristics">
