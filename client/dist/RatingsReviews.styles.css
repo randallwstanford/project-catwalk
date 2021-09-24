@@ -1,7 +1,7 @@
 #RRcontainer {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  width: 900px;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -105,13 +105,13 @@ Review styles
 /*
 Ratings styles
 */
-#ratingsBreakdown {
+#RatingsBreakdown {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
   display: grid;
-  grid-template-columns: .5fr 1fr 1fr 1fr 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1rem;
   padding: 0.5rem;
   margin: 0.5rem;
 }
@@ -250,7 +250,7 @@ Ratings styles
   grid-row-end: 9;
 }
 
-#percentReccomend {
+#PercentReccomend {
   grid-column-start: 1;
   grid-column-end: 6;
   grid-row-start: 9;
