@@ -9,7 +9,6 @@ import { reviewsContext, appContext } from '../../contexts/index.js';
 const RatingsReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
-  const [reviewsMeta, setReviewsMeta] = useState([]);
   const [filtered, setFiltered] = useState({
     'one': false, 'two': false, 'three': false, 'four': false, 'five': false
   });
@@ -52,12 +51,6 @@ const RatingsReviews = () => {
         setAllReviews(response.data.results);
       })
       .catch((error) => console.log(error));
-
-    axios.get(`/reviews/meta?product_id=${product.id}`)
-      .then((response) => {
-        setReviewsMeta(response.data);
-      })
-      .catch((error) => console.log(error));
   }, []);
 
   if (allReviews.length === 0) {
@@ -69,7 +62,6 @@ const RatingsReviews = () => {
       reviews,
       filtered,
       setFiltered,
-      reviewsMeta,
       modalVisibility,
       setModalVisibility,
       sort,
