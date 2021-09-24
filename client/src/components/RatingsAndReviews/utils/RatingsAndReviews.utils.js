@@ -113,22 +113,22 @@ export const getDate = (inDate) => {
 export const handleReport = (event, reviewId) => {
   event.preventDefault();
   console.log('reported');
-  axios.put(`http://localhost:3000/reviews/${reviewId}/report`)
-  .then((response) => {
+  axios.put(`/reviews/${reviewId}/report`)
+    .then((response) => {
     // console.log(response)
-  })
-  .catch((error) => console.log(error))
+    })
+    .catch((error) => console.log(error));
 };
 
 export const handleYes = (event, review, reviewHelpfulness, setReviewHelpfulness) => {
   event.preventDefault();
-  const reviewId = review.review_id
-  axios.put(`http://localhost:3000/reviews/${reviewId}/helpful`)
-  .then((response) => {
-    setReviewHelpfulness(reviewHelpfulness + 1);
-  })
-  .catch((error) => console.log(error))
-}
+  const reviewId = review.review_id;
+  axios.put(`/reviews/${reviewId}/helpful`)
+    .then((response) => {
+      setReviewHelpfulness(reviewHelpfulness + 1);
+    })
+    .catch((error) => console.log(error));
+};
 
 // modal utils
 export const displayStarDescription = (rating) => {
@@ -213,8 +213,44 @@ export const toggleModal = (visibility, setVisibility) => {
   }
 };
 
-export const handleSubmit = (event) => {
+export const handleSubmit = (event, formData) => {
   event.preventDefault();
+  const characteristicsData = {};
+  const keys = Object.keys(formData.reviewsMeta.characteristics);
+  for (let i = 0; i < keys.length; i++) {
+    if (keys[i] === 'Size') {
+      characteristicsData[formData.reviewsMeta.characteristics.Size.id] = formData.sizeRating;
+    } else if (keys[i] === 'Width') {
+      characteristicsData[formData.reviewsMeta.characteristics.Width.id] = formData.widthRating;
+    } else if (keys[i] === 'Length') {
+      characteristicsData[formData.reviewsMeta.characteristics.Length.id] = formData.lengthRating;
+    } else if (keys[i] === 'Fit') {
+      characteristicsData[formData.reviewsMeta.characteristics.Fit.id] = formData.fitRating;
+    } else if (keys[i] === 'Quality') {
+      characteristicsData[formData.reviewsMeta.characteristics.Quality.id] = formData.qualityRating;
+    } else if (keys[i] === 'Comfort') {
+      characteristicsData[formData.reviewsMeta.characteristics.Comfort.id] = formData.comfortRating;
+    }
+  }
+  const formSubmission = {
+    'product_id': formData.product.id,
+    'rating': formData.overallRating,
+    'summary': formData.summary,
+    'body': formData.reviewBody,
+    'recommend': formData.recommend,
+    'name': formData.name,
+    'email': formData.email,
+    'photos': formData.photos,
+    'characteristics': characteristicsData
+  };
+
+  axios.post('/reviews', formSubmission)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 export const handleChange = () => {

@@ -20,10 +20,16 @@ const AddReviewModal = () => {
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]);
   const [characteristics, setCharacteristics] = useState(null);
+  const formData = {
+    overallRating, sizeRating, widthRating, lengthRating,
+    fitRating, qualityRating, comfortRating, recommend,
+    summary, reviewBody, name, email, photos, reviewsMeta, product
+  };
 
   if (reviews.length === 0) {
     return <div>loading...</div>;
   }
+
   return (
     <div className="reviewModal" id="addReviewModal" style={{ 'visibility': modalVisibility }}>
       <button id="closeModal" className="closeModal" onClick={() => { toggleModal(modalVisibility, setModalVisibility); }}>X</button>
@@ -129,7 +135,7 @@ const AddReviewModal = () => {
           />
         </label>
         <div id="reviewEmailNotice" className="notice">For authentication reasons, you will not be emailed</div>
-        <button id="submitReviewButton" onClick={handleSubmit}>Submit review</button>
+        <button id="submitReviewButton" onClick={() => { handleSubmit(event, formData); }}>Submit review</button>
       </form>
     </div>
   );

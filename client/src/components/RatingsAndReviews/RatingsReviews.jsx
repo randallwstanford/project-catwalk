@@ -14,7 +14,7 @@ const RatingsReviews = () => {
     'one': false, 'two': false, 'three': false, 'four': false, 'five': false
   });
   const [modalVisibility, setModalVisibility] = useState('hidden');
-  const [sort, setSort] = useState('relevant')
+  const [sort, setSort] = useState('relevant');
   const { product } = useContext(appContext);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const RatingsReviews = () => {
   }, [filtered]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/reviews?product_id=${product.id}&sort=${sort}`)
+    axios.get(`/reviews?product_id=${product.id}&sort=${sort}`)
       .then((response) => {
         setReviews(response.data.results);
         setAllReviews(response.data.results);
@@ -46,14 +46,14 @@ const RatingsReviews = () => {
   }, [sort]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/reviews?product_id=${product.id}&sort=${sort}`)
+    axios.get(`/reviews?product_id=${product.id}&sort=${sort}`)
       .then((response) => {
         setReviews(response.data.results);
         setAllReviews(response.data.results);
       })
       .catch((error) => console.log(error));
 
-    axios.get(`http://localhost:3000/reviews/meta?product_id=${product.id}`)
+    axios.get(`/reviews/meta?product_id=${product.id}`)
       .then((response) => {
         setReviewsMeta(response.data);
       })
