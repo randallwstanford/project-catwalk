@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import { reviewsContext } from '../../contexts/index.js';
+import { appContext } from '../../contexts/index.js';
 
 const ProductCharacteristics = () => {
-  const { reviewsMeta } = useContext(reviewsContext);
+  const { reviewsMeta } = useContext(appContext);
 
   const sizeCharacteristics = () => {
     if (reviewsMeta.characteristics.Size !== undefined) {

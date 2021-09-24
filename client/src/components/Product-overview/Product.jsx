@@ -4,6 +4,7 @@ import StylePrice from './StylePrice.jsx';
 import SizeSelector from './SizeSelector.jsx';
 import Photos from './Photos.jsx';
 import Description from './Description.jsx';
+import ReviewsOverview from './ReviewsOverview.jsx';
 import { appContext } from '../../contexts/index.js';
 
 export default function Product() {
@@ -15,20 +16,9 @@ export default function Product() {
       <div className="flex-container">
         <Photos photos={currentStyle.photos} />
         <div id="product-information">
-          <div className="review-flex-container">
-            <span>
-              <span id="star-checked">★</span>
-              <span id="star-checked">★</span>
-              <span id="star-checked">★</span>
-              <span id="star">★</span>
-              <span id="star">★</span>
-            </span>
-            <span><h6>Read all reviews</h6></span>
-          </div>
-          <div>
-            <h4>{app.product.category}</h4>
-            <h1>{app.product.name}</h1>
-          </div>
+          <ReviewsOverview />
+          <h4>{app.product.category}</h4>
+          <h1>{app.product.name}</h1>
           <StylePrice
             originalPrice={currentStyle.original_price}
             salePrice={currentStyle.sale_price}
@@ -39,7 +29,7 @@ export default function Product() {
           <div className="add-to-bag-button"><button>ADD TO BAG</button></div>
         </div>
       </div>
-      <Description product={app.product} />
+      <Description />
     </div>
   );
 }

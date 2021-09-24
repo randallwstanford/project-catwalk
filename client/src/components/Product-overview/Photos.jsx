@@ -26,7 +26,7 @@ export default function Photos({ photos }) {
             key={photo.url}
             onClick={() => setMainImage(photo.url)}
             aria-hidden="true"
-            className={photo.url === mainImage && 'selected'}
+            className={photo.url === mainImage ? 'selected' : undefined}
           >
             <img src={photo.thumbnail_url} alt="" className="thumbnail" />
           </div>
