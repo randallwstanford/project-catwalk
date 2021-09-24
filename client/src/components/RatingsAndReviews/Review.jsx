@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { getDate } from './utils/RatingsAndReviews.utils.js';
+import { getDate, handleReport, handleYes } from './utils/RatingsAndReviews.utils.js';
 
 const Review = (props) => {
   const { review } = props;
+  const [reviewHelpfulness, setReviewHelpfulness] = useState(review.helpfulness);
 
   return (
     <div id="ReviewContainer">
@@ -14,9 +15,9 @@ const Review = (props) => {
       <span id="reviewSummary">{review.summary}</span>
       <p id="reviewBody">{review.body}</p>
       <span id="reviewHelpful">Helpful?
-        <button className="linkButtons" id="reviewYes">Yes({review.helpfulness})</button>
+        <button className="linkButtons" id="reviewYes" onClick={() => { handleYes(event, review, reviewHelpfulness, setReviewHelpfulness)}}>Yes({reviewHelpfulness})</button>
       </span>
-      <button className="linkButtons" id="reviewReport">Report</button>
+      <button className="linkButtons" id="reviewReport" onClick={() => { handleReport(event, review.review_id); }}>Report</button>
     </div>
   );
 };

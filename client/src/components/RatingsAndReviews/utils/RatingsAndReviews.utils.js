@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // Ratings Breakdown utils
 export const clearFilters = (setFiltered) => {
   setFiltered({
@@ -107,6 +109,26 @@ export const getDate = (inDate) => {
   const year = inDate.slice(0, 4);
   return `${month} ${day}, ${year}`;
 };
+
+export const handleReport = (event, reviewId) => {
+  event.preventDefault();
+  console.log('reported');
+  axios.put(`http://localhost:3000/reviews/${reviewId}/report`)
+  .then((response) => {
+    // console.log(response)
+  })
+  .catch((error) => console.log(error))
+};
+
+export const handleYes = (event, review, reviewHelpfulness, setReviewHelpfulness) => {
+  event.preventDefault();
+  const reviewId = review.review_id
+  axios.put(`http://localhost:3000/reviews/${reviewId}/helpful`)
+  .then((response) => {
+    setReviewHelpfulness(reviewHelpfulness + 1);
+  })
+  .catch((error) => console.log(error))
+}
 
 // modal utils
 export const displayStarDescription = (rating) => {
