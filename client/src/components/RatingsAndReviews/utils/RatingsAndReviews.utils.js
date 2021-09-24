@@ -113,22 +113,22 @@ export const getDate = (inDate) => {
 export const handleReport = (event, reviewId) => {
   event.preventDefault();
   console.log('reported');
-  axios.put(`http://localhost:3000/reviews/${reviewId}/report`)
-  .then((response) => {
+  axios.put(`/reviews/${reviewId}/report`)
+    .then((response) => {
     // console.log(response)
-  })
-  .catch((error) => console.log(error))
+    })
+    .catch((error) => console.log(error));
 };
 
 export const handleYes = (event, review, reviewHelpfulness, setReviewHelpfulness) => {
   event.preventDefault();
-  const reviewId = review.review_id
-  axios.put(`http://localhost:3000/reviews/${reviewId}/helpful`)
-  .then((response) => {
-    setReviewHelpfulness(reviewHelpfulness + 1);
-  })
-  .catch((error) => console.log(error))
-}
+  const reviewId = review.review_id;
+  axios.put(`/reviews/${reviewId}/helpful`)
+    .then((response) => {
+      setReviewHelpfulness(reviewHelpfulness + 1);
+    })
+    .catch((error) => console.log(error));
+};
 
 // modal utils
 export const displayStarDescription = (rating) => {

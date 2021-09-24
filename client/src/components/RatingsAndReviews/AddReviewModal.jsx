@@ -4,7 +4,9 @@ import { toggleModal, handleSubmit, handleChange, handlePhotos, displayStarDescr
 import CharacteristicRadioButtons from './CharacteristicRadioButtons.jsx';
 
 const AddReviewModal = () => {
-  const { reviews, reviewsMeta, modalVisibility, setModalVisibility } = useContext(reviewsContext);
+  const {
+    reviews, reviewsMeta, modalVisibility, setModalVisibility
+  } = useContext(reviewsContext);
   const { product } = useContext(appContext);
   const [sizeRating, setSizeRating] = useState(0);
   const [widthRating, setWidthRating] = useState(0);
@@ -22,7 +24,7 @@ const AddReviewModal = () => {
   const [characteristics, setCharacteristics] = useState(null);
 
   if (reviews.length === 0) {
-    return <div>loading...</div>;
+    return <div>loading reviews...</div>;
   }
   return (
     <div className="reviewModal" id="addReviewModal" style={{ 'visibility': modalVisibility }}>
