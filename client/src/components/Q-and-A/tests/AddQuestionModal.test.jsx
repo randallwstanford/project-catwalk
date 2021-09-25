@@ -25,15 +25,7 @@ test('validates correct email', () => {
 
   const inputEl = screen.getByTestId('email');
   userEvent.type(inputEl, 'test@test.com');
-  expect(screen.getByTestId('submit')).not.toBeDisabled();
-});
-
-test('does not validate incorrect email', () => {
-  render(<AddQuestionModal product={data} />);
-
-  const inputEl = screen.getByTestId('email');
-  userEvent.type(inputEl, 'thisisabademail.com');
-  expect(screen.getByTestId('submit')).toBeDisabled();
+  expect(screen.getByTestId('submit')).toBeEnabled();
 });
 
 test('renders correctly', () => {

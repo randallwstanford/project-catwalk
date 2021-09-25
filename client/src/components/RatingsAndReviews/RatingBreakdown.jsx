@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { reviewsContext } from '../../contexts/index.js';
 import * as utils from './utils/RatingsAndReviews.utils.js';
+import StarRating from './StarRating.jsx';
 
 const RatingBreakdown = () => {
   const { reviews, setFiltered, filtered } = useContext(reviewsContext);
@@ -31,7 +32,9 @@ const RatingBreakdown = () => {
 
   return (
     <div id="RatingsBreakdown">
-      <div id="RBStars">Rating Stars</div>
+      <div id="RBStars">
+        <StarRating rating={reviewData.ratingNumber} />
+      </div>
       <div id="RBRating">{reviewData.ratingNumber}</div>
       <h5 id="RatingBreakdown">Rating Breakdown</h5>
       {showFilters()}

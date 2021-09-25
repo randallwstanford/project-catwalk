@@ -10,15 +10,15 @@ import data from './dummyDataTest.json';
 
 xtest('displays multiple questions', () => {
   render(<AllQandA questions={data} />);
-  expect(screen.getAllByText('Q:')).toBeTruthy();
+  expect(screen.getAllByText('Q:')).toBeInTheDocument();
 });
 
 xtest('has a date', () => {
   render(<AllQandA questions={data} />);
-  expect(screen.getAllByText('Date:')).toBeTruthy();
+  expect(screen.getAllByText('Date:')).toBeInTheDocument();
 });
 
 xtest('renders correctly', () => {
-  const tree = render(<AllQandA questions={data} />)
+  const tree = render(<AllQandA questions={data} />);
   expect(tree).toMatchSnapshot();
 });

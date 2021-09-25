@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Photos({ photos }) {
+export default function Photos({ photos, toggleExpanded }) {
   var [mainImage, setMainImage] = useState('');
 
   useEffect(() => {
@@ -32,13 +32,15 @@ export default function Photos({ photos }) {
           </div>
         ))}
       </div>
-      <img src={mainImage} alt="" className="photo" />
+      <img src={mainImage} alt="" className="photo" onClick={() => toggleExpanded()} aria-hidden="true" />
+      <div id="photo-zoom" style={{ backgroundImage: `url(${mainImage})` }}></div>
     </div>
   );
 }
 
 Photos.propTypes = {
-  photos: PropTypes.array
+  photos: PropTypes.array,
+  toggleExpanded: PropTypes.func.isRequired
 };
 
 Photos.defaultProps = {

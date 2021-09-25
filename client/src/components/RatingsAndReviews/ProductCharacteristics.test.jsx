@@ -6,31 +6,31 @@ import ProductCharacteristics from './ProductCharacteristics.jsx';
 import { reviewsContext } from '../../contexts/index.js';
 
 const reviewsMeta = {
-  "product_id": "44388",
-  "ratings": {
-    "4": "1",
-    "5": "1"
+  'product_id': '44388',
+  'ratings': {
+    '4': '1',
+    '5': '1'
   },
-  "recommended": {
-    "false": "1",
-    "true": "1"
+  'recommended': {
+    'false': '1',
+    'true': '1'
   },
-  "characteristics": {
-    "Fit": {
-      "id": 148890,
-      "value": "4.0000000000000000"
+  'characteristics': {
+    'Fit': {
+      'id': 148890,
+      'value': '4.0000000000000000'
     },
-    "Length": {
-      "id": 148891,
-      "value": "3.5000000000000000"
+    'Length': {
+      'id': 148891,
+      'value': '3.5000000000000000'
     },
-    "Comfort": {
-      "id": 148892,
-      "value": "5.0000000000000000"
+    'Comfort': {
+      'id': 148892,
+      'value': '5.0000000000000000'
     },
-    "Quality": {
-      "id": 148893,
-      "value": "4.0000000000000000"
+    'Quality': {
+      'id': 148893,
+      'value': '4.0000000000000000'
     }
   }
 };

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable vars-on-top */
 /* eslint-disable max-len */
 import React, { useState, useEffect, useContext } from 'react';
@@ -8,11 +9,6 @@ import Answers from './Answers.jsx';
 
 
 const AllQandA = ({ questions, product }) => {
-  const openAnswerModal = (event, question_id) => {
-    sessionStorage.setItem('questionId', question_id)
-    document.getElementById('answer-modal').style.cssText = 'visibility: visible';
-  };
-
   return (
     questions.map((question, index) => {
       return (
@@ -22,17 +18,16 @@ const AllQandA = ({ questions, product }) => {
           <div className={`qa-container ${question.question_id}`}>
             <div className="question" title="question"><b>Q:</b>{question.question_body}
               <div className="helpful"> &nbsp;Helpful?&nbsp;
-                <a href=" " onClick={utils.handleHelpful}>Yes</a>&nbsp;( {question.question_helpfulness} )&nbsp;
-                <a href=" " onClick={utils.handleReport} className="report" >&nbsp;Report</a>&nbsp;&nbsp;
-                <button className={`add-answer ${question.question_id}`} onClick={() => { openAnswerModal(event, question.question_id) }}>Add Answer</button>
+                <a onClick={utils.handleHelpful} href=" ">Yes</a>&nbsp;( {question.question_helpfulness} )&nbsp;
+                <a onClick={utils.handleReport} href=" " className="report">&nbsp;Report</a>&nbsp;&nbsp;
+                <button className={`add-answer ${question.question_id}`} onClick={() => { utils.openAnswerModal(event, question.question_id); }}>Add Answer</button>
               </div>
             </div>
             <div className={`${question.question_id} answer`}><b>A:</b>
-              {/* ------------- Answers Text ------------- */}
               <Answers answers={question.answers} questionId={question.question_id} />
             </div>
-            {/* ------------- Date -------------*/}
-            <div>&nbsp;<b>Date:</b>&nbsp;{utils.formatDate(question.question_date)}</div>
+            <span>&nbsp;<b>Date:</b>&nbsp;{utils.formatDate(question.question_date)}</span>&nbsp;
+            By: <span>{question.asker_name}</span>
           </div>
         </div>
       );
