@@ -42,7 +42,7 @@ Review styles
   border-bottom: solid 1px;
 }
 
-#starRating{
+#reviewStarRating{
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -374,6 +374,89 @@ border-top: 10px solid green;
 content: ' ';
 position: relative;
 }
+
+
+/*
+star Rating Styles
+*/
+
+.starRating {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  max-width: fit-content;
+}
+
+#firstStar {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#innerFirstStar {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#secondStar {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#innerSecondStar {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#thirdStar {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#innerThirdStar {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#fourthStar {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#innerFourthStar {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#fifthStar {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+#innerFifthStar {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.individualStar {
+  color: gold;
+}
+
+.filledStar {
+  color: gold;
+  overflow: hidden;
+  width: 0%;
+}
+
 
 /*
 general styles
