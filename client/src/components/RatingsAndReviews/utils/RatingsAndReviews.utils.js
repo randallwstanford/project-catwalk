@@ -68,6 +68,7 @@ export const getReviewData = (reviews) => {
     + reviewData.fiveStarReviews * 5)
     / reviewData.totalReviews
   );
+  reviewData.ratingNumber = reviewData.ratingNumber.toFixed(1);
   if (reviewData.ratingNumber === 'NaN') {
     reviewData.ratingNumber = 0;
   }
@@ -243,7 +244,6 @@ export const handleSubmit = (event, formData) => {
     'photos': formData.photos,
     'characteristics': characteristicsData
   };
-
   axios.post('/reviews', formSubmission)
     .then((response) => {
       console.log(response);

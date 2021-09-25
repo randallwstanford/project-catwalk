@@ -72,16 +72,16 @@ const AddReviewModal = () => {
           <CharacteristicRadioButtons rating={comfortRating} setRating={setComfortRating} labelName="Comfort" />
           <div className="radioMeaning"><span className="leftMeaning">Uncomfortable</span> <span className="rightmeaning">Perfect</span></div>
         </div>
-        <label id="reviewSummaryLabel" htmlFor="summary">Summary:
+        <label id="reviewSummaryLabel" htmlFor="reviewSummary">Summary:
           <textarea
             type="textarea"
             min="1"
             max="60"
             rows={3}
             cols={50}
-            name="summary"
-            id="summary"
-            onChange={() => { setSummary(document.getElementById('summary').value); }}
+            name="reviewSummary"
+            id="submitReviewSummary"
+            onChange={() => { setSummary(document.getElementById('submitReviewSummary').value); }}
             value={summary}
             placeholder="ex: Best purchase ever"
           />
@@ -104,8 +104,8 @@ const AddReviewModal = () => {
           <input
             multiple
             type="file"
-            name="files"
-            id="fileInput"
+            name="reviewFiles"
+            id="reviewFileInput"
             onChange={handlePhotos}
           />
         </label>
@@ -127,9 +127,9 @@ const AddReviewModal = () => {
             type="text"
             min="3"
             max="60"
-            name="email"
-            id="email"
-            onChange={() => { setEmail(document.getElementById('email').value); }}
+            name="reviewEmail"
+            id="reviewEmail"
+            onChange={() => { setEmail(document.getElementById('reviewEmail').value); }}
             value={email}
             placeholder="ex: jackson11@email.com"
           />
