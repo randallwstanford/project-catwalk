@@ -101,6 +101,11 @@ Review styles
 #sortDropdown {
   margin-left: 0.5rem;
 }
+
+#addReviewButton {
+  margin: 0.5rem;
+}
+
 /*
 Ratings styles
 */
@@ -249,7 +254,7 @@ Ratings styles
   grid-row-end: 9;
 }
 
-#PercentReccomend {
+#PercentRecommend {
   grid-column-start: 1;
   grid-column-end: 6;
   grid-row-start: 9;
@@ -376,6 +381,255 @@ position: relative;
 }
 
 /*
+add review modal styles
+*/
+
+.reviewModal {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1rem 1rem;
+}
+.closeReviewModal {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  min-width: fit-content;
+  margin-right: 1rem;
+}
+#addReviewTitle {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#addReviewSubtitle {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+#requiredNotice {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  margin-bottom: 0.5rem;
+}
+
+#addReview {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  display: grid;
+}
+
+#overallRating {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin-bottom: 0.5rem;
+}
+
+#recommend {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin-bottom: 0.5rem;
+}
+
+#characteristics {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin-bottom: 1rem;
+  display: grid;
+}
+
+.characteristic {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+}
+
+.displayRatingDefinition {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.characteristicLabel {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  text-align: right;
+}
+
+.characteristicRadioButtons {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#sizeCharacteristic {
+grid-row-start: 1;
+grid-row-end: 2;
+}
+
+#sizeRadioMeaning {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#widthCharacteristic {
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+#widthRadioMeaning {
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+#lengthCharacteristic {
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+#lengthRadioMeaning {
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
+
+#fitCharacteristic {
+  grid-row-start: 7;
+  grid-row-end: 8;
+}
+
+#fitRadioMeaning {
+  grid-row-start: 8;
+  grid-row-end: 9;
+}
+
+#qualityCharacteristic {
+  grid-row-start: 9;
+  grid-row-end: 10;
+}
+
+#qualityRadioMeaning {
+  grid-row-start: 10;
+  grid-row-end: 11;
+}
+
+#comfortCharacteristic {
+  grid-row-start: 11;
+  grid-row-end: 12;
+}
+
+#comfortRadioMeaning {
+  grid-row-start: 12;
+  grid-row-end: 13;
+}
+
+.radioMeaning {
+  display: grid;
+  grid-template-columns: 5rem 11rem 1fr;
+}
+
+.leftMeaning {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.rightMeaning {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+#reviewSummaryLabel {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  margin-bottom: 1rem;
+}
+
+#submitReviewSummary {
+  vertical-align: middle;
+  resize: none;
+}
+
+#reviewBodyLabel {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  margin-bottom: 1rem;
+}
+
+#submitReviewBody {
+  vertical-align: middle;
+  resize: none;
+}
+
+#reviewPhotosLabel {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 6;
+  grid-row-end: 7;
+  margin-bottom: 1rem;
+}
+
+#reviewNicknameLabel {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 7;
+  grid-row-end: 8;
+}
+
+#reviewNicknameNotice {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 8;
+  grid-row-end: 9;
+  margin-bottom: 1rem;
+}
+
+#reviewEmailLabel {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 9;
+  grid-row-end: 10;
+}
+
+#reviewEmailNotice {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 10;
+  grid-row-end: 11;
+  margin-bottom: 1rem;
+}
+
+#submitReviewButton {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 11;
+  grid-row-end: 12;
+  max-width: fit-content;
+}
+
+.notice {
+  font-size: small;
+}
+
+/*
 general styles
 */
 
@@ -407,3 +661,7 @@ general styles
   background-color:lightskyblue;
 }
 
+.radioButtonSpread {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
