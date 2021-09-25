@@ -68,6 +68,7 @@ export const getReviewData = (reviews) => {
     + reviewData.fiveStarReviews * 5)
     / reviewData.totalReviews
   );
+  reviewData.ratingNumber = reviewData.ratingNumber.toFixed(1);
   if (reviewData.ratingNumber === 'NaN') {
     reviewData.ratingNumber = 0;
   }
@@ -123,11 +124,14 @@ export const handleReport = (event, reviewId) => {
 export const handleYes = (event, review, reviewHelpfulness, setReviewHelpfulness) => {
   event.preventDefault();
   const reviewId = review.review_id;
-  axios.put(`/reviews/${reviewId}/helpful`)
-    .then((response) => {
-      setReviewHelpfulness(reviewHelpfulness + 1);
-    })
-    .catch((error) => console.log(error));
+  if (localStorage.getItem(`clickedHelpfulReview_${reviewId}`) === null) {
+    axios.put(`/reviews/${reviewId}/helpful`)
+      .then((response) => {
+        setReviewHelpfulness(reviewHelpfulness + 1);
+      })
+      .catch((error) => console.log(error));
+    localStorage.setItem(`clickedHelpfulReview_${reviewId}`, true);
+  }
 };
 
 // modal utils
@@ -213,8 +217,43 @@ export const toggleModal = (visibility, setVisibility) => {
   }
 };
 
-export const handleSubmit = (event) => {
+export const handleSubmit = (event, formData) => {
   event.preventDefault();
+  const characteristicsData = {};
+  const keys = Object.keys(formData.reviewsMeta.characteristics);
+  for (let i = 0; i < keys.length; i++) {
+    if (keys[i] === 'Size') {
+      characteristicsData[formData.reviewsMeta.characteristics.Size.id] = formData.sizeRating;
+    } else if (keys[i] === 'Width') {
+      characteristicsData[formData.reviewsMeta.characteristics.Width.id] = formData.widthRating;
+    } else if (keys[i] === 'Length') {
+      characteristicsData[formData.reviewsMeta.characteristics.Length.id] = formData.lengthRating;
+    } else if (keys[i] === 'Fit') {
+      characteristicsData[formData.reviewsMeta.characteristics.Fit.id] = formData.fitRating;
+    } else if (keys[i] === 'Quality') {
+      characteristicsData[formData.reviewsMeta.characteristics.Quality.id] = formData.qualityRating;
+    } else if (keys[i] === 'Comfort') {
+      characteristicsData[formData.reviewsMeta.characteristics.Comfort.id] = formData.comfortRating;
+    }
+  }
+  const formSubmission = {
+    'product_id': formData.product.id,
+    'rating': formData.overallRating,
+    'summary': formData.summary,
+    'body': formData.reviewBody,
+    'recommend': formData.recommend,
+    'name': formData.name,
+    'email': formData.email,
+    'photos': formData.photos,
+    'characteristics': characteristicsData
+  };
+  axios.post('/reviews', formSubmission)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 export const handleChange = () => {
@@ -223,4 +262,130 @@ export const handleChange = () => {
 
 export const handlePhotos = () => {
   console.log('this will handle photo uploads');
+};
+
+// star Rating utils
+
+export const getStarRating = (rating) => {
+  const ratings = {};
+  if (rating >= 1 && rating < 1.25) {
+    ratings.one = '100%';
+    ratings.two = '0%';
+    ratings.three = '0%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 1.25 && rating < 1.51) {
+    ratings.one = '100%';
+    ratings.two = '40%';
+    ratings.three = '0%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 1.50 && rating < 1.76) {
+    ratings.one = '100%';
+    ratings.two = '50%';
+    ratings.three = '0%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 1.75 && rating < 2) {
+    ratings.one = '100%';
+    ratings.two = '60%';
+    ratings.three = '0%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 2 && rating < 2.25) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '0%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 2.25 && rating < 2.51) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '40%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 2.50 && rating < 2.76) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '50%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 2.75 && rating < 3) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '60%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 3 && rating < 3.25) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '0%';
+    ratings.five = '0%';
+  }
+  if (rating >= 3.25 && rating < 3.51) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '40%';
+    ratings.five = '0%';
+  }
+  if (rating >= 3.50 && rating < 3.76) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '50%';
+    ratings.five = '0%';
+  }
+  if (rating >= 3.75 && rating < 4) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '60%';
+    ratings.five = '0%';
+  }
+  if (rating >= 4 && rating < 4.25) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '100%';
+    ratings.five = '0%';
+  }
+  if (rating >= 4.25 && rating < 4.51) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '100%';
+    ratings.five = '40%';
+  }
+  if (rating >= 4.50 && rating < 4.76) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '100%';
+    ratings.five = '50%';
+  }
+  if (rating >= 4.75 && rating < 5) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '100%';
+    ratings.five = '60%';
+  }
+  if (rating === 5) {
+    ratings.one = '100%';
+    ratings.two = '100%';
+    ratings.three = '100%';
+    ratings.four = '100%';
+    ratings.five = '100%';
+  }
+  return ratings;
 };

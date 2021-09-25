@@ -21,7 +21,7 @@ const ReviewList = () => {
       return (
         <div>
           {reviews.length} reviews, Sorted By
-          <select onChange={() => { setSort(event.target.value); }}>
+          <select id="sortDropdown" onChange={() => { setSort(event.target.value); }}>
             <option value="relevant">relevance</option>
             <option value="helpful">helpfulness</option>
             <option value="newest">newest</option>

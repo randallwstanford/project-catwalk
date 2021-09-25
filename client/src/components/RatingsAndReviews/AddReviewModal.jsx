@@ -4,9 +4,8 @@ import { toggleModal, handleSubmit, handleChange, handlePhotos, displayStarDescr
 import CharacteristicRadioButtons from './CharacteristicRadioButtons.jsx';
 
 const AddReviewModal = () => {
-  const {
-    reviews, reviewsMeta, modalVisibility, setModalVisibility
-  } = useContext(reviewsContext);
+  const { reviews, modalVisibility, setModalVisibility } = useContext(reviewsContext);
+  const { reviewsMeta } = useContext(appContext);
   const { product } = useContext(appContext);
   const [sizeRating, setSizeRating] = useState(0);
   const [widthRating, setWidthRating] = useState(0);
@@ -22,10 +21,16 @@ const AddReviewModal = () => {
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]);
   const [characteristics, setCharacteristics] = useState(null);
+  const formData = {
+    overallRating, sizeRating, widthRating, lengthRating,
+    fitRating, qualityRating, comfortRating, recommend,
+    summary, reviewBody, name, email, photos, reviewsMeta, product
+  };
 
   if (reviews.length === 0) {
     return <div>loading reviews...</div>;
   }
+
   return (
     <div className="reviewModal" id="addReviewModal" style={{ 'visibility': modalVisibility }}>
       <button id="closeModal" className="closeModal" onClick={() => { toggleModal(modalVisibility, setModalVisibility); }}>X</button>
@@ -68,16 +73,16 @@ const AddReviewModal = () => {
           <CharacteristicRadioButtons rating={comfortRating} setRating={setComfortRating} labelName="Comfort" />
           <div className="radioMeaning"><span className="leftMeaning">Uncomfortable</span> <span className="rightmeaning">Perfect</span></div>
         </div>
-        <label id="reviewSummaryLabel" htmlFor="summary">Summary:
+        <label id="reviewSummaryLabel" htmlFor="reviewSummary">Summary:
           <textarea
             type="textarea"
             min="1"
             max="60"
             rows={3}
             cols={50}
-            name="summary"
-            id="summary"
-            onChange={() => { setSummary(document.getElementById('summary').value); }}
+            name="reviewSummary"
+            id="submitReviewSummary"
+            onChange={() => { setSummary(document.getElementById('submitReviewSummary').value); }}
             value={summary}
             placeholder="ex: Best purchase ever"
           />
@@ -100,8 +105,8 @@ const AddReviewModal = () => {
           <input
             multiple
             type="file"
-            name="files"
-            id="fileInput"
+            name="reviewFiles"
+            id="reviewFileInput"
             onChange={handlePhotos}
           />
         </label>
@@ -123,15 +128,15 @@ const AddReviewModal = () => {
             type="text"
             min="3"
             max="60"
-            name="email"
-            id="email"
-            onChange={() => { setEmail(document.getElementById('email').value); }}
+            name="reviewEmail"
+            id="reviewEmail"
+            onChange={() => { setEmail(document.getElementById('reviewEmail').value); }}
             value={email}
             placeholder="ex: jackson11@email.com"
           />
         </label>
         <div id="reviewEmailNotice" className="notice">For authentication reasons, you will not be emailed</div>
-        <button id="submitReviewButton" onClick={handleSubmit}>Submit review</button>
+        <button id="submitReviewButton" onClick={() => { handleSubmit(event, formData); }}>Submit review</button>
       </form>
     </div>
   );
