@@ -274,7 +274,7 @@ export const getStarRating = (rating) => {
   }
   if (rating >= 1.25 && rating < 1.51) {
     ratings.one = '100%';
-    ratings.two = '25%';
+    ratings.two = '40%';
     ratings.three = '0%';
     ratings.four = '0%';
     ratings.five = '0%';
@@ -288,7 +288,7 @@ export const getStarRating = (rating) => {
   }
   if (rating >= 1.75 && rating < 2) {
     ratings.one = '100%';
-    ratings.two = '75%';
+    ratings.two = '60%';
     ratings.three = '0%';
     ratings.four = '0%';
     ratings.five = '0%';
@@ -303,7 +303,7 @@ export const getStarRating = (rating) => {
   if (rating >= 2.25 && rating < 2.51) {
     ratings.one = '100%';
     ratings.two = '100%';
-    ratings.three = '25%';
+    ratings.three = '40%';
     ratings.four = '0%';
     ratings.five = '0%';
   }
@@ -317,7 +317,7 @@ export const getStarRating = (rating) => {
   if (rating >= 2.75 && rating < 3) {
     ratings.one = '100%';
     ratings.two = '100%';
-    ratings.three = '75%';
+    ratings.three = '60%';
     ratings.four = '0%';
     ratings.five = '0%';
   }
@@ -332,7 +332,7 @@ export const getStarRating = (rating) => {
     ratings.one = '100%';
     ratings.two = '100%';
     ratings.three = '100%';
-    ratings.four = '25%';
+    ratings.four = '40%';
     ratings.five = '0%';
   }
   if (rating >= 3.50 && rating < 3.76) {
@@ -346,7 +346,7 @@ export const getStarRating = (rating) => {
     ratings.one = '100%';
     ratings.two = '100%';
     ratings.three = '100%';
-    ratings.four = '75%';
+    ratings.four = '60%';
     ratings.five = '0%';
   }
   if (rating >= 4 && rating < 4.25) {
@@ -361,7 +361,7 @@ export const getStarRating = (rating) => {
     ratings.two = '100%';
     ratings.three = '100%';
     ratings.four = '100%';
-    ratings.five = '25%';
+    ratings.five = '40%';
   }
   if (rating >= 4.50 && rating < 4.76) {
     ratings.one = '100%';
@@ -375,7 +375,7 @@ export const getStarRating = (rating) => {
     ratings.two = '100%';
     ratings.three = '100%';
     ratings.four = '100%';
-    ratings.five = '75%';
+    ratings.five = '60%';
   }
   if (rating === 5) {
     ratings.one = '100%';
