@@ -45,6 +45,7 @@ const ReviewList = () => {
       </div>
       {moreReviews()}
       <button
+        id="addReviewButton"
         onClick={() => { toggleModal(modalVisibility, setModalVisibility); }}
       >Add a review +
       </button>
