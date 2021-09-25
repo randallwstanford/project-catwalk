@@ -68,6 +68,7 @@ export const getReviewData = (reviews) => {
     + reviewData.fiveStarReviews * 5)
     / reviewData.totalReviews
   );
+  reviewData.ratingNumber = reviewData.ratingNumber.toFixed(1);
   if (reviewData.ratingNumber === 'NaN') {
     reviewData.ratingNumber = 0;
   }
@@ -213,8 +214,43 @@ export const toggleModal = (visibility, setVisibility) => {
   }
 };
 
-export const handleSubmit = (event) => {
+export const handleSubmit = (event, formData) => {
   event.preventDefault();
+  const characteristicsData = {};
+  const keys = Object.keys(formData.reviewsMeta.characteristics);
+  for (let i = 0; i < keys.length; i++) {
+    if (keys[i] === 'Size') {
+      characteristicsData[formData.reviewsMeta.characteristics.Size.id] = formData.sizeRating;
+    } else if (keys[i] === 'Width') {
+      characteristicsData[formData.reviewsMeta.characteristics.Width.id] = formData.widthRating;
+    } else if (keys[i] === 'Length') {
+      characteristicsData[formData.reviewsMeta.characteristics.Length.id] = formData.lengthRating;
+    } else if (keys[i] === 'Fit') {
+      characteristicsData[formData.reviewsMeta.characteristics.Fit.id] = formData.fitRating;
+    } else if (keys[i] === 'Quality') {
+      characteristicsData[formData.reviewsMeta.characteristics.Quality.id] = formData.qualityRating;
+    } else if (keys[i] === 'Comfort') {
+      characteristicsData[formData.reviewsMeta.characteristics.Comfort.id] = formData.comfortRating;
+    }
+  }
+  const formSubmission = {
+    'product_id': formData.product.id,
+    'rating': formData.overallRating,
+    'summary': formData.summary,
+    'body': formData.reviewBody,
+    'recommend': formData.recommend,
+    'name': formData.name,
+    'email': formData.email,
+    'photos': formData.photos,
+    'characteristics': characteristicsData
+  };
+  axios.post('/reviews', formSubmission)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 export const handleChange = () => {

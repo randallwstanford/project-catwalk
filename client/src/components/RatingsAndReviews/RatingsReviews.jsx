@@ -36,7 +36,8 @@ const RatingsReviews = () => {
   }, [filtered]);
 
   useEffect(() => {
-    axios.get(`/reviews?product_id=${product.id}&sort=${sort}`)
+
+    axios.get(`/reviews?product_id=${product.id}&sort=${sort}&count=1000`)
       .then((response) => {
         setReviews(response.data.results);
         setAllReviews(response.data.results);
@@ -45,7 +46,7 @@ const RatingsReviews = () => {
   }, [sort]);
 
   useEffect(() => {
-    axios.get(`/reviews?product_id=${product.id}&sort=${sort}`)
+    axios.get(`/reviews?product_id=${product.id}&sort=${sort}&count=1000`)
       .then((response) => {
         setReviews(response.data.results);
         setAllReviews(response.data.results);
