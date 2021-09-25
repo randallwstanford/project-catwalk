@@ -10,11 +10,12 @@ import { appContext } from '../../contexts/index.js';
 export default function Product() {
   var app = useContext(appContext);
   var [currentStyle, setCurrentStyle] = useState({});
+  var [expanded, setExpanded] = useState(false);
 
   return (
-    <div id="product-container">
+    <div id="product-container" className={expanded ? 'expanded-image' : undefined}>
       <div className="flex-container">
-        <Photos photos={currentStyle.photos} />
+        <Photos photos={currentStyle.photos} toggleExpanded={() => setExpanded(!expanded)} />
         <div id="product-information">
           <ReviewsOverview />
           <h4>{app.product.category}</h4>
