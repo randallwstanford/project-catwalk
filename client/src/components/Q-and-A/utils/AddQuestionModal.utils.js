@@ -11,15 +11,6 @@ export const handleChange = (event) => {
   const inputFiles = document.getElementById('file-input');
   const textArea = document.getElementsByClassName('add-answer-input');
   const username = document.getElementsByClassName('username');
-
-  // Validate that there are no more than 5 files uploaded
-  inputFiles.files.length <= 5
-    ? modalButton.disabled = false
-    : modalButton.disabled = true;
-  // Validate Email
-  emailValidation.test(email.value)
-    ? modalButton.disabled = false
-    : modalButton.disabled = true; email.style.border = '2px solid red';
 };
 
 export const handlePhotos = () => {

@@ -1,9 +1,12 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
 import React, { useContext } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import * as utils from './utils/AddQuestionModal.utils.js';
+
+const emailValidation = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 const AddQuestionModal = ({ product }) => {
   const handleSubmit = (event) => {
@@ -17,9 +20,14 @@ const AddQuestionModal = ({ product }) => {
       'name': answerer_name,
       'email': email
     };
-    axios.post('/qa/questions/', question)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+
+    if (emailValidation.test(email) && answerer_name.length !== 0 && answer_body.length !== 0) {
+      axios.post('/qa/questions/', question)
+        .then((res) => console.log(res.data))
+        .catch((err) => console.log(err));
+    } else {
+      alert('please enter email, username, and question');
+    }
   };
 
 

@@ -5,10 +5,10 @@
 /* eslint-disable array-callback-return */
 
 import React, { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
 import AddQuestionModal from './AddQuestionModal.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 import AllQandA from './AllQandA.jsx';
-import axios from 'axios';
 import * as utils from './utils/QandA.utils.js';
 import { appContext } from '../../contexts/index.js';
 

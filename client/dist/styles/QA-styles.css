@@ -1,0 +1,167 @@
+.container {
+  margin: 0 auto;
+  width: 75%;
+  padding: 15px;
+  z-index: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+.qa-container {
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.qanda {
+  border: 2px solid gray;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.question-input {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  padding: 15px ;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+.q-wrapper {
+  position: relative;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+.load-more-answers {
+  color: #555;
+  margin-top: 10px;
+  padding: 10px;
+  background: #f2f2f2;
+  border: hidden;
+  box-shadow: rgb(212, 212, 212) 5px 5px 10px;
+  margin-right: 50px;
+  width: 25%;
+  display: block;
+  margin-bottom: 15px;
+}
+.yes-button, .add-answer {
+  padding: 10px;
+  color: #555555;
+  box-shadow: rgb(212, 212, 212) 5px 5px 15px;
+  margin-right: 20px;
+  background: #f2f2f2;
+  border: hidden;
+}
+.more-answered-questions, .add-question {
+  padding: 10px;
+  color: #555;
+  background: #f2f2f2;
+  border: hidden;
+  margin-right: 50px;
+  box-shadow: rgb(153, 153, 153) 5px 5px 10px;
+}
+.question {
+  padding: 5px;
+  position: relative;
+}
+.more-question-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-answer {
+  margin-left: 5px;
+}
+
+.question-modal {
+  border: 5px solid gray;
+  border-radius: 10px;
+  width: 700px;
+  height: 600px;
+  position: absolute;
+  box-shadow: 0 0 10px black;
+  left: 50px;
+  background-color: white;
+  z-index: 3;
+  padding: 10px;
+  text-align: center;
+  visibility: hidden;
+}
+
+.answer-modal {
+  border: 5px solid gray;
+  border-radius: 10px;
+  width: 700px;
+  height: 700px;
+  position: absolute;
+  box-shadow: 0 0 10px black;
+  left: 50px;
+  background-color: white;
+  z-index: 3;
+  padding: 10px;
+  text-align: center;
+  visibility: hidden;
+}
+
+.test {
+  text-align: center;
+}
+
+.x {
+  float: right;
+}
+
+.x:hover {
+  cursor: pointer;
+}
+
+.username, .email {
+  padding: 10px;
+  margin: 20px;
+  width: 40%;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.add-answer-input {
+  margin-top: 20px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  height: 200px;
+  text-align: top;
+  word-wrap: normal;
+  margin-bottom: 10px;
+}
+
+.modal-submit {
+  padding: 10px;
+}
+
+#file-input {
+  border: 1px solid black;
+  padding: 5px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+.more-question-wrapper:hover,
+.more-answered-questions:hover,
+.add-question:hover,
+.load-more-answers:hover,
+.yes-button:hover,
+.add-answer:hover {
+  cursor: pointer;
+}
+
+.answer {
+  padding: 5px
+}
+
+.helpful {
+  float: right;
+}
+
+.input-and-button {
+  position: relative;
+}

@@ -5,21 +5,6 @@ export const toggleModal = (event) => {
   document.getElementById('answer-modal').style.visibility = 'hidden';
 };
 
-export const handleChange = (event) => {
-  const email = document.getElementById('email');
-  const modalButton = document.getElementById('modal-submit');
-  const inputFiles = document.getElementById('file-input');
-
-  // Validate that there are no more than 5 files uploaded
-  inputFiles.files.length <= 5
-    ? modalButton.disabled = false
-    : modalButton.disabled = true;
-  // Validate Email
-  emailValidation.test(email.value)
-    ? modalButton.disabled = false
-    : modalButton.disabled = true; email.style.border = '2px solid red';
-};
-
 export const handlePhotos = () => {
   // Array.from(document.getElementById('file-input').files).map((file, index) => {
   //   return (
