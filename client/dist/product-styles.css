@@ -12,6 +12,10 @@
   position: relative;
 }
 
+.expanded-image #image-gallery {
+  width: 100%;
+}
+
 #thumbnails {
   position: absolute;
   width: 72px;
@@ -35,6 +39,10 @@ img.photo {
   object-fit: cover;
 }
 
+.expanded-image img.photo {
+  width: 100%;
+}
+
 img.thumbnail {
  width: 70px;
  height: 70px;
@@ -44,6 +52,10 @@ img.thumbnail {
 
 #product-information {
   width: 40%;
+}
+
+.expanded-image #product-information {
+  display: none;
 }
 
 #product-information h1 {
