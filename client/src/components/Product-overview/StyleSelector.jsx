@@ -6,7 +6,7 @@ export default function StyleSelector({ setCurrentStyle, currentStyleId }) {
   const [styles, setStyles] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/products/44388/styles')
+    axios.get('/products/44388/styles')
       .then(response => {
         var receivedStyles = response.data.results;
         setStyles(receivedStyles);
