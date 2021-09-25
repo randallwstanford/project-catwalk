@@ -124,11 +124,14 @@ export const handleReport = (event, reviewId) => {
 export const handleYes = (event, review, reviewHelpfulness, setReviewHelpfulness) => {
   event.preventDefault();
   const reviewId = review.review_id;
-  axios.put(`/reviews/${reviewId}/helpful`)
-    .then((response) => {
-      setReviewHelpfulness(reviewHelpfulness + 1);
-    })
-    .catch((error) => console.log(error));
+  if (localStorage.getItem(`clickedHelpfulReview_${reviewId}`) === null) {
+    axios.put(`/reviews/${reviewId}/helpful`)
+      .then((response) => {
+        setReviewHelpfulness(reviewHelpfulness + 1);
+      })
+      .catch((error) => console.log(error));
+    localStorage.setItem(`clickedHelpfulReview_${reviewId}`, true);
+  }
 };
 
 // modal utils
