@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-unused-expressions */
 import React, { useContext } from 'react';
@@ -6,25 +7,31 @@ import axios from 'axios';
 import * as utils from './utils/AddAnswerModal.utils.js';
 import { appContext } from '../../contexts/index.js';
 
+const emailValidation = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 const AddAnswerModal = ({ product, question }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    var questionID = parseInt(sessionStorage.getItem('questionId'));
+    const questionID = parseInt(sessionStorage.getItem('questionId'), 10);
+    const email = event.target.email.value;
+    const username = event.target.username.value;
+    const answerText = event.target.answerText.value;
 
     const answer = {
-      'body': event.target.username.value, // Username
-      'name': event.target.answerText.value, // Answer Body
-      'email': event.target.email.value, // Email
+      'name': username, // Username
+      'body': answerText, // Answer Body
+      'email': email, // Email
       'photos': [...event.target.files.files] // Files
     };
 
-    axios.post(`/qa/questions/${questionID}/answers`, answer)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    if (emailValidation.test(email) && username.length !== 0 && answerText.length !== 0) {
+      axios.post(`/qa/questions/${questionID}/answers`, answer)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    } else {
+      alert('please enter email, username, and question');
+    }
   };
-
-
 
   return (
     <div className={`answer-modal ${question}`} id="answer-modal">
@@ -32,7 +39,7 @@ const AddAnswerModal = ({ product, question }) => {
       <h2>Submit your Answer</h2>
       <h3 data-testid="product_name">[{product.name}]:</h3>
       <h3>{product.description}</h3>
-      <form className={`main ${question}`} onSubmit={handleSubmit} onChange={utils.handleChange}>
+      <form className={`main ${question}`} onSubmit={handleSubmit}>
 
         {/* ------ Username ------ */}
         Username **
@@ -64,7 +71,8 @@ const AddAnswerModal = ({ product, question }) => {
           maxLength="1000"
           name="answerText"
           className="add-answer-input"
-          placeholder="enter question here">
+          placeholder="enter question here"
+        >
         </textarea>
         {/* ------ File Input ------ */}
         <input
@@ -74,7 +82,7 @@ const AddAnswerModal = ({ product, question }) => {
           id="file-input"
           onChange={utils.handlePhotos}
         />
-         {/* ------ Submit Button ------ */}
+        {/* ------ Submit Button ------ */}
         <button
           type="submit"
           data-testid="submit"
