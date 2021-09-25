@@ -1,13 +1,9 @@
 #RRcontainer {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  width: 900px;
+  width: 75%;
   margin: 0 auto;
 }
-
-/*
-Review styles
-*/
 
 #addReviewModal {
   grid-column-start: 1;
@@ -20,6 +16,10 @@ Review styles
   z-index: 2;
   /* visibility: hidden; */
 }
+
+/*
+Review styles
+*/
 
 #reviewList {
   grid-column-start: 2;
@@ -47,33 +47,31 @@ Review styles
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
+  margin-top: 1rem;
 }
 
-#verifiedPurchaser {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
 #reviewUserName {
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
+  margin-top: 1rem;
 }
 
+#reviewSummary {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-weight: bold;
+  margin-top: 1rem;
+}
 #reviewDate {
   grid-column-start: 4;
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 2;
-}
-
-#reviewTitle {
-  grid-column-start: 1;
-  grid-column-end: 5;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  margin-top: 1rem;
 }
 
 #reviewBody {
@@ -85,33 +83,34 @@ Review styles
 
 #reviewHelpful {
   grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 4;
-  grid-row-end: 5;
-}
-
-#reviewReport {
-  grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 4;
   grid-row-end: 5;
-  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+#reviewReport {
+  margin-left: 1rem;
 }
 
 #reviewYes {
   margin-left: 0.5rem;
+  margin-right: 1rem;
 }
 
+#sortDropdown {
+  margin-left: 0.5rem;
+}
 /*
 Ratings styles
 */
-#ratingsBreakdown {
+#RatingsBreakdown {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
   display: grid;
-  grid-template-columns: .5fr 1fr 1fr 1fr 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1rem;
   padding: 0.5rem;
   margin: 0.5rem;
 }
@@ -250,7 +249,7 @@ Ratings styles
   grid-row-end: 9;
 }
 
-#percentReccomend {
+#PercentReccomend {
   grid-column-start: 1;
   grid-column-end: 6;
   grid-row-start: 9;
@@ -303,6 +302,7 @@ characteristics styles
   grid-row-start: 3;
   grid-row-end: 4;
   text-align: left;
+  min-width: fit-content;
 }
 
 .middleEnd {
@@ -311,6 +311,7 @@ characteristics styles
   grid-row-start: 3;
   grid-row-end: 4;
   text-align: center;
+  min-width: fit-content;
   margin-bottom: 0.5rem;
 }
 
@@ -319,6 +320,7 @@ characteristics styles
   grid-column-end: 7;
   grid-row-start: 3;
   grid-row-end: 4;
+  min-width: fit-content;
   text-align: right;
 }
 
@@ -404,3 +406,4 @@ general styles
 .linkButtons:hover {
   background-color:lightskyblue;
 }
+

@@ -101,7 +101,7 @@ const RatingBreakdown = () => {
       <div className="borderBar" id="oneStarBar"><div className="BarFill" style={{ width: `${reviewData.onePercentage}%` }}></div></div>
       <div id="oneStarCount">{reviewData.oneStarReviews}</div>
 
-      <div id="PercentReccomend">{`${reviewData.recommended}% of reviews reccomended this product`}</div>
+      <div id="PercentReccomend">{`${reviewData.recommended}% of reviews recommended this product`}</div>
     </div>
   );
 };

@@ -9,12 +9,11 @@ import { reviewsContext, appContext } from '../../contexts/index.js';
 const RatingsReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
-  const [reviewsMeta, setReviewsMeta] = useState([]);
   const [filtered, setFiltered] = useState({
     'one': false, 'two': false, 'three': false, 'four': false, 'five': false
   });
   const [modalVisibility, setModalVisibility] = useState('hidden');
-  const [sort, setSort] = useState('relevant')
+  const [sort, setSort] = useState('relevant');
   const { product } = useContext(appContext);
 
   useEffect(() => {
@@ -37,7 +36,8 @@ const RatingsReviews = () => {
   }, [filtered]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/reviews?product_id=${product.id}&sort=${sort}`)
+
+    axios.get(`/reviews?product_id=${product.id}&sort=${sort}&count=1000`)
       .then((response) => {
         setReviews(response.data.results);
         setAllReviews(response.data.results);
@@ -46,22 +46,16 @@ const RatingsReviews = () => {
   }, [sort]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/reviews?product_id=${product.id}&sort=${sort}`)
+    axios.get(`/reviews?product_id=${product.id}&sort=${sort}&count=1000`)
       .then((response) => {
         setReviews(response.data.results);
         setAllReviews(response.data.results);
       })
       .catch((error) => console.log(error));
-
-    axios.get(`http://localhost:3000/reviews/meta?product_id=${product.id}`)
-      .then((response) => {
-        setReviewsMeta(response.data);
-      })
-      .catch((error) => console.log(error));
   }, []);
 
   if (allReviews.length === 0) {
-    return <div>loading...</div>;
+    return <div>loading reviews...</div>;
   }
 
   return (
@@ -69,7 +63,6 @@ const RatingsReviews = () => {
       reviews,
       filtered,
       setFiltered,
-      reviewsMeta,
       modalVisibility,
       setModalVisibility,
       sort,

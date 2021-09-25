@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import { reviewsContext } from '../../contexts/index.js';
+import { appContext } from '../../contexts/index.js';
 
 const ProductCharacteristics = () => {
-  const { reviewsMeta } = useContext(reviewsContext);
+  const { reviewsMeta } = useContext(appContext);
 
   const sizeCharacteristics = () => {
     if (reviewsMeta.characteristics.Size !== undefined) {
@@ -95,7 +95,7 @@ const ProductCharacteristics = () => {
   };
 
   if (reviewsMeta.length === 0) {
-    return <div>loading...</div>;
+    return <div>loading reviews...</div>;
   }
   return (
     <div id="productCharacteristics">

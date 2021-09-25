@@ -16,8 +16,7 @@ app.use('/*', (req, res) => {
     data: req.body,
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-den${req.originalUrl}`,
     headers: {
-      'Authorization': config.TOKEN,
-      'Accept-Encoding': ['gzip', 'compress', 'br']
+      'Authorization': config.TOKEN
     }
   }).then(response => res.send(response.data))
     .catch(err => {
@@ -25,8 +24,6 @@ app.use('/*', (req, res) => {
       res.status(500).end();
     });
 });
-
-
 
 app.listen(port, () => {
   console.log(`Running on port: ${port}`);
