@@ -33,6 +33,7 @@ export default function Photos({ photos, toggleExpanded }) {
         ))}
       </div>
       <img src={mainImage} alt="" className="photo" onClick={() => toggleExpanded()} aria-hidden="true" />
+      <div id="photo-zoom" style={{ backgroundImage: `url(${mainImage})` }}></div>
     </div>
   );
 }
