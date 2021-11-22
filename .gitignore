@@ -2,7 +2,7 @@
 node_modules
 
 #ignore config
-config
+config.js
 
 #ignore bundle
 bundle.js
